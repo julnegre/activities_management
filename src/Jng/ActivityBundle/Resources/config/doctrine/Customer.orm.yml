@@ -1,0 +1,16 @@
+Jng\ActivityBundle\Entity\Customer:
+    type: entity
+    table: null
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        name:
+            type: string
+            length: '255'
+        business_id:
+            type: integer
+            length: null
+    lifecycleCallbacks: {  }

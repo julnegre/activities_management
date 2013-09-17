@@ -52,7 +52,10 @@ doctrine:
         # if using pdo_sqlite as your database driver, add the path in parameters.yml
         # e.g. database_path: %kernel.root_dir%/data/data.db3
         # path:     %database_path%
-
+    #dbal:
+    #    driver: pdo_sqlite
+    #    path: "%kernel.root_dir%/sqlite.db"
+    #    charset: UTF8
     orm:
         auto_generate_proxy_classes: %kernel.debug%
         auto_mapping: true

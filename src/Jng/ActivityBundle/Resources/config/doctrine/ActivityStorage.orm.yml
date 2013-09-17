@@ -1,0 +1,22 @@
+Jng\ActivityBundle\Entity\ActivityStorage:
+    type: entity
+    table: null
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        activity_id:
+            type: integer
+            length: null
+        task_id:
+            type: integer
+            length: null
+        start:
+            type: datetime
+            length: null
+        end:
+            type: datetime
+            length: null
+    lifecycleCallbacks: {  }

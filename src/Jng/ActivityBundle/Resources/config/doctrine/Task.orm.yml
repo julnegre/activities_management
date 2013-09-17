@@ -1,0 +1,19 @@
+Jng\ActivityBundle\Entity\Task:
+    type: entity
+    table: null
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        name:
+            type: string
+            length: '255'
+        activity_id:
+            type: integer
+            length: null
+        order:
+            type: integer
+            length: null
+    lifecycleCallbacks: {  }
