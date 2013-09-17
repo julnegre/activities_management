@@ -1,0 +1,4 @@
+_welcome:
+    pattern:  /today
+    defaults: { _controller: JngActivityBundle:Entry:today }
+

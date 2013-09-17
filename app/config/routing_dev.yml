@@ -14,5 +14,8 @@ _main:
     resource: routing.yml
 
 # AcmeDemoBundle routes (to be removed)
-_acme_demo:
-    resource: "@AcmeDemoBundle/Resources/config/routing.yml"
+#_acme_demo:
+#    resource: "@AcmeDemoBundle/Resources/config/routing.yml"
+
+_jng:
+    resource: "@JngActivityBundle/Resources/config/routing.yml"
