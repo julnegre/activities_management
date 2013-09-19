@@ -2,3 +2,10 @@ _welcome:
     pattern:  /today
     defaults: { _controller: JngActivityBundle:Entry:today }
 
+_list:
+    pattern:  /list
+    defaults: { _controller: JngActivityBundle:Entry:list }
+    
+_add:
+    pattern:  /add
+    defaults: { _controller: JngActivityBundle:Entry:add }    

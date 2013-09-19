@@ -1,0 +1,15 @@
+{% extends "JngActivityBundle:Entry:layout.html.twig" %}
+
+{% block title "Hello "%}
+
+{% block content %}
+        <h1>Liste des activités</h1>
+
+        <ul id="navigation">
+            {% for item in activities %}
+                <li>{{ item.name }}</a></li>
+            {% endfor %}
+        </ul>
+{% endblock %}
+
+

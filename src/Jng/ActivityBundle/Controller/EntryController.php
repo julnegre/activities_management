@@ -8,6 +8,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
+use Jng\ActivityBundle\Form\ActivityType;
+
+use Jng\ActivityBundle\Entity\Activity;
+
 /**
  * @Route("/activity/entry")
  */
@@ -56,5 +60,32 @@ class EntryController extends Controller
         return array('name' => time());
     }
 
+    /**
+     * @Route("/today", defaults={"name"="World"}),
+     * @Template()
+     */
+    public function listAction()
+    {
+       return array("activities" => $this->getDoctrine()
+        ->getRepository('JngActivityBundle:Activity')->findAll());
+
+    }    
+    
+     /**
+     * @Route("/today", defaults={"name"="World"}),
+     * @Template()
+     */
+    public function addAction()
+    {
+      
+        $activity = new Activity();
+        
+        $form = $this->createForm(new ActivityType(), $activity);
+        
+        return $this->render('JngActivityBundle:Entry:new.html.twig', array(
+            'form' => $form->createView(),
+        ));
+        
+    }
     
 }
