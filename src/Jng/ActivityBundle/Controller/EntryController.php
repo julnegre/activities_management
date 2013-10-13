@@ -8,9 +8,18 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
-use Jng\ActivityBundle\Form\ActivityType;
+use Jng\ActivityBundle\Form\ActivityForm;
+use Jng\ActivityBundle\Form\ActivityStorageForm;
+use Jng\ActivityBundle\Form\BusinessForm;
+use Jng\ActivityBundle\Form\CustomerForm;
+use Jng\ActivityBundle\Form\TaskForm;
+
 
 use Jng\ActivityBundle\Entity\Activity;
+use Jng\ActivityBundle\Entity\ActivityStorage;
+use Jng\ActivityBundle\Entity\Business;
+use Jng\ActivityBundle\Entity\Customer;
+use Jng\ActivityBundle\Entity\Task;
 
 /**
  * @Route("/activity/entry")
@@ -64,28 +73,158 @@ class EntryController extends Controller
      * @Route("/today", defaults={"name"="World"}),
      * @Template()
      */
-    public function listAction()
+    public function listActivityAction()
     {
        return array("activities" => $this->getDoctrine()
         ->getRepository('JngActivityBundle:Activity')->findAll());
 
     }    
     
+    public function listCustomerAction()
+    {
+       return array("customers" => $this->getDoctrine()
+        ->getRepository('JngActivityBundle:Customer')->findAll());
+
+    }  
+    public function listBusinessAction()
+    {
+       return array("business" => $this->getDoctrine()
+        ->getRepository('JngActivityBundle:Business')->findAll());
+
+    }     
      /**
      * @Route("/today", defaults={"name"="World"}),
      * @Template()
      */
-    public function addAction()
+    public function addActivityAction(Request $request)
     {
       
         $activity = new Activity();
+        $message = "";
+        $form = $this->createForm(new ActivityForm(), $activity);
         
-        $form = $this->createForm(new ActivityType(), $activity);
+
+        if ($request->getMethod() == 'POST') 
+        {
+          $form->handleRequest($request);
+
+          if ($form->isValid()) 
+          {
+            $em = $this->container->get('doctrine')->getManager();
+            $em->persist($activity);
+            $em->flush();
+            $message='Activité ajoutée avec succès !';
+          }
+        }
+
         
-        return $this->render('JngActivityBundle:Entry:new.html.twig', array(
+        return $this->render('JngActivityBundle:Entry:new.activity.html.twig', array(
             'form' => $form->createView(),
+            'message' => $message
         ));
         
     }
-    
+    public function addCustomerAction(Request $request)
+    {
+        $message = "";
+        $activity = new Customer();
+        $form = $this->createForm(new CustomerForm(), $activity);
+        
+        
+        if ($request->getMethod() == 'POST') 
+        {
+          $form->handleRequest($request);
+
+          if ($form->isValid()) 
+          {
+            $em = $this->container->get('doctrine')->getManager();
+            $em->persist($activity);
+            $em->flush();
+            $message='Client ajouté avec succès !';
+          }
+        }
+        
+        
+        return $this->render('JngActivityBundle:Entry:new.customer.html.twig', array(
+            'form' => $form->createView(),
+            'message' => $message
+        ));
+        
+    }
+    public function addActivityStorageAction(Request $request)
+    {
+        $message = "";
+        $activity = new ActivityStorage();
+        $form = $this->createForm(new ActivityStorageForm(), $activity);
+        
+        if ($request->getMethod() == 'POST') 
+        {
+          $form->handleRequest($request);
+
+          if ($form->isValid()) 
+          {
+            $em = $this->container->get('doctrine')->getManager();
+            $activity->setStart(new \DateTime());
+            $em->persist($activity);
+            $em->flush();
+            $message='Activité réelle ajoutée avec succès !';
+          }
+        }        
+        
+        return $this->render('JngActivityBundle:Entry:new.activity.storage.html.twig', array(
+            'form' => $form->createView(),
+            'message' => $message
+        ));
+        
+    }    
+     public function addBusinessAction(Request $request)
+    {
+        $message = "";
+        $activity = new Business();
+        $form = $this->createForm(new BusinessForm(), $activity);
+        
+        if ($request->getMethod() == 'POST') 
+        {
+          $form->handleRequest($request);
+
+          if ($form->isValid()) 
+          {
+            $em = $this->container->get('doctrine')->getManager();
+            $em->persist($activity);
+            $em->flush();
+            $message='Affaire ajoutée avec succès !';
+          }
+        }   
+        
+        return $this->render('JngActivityBundle:Entry:new.business.html.twig', array(
+            'form' => $form->createView(),
+            'message' => $message
+        ));
+        
+    }  
+     public function addTaskAction(Request $request)
+    {
+        $message = "";
+        $activity = new Task();
+        $form = $this->createForm(new TaskForm(), $activity);
+        
+        if ($request->getMethod() == 'POST') 
+        {
+          $form->handleRequest($request);
+
+          if ($form->isValid()) 
+          {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($activity);
+            $em->flush();
+            $message='Tache ajoutée avec succès !';
+          }
+        }   
+        
+        return $this->render('JngActivityBundle:Entry:new.task.html.twig', array(
+            'form' => $form->createView(),
+            'message' => $message
+        ));
+        
+    }     
 }

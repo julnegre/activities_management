@@ -1,0 +1,15 @@
+{% extends "JngActivityBundle:Entry:layout.html.twig" %}
+
+{% block title "Hello "%}
+
+{% block content %}
+
+    {{ form_start(form) }}
+        {{ form_errors(form) }}
+
+        {{ form_row(form.name) }}
+
+        <input type="submit" />
+    {{ form_end(form) }}
+    {{ message }}    
+{% endblock %}

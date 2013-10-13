@@ -2,10 +2,26 @@ _welcome:
     pattern:  /today
     defaults: { _controller: JngActivityBundle:Entry:today }
 
-_list:
+_listActivity:
     pattern:  /list
-    defaults: { _controller: JngActivityBundle:Entry:list }
+    defaults: { _controller: JngActivityBundle:Entry:listActivity }
     
-_add:
-    pattern:  /add
-    defaults: { _controller: JngActivityBundle:Entry:add }    
+_addActivity:
+    pattern:  /addActivity
+    defaults: { _controller: JngActivityBundle:Entry:addActivity }    
+
+_addActivityStorage:
+    pattern:  /addActivityStorage
+    defaults: { _controller: JngActivityBundle:Entry:addActivityStorage }  
+    
+_addBusiness:
+    pattern:  /addBusiness
+    defaults: { _controller: JngActivityBundle:Entry:addBusiness }  
+    
+_addCustomer:
+    pattern:  /addCustomer
+    defaults: { _controller: JngActivityBundle:Entry:addCustomer }  
+    
+_addTask:
+    pattern:  /addTask
+    defaults: { _controller: JngActivityBundle:Entry:addTask }      

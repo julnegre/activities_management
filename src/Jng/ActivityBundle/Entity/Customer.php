@@ -80,4 +80,10 @@ class Customer
     {
         return $this->business_id;
     }
+    
+    public function __toString()
+    {
+        return strval($this->id);
+    }
+    
 }

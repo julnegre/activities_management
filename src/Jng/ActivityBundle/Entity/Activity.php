@@ -80,4 +80,10 @@ class Activity
     {
         return $this->customer_id;
     }
+    
+    public function __toString()
+    {
+        return strval($this->id);
+    }
+    
 }
