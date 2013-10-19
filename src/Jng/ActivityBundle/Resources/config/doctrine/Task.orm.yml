@@ -1,19 +1,21 @@
 Jng\ActivityBundle\Entity\Task:
     type: entity
-    table: null
+    table: task
     fields:
         id:
             type: integer
             id: true
-            generator:
-                strategy: AUTO
+            generator: { strategy: AUTO }
         name:
             type: string
             length: '255'
-        activity_id:
+        order_nb:
             type: integer
             length: null
-        order:
-            type: integer
-            length: null
+    manyToOne:
+        activity:
+            targetEntity: Activity
+            joinColumn:
+                name: activity_id
+                referencedColumnName: id            
     lifecycleCallbacks: {  }

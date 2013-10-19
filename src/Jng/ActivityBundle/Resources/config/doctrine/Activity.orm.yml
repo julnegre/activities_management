@@ -1,16 +1,25 @@
 Jng\ActivityBundle\Entity\Activity:
     type: entity
-    table: null
+    table: activity
     fields:
         id:
             type: integer
             id: true
-            generator:
-                strategy: AUTO
+            generator: { strategy: AUTO }
         name:
             type: string
             length: '255'
-        customer_id:
-            type: integer
-            length: null
-    lifecycleCallbacks: {  }
+        created_at:
+            type: datetime
+        updated_at:
+            type: datetime
+            nullable: true
+    oneToOne:
+        customer:
+            targetEntity: Customer
+            joinColumn:
+                name: customer_id
+                referencedColumnName: id             
+    lifecycleCallbacks:
+        prePersist: [ setCreatedAtValue ]
+        preUpdate: [ setUpdatedAtValue ]

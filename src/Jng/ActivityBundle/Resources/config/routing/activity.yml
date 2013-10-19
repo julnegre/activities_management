@@ -1,0 +1,30 @@
+activity:
+    pattern:  /
+    defaults: { _controller: "JngActivityBundle:Activity:index" }
+
+activity_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "JngActivityBundle:Activity:show" }
+
+activity_new:
+    pattern:  /new
+    defaults: { _controller: "JngActivityBundle:Activity:new" }
+
+activity_create:
+    pattern:  /create
+    defaults: { _controller: "JngActivityBundle:Activity:create" }
+    requirements: { _method: post }
+
+activity_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "JngActivityBundle:Activity:edit" }
+
+activity_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "JngActivityBundle:Activity:update" }
+    requirements: { _method: post|put }
+
+activity_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "JngActivityBundle:Activity:delete" }
+    requirements: { _method: post|delete }

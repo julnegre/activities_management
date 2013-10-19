@@ -14,15 +14,6 @@ class ActivityStorage
      */
     private $id;
 
-    /**
-     * @var integer
-     */
-    private $activity_id;
-
-    /**
-     * @var integer
-     */
-    private $task_id;
 
     /**
      * @var \DateTime
@@ -45,52 +36,7 @@ class ActivityStorage
         return $this->id;
     }
 
-    /**
-     * Set activity_id
-     *
-     * @param integer $activityId
-     * @return ActivityStorage
-     */
-    public function setActivityId($activityId)
-    {
-        $this->activity_id = $activityId;
-    
-        return $this;
-    }
-
-    /**
-     * Get activity_id
-     *
-     * @return integer 
-     */
-    public function getActivityId()
-    {
-        return $this->activity_id;
-    }
-
-    /**
-     * Set task_id
-     *
-     * @param integer $taskId
-     * @return ActivityStorage
-     */
-    public function setTaskId($taskId)
-    {
-        $this->task_id = $taskId;
-    
-        return $this;
-    }
-
-    /**
-     * Get task_id
-     *
-     * @return integer 
-     */
-    public function getTaskId()
-    {
-        return $this->task_id;
-    }
-
+   
     /**
      * Set start
      *
@@ -135,5 +81,121 @@ class ActivityStorage
     public function getEnd()
     {
         return $this->end;
+    }
+    
+    
+    public function setStartValue(){
+        return $this->setStart(new \DateTime());
+    }
+    
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $activity;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $task;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->activity = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->task = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Add activity
+     *
+     * @param \Jng\ActivityBundle\Entity\Activity $activity
+     * @return ActivityStorage
+     */
+    public function addActivity(\Jng\ActivityBundle\Entity\Activity $activity)
+    {
+        $this->activity[] = $activity;
+    
+        return $this;
+    }
+
+    /**
+     * Remove activity
+     *
+     * @param \Jng\ActivityBundle\Entity\Activity $activity
+     */
+    public function removeActivity(\Jng\ActivityBundle\Entity\Activity $activity)
+    {
+        $this->activity->removeElement($activity);
+    }
+
+    /**
+     * Get activity
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getActivity()
+    {
+        return $this->activity;
+    }
+
+    /**
+     * Add task
+     *
+     * @param \Jng\ActivityBundle\Entity\Task $task
+     * @return ActivityStorage
+     */
+    public function addTask(\Jng\ActivityBundle\Entity\Task $task)
+    {
+        $this->task[] = $task;
+    
+        return $this;
+    }
+
+    /**
+     * Remove task
+     *
+     * @param \Jng\ActivityBundle\Entity\Task $task
+     */
+    public function removeTask(\Jng\ActivityBundle\Entity\Task $task)
+    {
+        $this->task->removeElement($task);
+    }
+
+    /**
+     * Get task
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTask()
+    {
+        return $this->task;
+    }
+
+    /**
+     * Set activity
+     *
+     * @param \Jng\ActivityBundle\Entity\Activity $activity
+     * @return ActivityStorage
+     */
+    public function setActivity(\Jng\ActivityBundle\Entity\Activity $activity = null)
+    {
+        $this->activity = $activity;
+    
+        return $this;
+    }
+
+    /**
+     * Set task
+     *
+     * @param \Jng\ActivityBundle\Entity\Task $task
+     * @return ActivityStorage
+     */
+    public function setTask(\Jng\ActivityBundle\Entity\Task $task = null)
+    {
+        $this->task = $task;
+    
+        return $this;
     }
 }

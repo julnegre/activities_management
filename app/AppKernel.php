@@ -19,6 +19,8 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new Jng\UserBundle\JngUserBundle(),
             new Jng\ActivityBundle\JngActivityBundle(),
+            new Genemu\Bundle\FormBundle\GenemuFormBundle(),
+           // new Symfony\Bundle\DoctrineFixturesBundle\DoctrineFixturesBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

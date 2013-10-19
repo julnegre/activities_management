@@ -1,0 +1,30 @@
+activitystorage:
+    pattern:  /
+    defaults: { _controller: "JngActivityBundle:ActivityStorage:index" }
+
+activitystorage_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "JngActivityBundle:ActivityStorage:show" }
+
+activitystorage_new:
+    pattern:  /new
+    defaults: { _controller: "JngActivityBundle:ActivityStorage:new" }
+
+activitystorage_create:
+    pattern:  /create
+    defaults: { _controller: "JngActivityBundle:ActivityStorage:create" }
+    requirements: { _method: post }
+
+activitystorage_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "JngActivityBundle:ActivityStorage:edit" }
+
+activitystorage_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "JngActivityBundle:ActivityStorage:update" }
+    requirements: { _method: post|put }
+
+activitystorage_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "JngActivityBundle:ActivityStorage:delete" }
+    requirements: { _method: post|delete }

@@ -1,12 +1,11 @@
 Jng\ActivityBundle\Entity\Business:
     type: entity
-    table: null
+    table: business
     fields:
         id:
             type: integer
             id: true
-            generator:
-                strategy: AUTO
+            generator: { strategy: AUTO }
         name:
             type: string
             length: '255'

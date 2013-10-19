@@ -1,0 +1,22 @@
+{% extends "JngActivityBundle:layout:layout.html.twig" %}
+{% form_theme edit_form 'JngActivityBundle:Form:fields.html.twig' %}
+
+{% block title %}Customer edit{% endblock %}
+{% block title_section %}
+    <h1>Customer edit</h1>
+    <h2>Edit some customer</h2>
+{% endblock %}   
+
+{% block content %}
+
+    {{ form(edit_form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('customer') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

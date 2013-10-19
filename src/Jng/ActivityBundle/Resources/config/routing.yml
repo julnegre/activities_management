@@ -1,27 +1,19 @@
-_welcome:
-    pattern:  /today
-    defaults: { _controller: JngActivityBundle:Entry:today }
+JngActivityBundle_activity:
+        resource: "@JngActivityBundle/Resources/config/routing/activity.yml"
+        prefix:   /activity
+        
+JngActivityBundle_activitystorage:
+        resource: "@JngActivityBundle/Resources/config/routing/activitystorage.yml"
+        prefix:   /activitystorage       
+        
+JngActivityBundle_business:
+        resource: "@JngActivityBundle/Resources/config/routing/business.yml"
+        prefix:   /business    
+        
+JngActivityBundle_customer:
+        resource: "@JngActivityBundle/Resources/config/routing/customer.yml"
+        prefix:   /customer
 
-_listActivity:
-    pattern:  /list
-    defaults: { _controller: JngActivityBundle:Entry:listActivity }
-    
-_addActivity:
-    pattern:  /addActivity
-    defaults: { _controller: JngActivityBundle:Entry:addActivity }    
-
-_addActivityStorage:
-    pattern:  /addActivityStorage
-    defaults: { _controller: JngActivityBundle:Entry:addActivityStorage }  
-    
-_addBusiness:
-    pattern:  /addBusiness
-    defaults: { _controller: JngActivityBundle:Entry:addBusiness }  
-    
-_addCustomer:
-    pattern:  /addCustomer
-    defaults: { _controller: JngActivityBundle:Entry:addCustomer }  
-    
-_addTask:
-    pattern:  /addTask
-    defaults: { _controller: JngActivityBundle:Entry:addTask }      
+JngActivityBundle_task:
+        resource: "@JngActivityBundle/Resources/config/routing/task.yml"
+        prefix:   /task

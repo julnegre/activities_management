@@ -1,0 +1,30 @@
+customer:
+    pattern:  /
+    defaults: { _controller: "JngActivityBundle:Customer:index" }
+
+customer_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "JngActivityBundle:Customer:show" }
+
+customer_new:
+    pattern:  /new
+    defaults: { _controller: "JngActivityBundle:Customer:new" }
+
+customer_create:
+    pattern:  /create
+    defaults: { _controller: "JngActivityBundle:Customer:create" }
+    requirements: { _method: post }
+
+customer_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "JngActivityBundle:Customer:edit" }
+
+customer_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "JngActivityBundle:Customer:update" }
+    requirements: { _method: post|put }
+
+customer_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "JngActivityBundle:Customer:delete" }
+    requirements: { _method: post|delete }

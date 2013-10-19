@@ -20,12 +20,6 @@ class Customer
     private $name;
 
     /**
-     * @var integer
-     */
-    private $business_id;
-
-
-    /**
      * Get id
      *
      * @return integer 
@@ -58,32 +52,38 @@ class Customer
         return $this->name;
     }
 
-    /**
-     * Set business_id
-     *
-     * @param integer $businessId
-     * @return Customer
-     */
-    public function setBusinessId($businessId)
-    {
-        $this->business_id = $businessId;
-    
-        return $this;
-    }
-
-    /**
-     * Get business_id
-     *
-     * @return integer 
-     */
-    public function getBusinessId()
-    {
-        return $this->business_id;
-    }
     
     public function __toString()
     {
         return strval($this->id);
     }
     
+    /**
+     * @var \Jng\ActivityBundle\Entity\Business
+     */
+    private $business;
+
+
+    /**
+     * Set business
+     *
+     * @param \Jng\ActivityBundle\Entity\Business $business
+     * @return Customer
+     */
+    public function setBusiness(\Jng\ActivityBundle\Entity\Business $business = null)
+    {
+        $this->business = $business;
+    
+        return $this;
+    }
+
+    /**
+     * Get business
+     *
+     * @return \Jng\ActivityBundle\Entity\Business 
+     */
+    public function getBusiness()
+    {
+        return $this->business;
+    }
 }

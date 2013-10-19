@@ -1,22 +1,28 @@
 Jng\ActivityBundle\Entity\ActivityStorage:
     type: entity
-    table: null
+    table: activity_storage
     fields:
         id:
             type: integer
             id: true
-            generator:
-                strategy: AUTO
-        activity_id:
-            type: integer
-            length: null
-        task_id:
-            type: integer
-            length: null
+            generator: { strategy: AUTO }
         start:
             type: datetime
             length: null
         end:
             type: datetime
             length: null
-    lifecycleCallbacks: {  }
+    manyToOne:
+        activity:
+            targetEntity: Activity
+            joinColumn:
+                name: activity_id
+                referencedColumnName: id
+        task:
+            targetEntity: Task
+            joinColumn:
+                name: task_id
+                referencedColumnName: id            
+            
+    lifecycleCallbacks: 
+      prePersist: [ setStartValue ]

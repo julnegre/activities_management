@@ -1,16 +1,18 @@
 Jng\ActivityBundle\Entity\Customer:
     type: entity
-    table: null
+    table: customer
     fields:
         id:
             type: integer
             id: true
-            generator:
-                strategy: AUTO
+            generator: { strategy: AUTO }
         name:
             type: string
             length: '255'
-        business_id:
-            type: integer
-            length: null
+    manyToOne:
+        business:
+            targetEntity: Business
+            joinColumn:
+                name: business_id
+                referencedColumnName: id            
     lifecycleCallbacks: {  }

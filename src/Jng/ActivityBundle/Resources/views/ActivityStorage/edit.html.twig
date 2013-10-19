@@ -1,0 +1,23 @@
+{% extends "JngActivityBundle:layout:layout.html.twig" %}
+
+{% form_theme edit_form 'JngActivityBundle:Form:fields.html.twig' %}
+
+{% block title %}Activity edit{% endblock %}
+{% block title_section %}
+    <h1>Activity Storage edit</h1>
+    <h2>Edit some activity storage</h2>
+{% endblock %}   
+
+{% block content %}
+
+    {{ form(edit_form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('activitystorage') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

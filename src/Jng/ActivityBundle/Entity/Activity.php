@@ -20,12 +20,6 @@ class Activity
     private $name;
 
     /**
-     * @var integer
-     */
-    private $customer_id;
-
-
-    /**
      * Get id
      *
      * @return integer 
@@ -57,33 +51,109 @@ class Activity
     {
         return $this->name;
     }
-
-    /**
-     * Set customer_id
-     *
-     * @param integer $customerId
-     * @return Activity
-     */
-    public function setCustomerId($customerId)
-    {
-        $this->customer_id = $customerId;
-    
-        return $this;
-    }
-
-    /**
-     * Get customer_id
-     *
-     * @return integer 
-     */
-    public function getCustomerId()
-    {
-        return $this->customer_id;
-    }
     
     public function __toString()
     {
         return strval($this->id);
     }
     
+    /**
+     * @var \DateTime
+     */
+    private $created_at;
+
+    /**
+     * @var \DateTime
+     */
+    private $updated_at;
+
+    /**
+     * @var \Jng\ActivityBundle\Entity\Customer
+     */
+    private $customer;
+
+
+    /**
+     * Set created_at
+     *
+     * @param \DateTime $createdAt
+     * @return Activity
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->created_at = $createdAt;
+    
+        return $this;
+    }
+
+    /**
+     * Get created_at
+     *
+     * @return \DateTime 
+     */
+    public function getCreatedAt()
+    {
+        return $this->created_at;
+    }
+
+    /**
+     * Set updated_at
+     *
+     * @param \DateTime $updatedAt
+     * @return Activity
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updated_at = $updatedAt;
+    
+        return $this;
+    }
+
+    /**
+     * Get updated_at
+     *
+     * @return \DateTime 
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updated_at;
+    }
+
+    /**
+     * Set customer
+     *
+     * @param \Jng\ActivityBundle\Entity\Customer $customer
+     * @return Activity
+     */
+    public function setCustomer(\Jng\ActivityBundle\Entity\Customer $customer = null)
+    {
+        $this->customer = $customer;
+    
+        return $this;
+    }
+
+    /**
+     * Get customer
+     *
+     * @return \Jng\ActivityBundle\Entity\Customer 
+     */
+    public function getCustomer()
+    {
+        return $this->customer;
+    }
+    /**
+     * @ORM\PrePersist
+     */
+    public function setCreatedAtValue()
+    {
+        $this->created_at = new \DateTime();
+    }
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function setUpdatedAtValue()
+    {
+        $this->updated_at = new \DateTime();
+    }
 }

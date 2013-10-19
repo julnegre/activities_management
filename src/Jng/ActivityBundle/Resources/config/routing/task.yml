@@ -1,0 +1,30 @@
+task:
+    pattern:  /
+    defaults: { _controller: "JngActivityBundle:Task:index" }
+
+task_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "JngActivityBundle:Task:show" }
+
+task_new:
+    pattern:  /new
+    defaults: { _controller: "JngActivityBundle:Task:new" }
+
+task_create:
+    pattern:  /create
+    defaults: { _controller: "JngActivityBundle:Task:create" }
+    requirements: { _method: post }
+
+task_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "JngActivityBundle:Task:edit" }
+
+task_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "JngActivityBundle:Task:update" }
+    requirements: { _method: post|put }
+
+task_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "JngActivityBundle:Task:delete" }
+    requirements: { _method: post|delete }

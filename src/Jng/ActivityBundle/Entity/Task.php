@@ -22,12 +22,7 @@ class Task
     /**
      * @var integer
      */
-    private $activity_id;
-
-    /**
-     * @var integer
-     */
-    private $order;
+    private $order_nb;
 
 
     /**
@@ -63,28 +58,7 @@ class Task
         return $this->name;
     }
 
-    /**
-     * Set activity_id
-     *
-     * @param integer $activityId
-     * @return Task
-     */
-    public function setActivityId($activityId)
-    {
-        $this->activity_id = $activityId;
-    
-        return $this;
-    }
-
-    /**
-     * Get activity_id
-     *
-     * @return integer 
-     */
-    public function getActivityId()
-    {
-        return $this->activity_id;
-    }
+  
 
     /**
      * Set order
@@ -92,9 +66,9 @@ class Task
      * @param integer $order
      * @return Task
      */
-    public function setOrder($order)
+    public function setOrderNb($order)
     {
-        $this->order = $order;
+        $this->order_nb = $order;
     
         return $this;
     }
@@ -104,9 +78,9 @@ class Task
      *
      * @return integer 
      */
-    public function getOrder()
+    public function getOrderNb()
     {
-        return $this->order;
+        return $this->order_nb;
     }
     
     public function __toString()
@@ -115,4 +89,32 @@ class Task
     }
     
     
+    /**
+     * @var \Jng\ActivityBundle\Entity\Activity
+     */
+    private $activity;
+
+
+    /**
+     * Set activity
+     *
+     * @param \Jng\ActivityBundle\Entity\Activity $activity
+     * @return Task
+     */
+    public function setActivity(\Jng\ActivityBundle\Entity\Activity $activity = null)
+    {
+        $this->activity = $activity;
+    
+        return $this;
+    }
+
+    /**
+     * Get activity
+     *
+     * @return \Jng\ActivityBundle\Entity\Activity 
+     */
+    public function getActivity()
+    {
+        return $this->activity;
+    }
 }

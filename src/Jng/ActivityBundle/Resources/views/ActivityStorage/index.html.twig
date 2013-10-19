@@ -1,0 +1,47 @@
+{% extends "JngActivityBundle:layout:layout.html.twig" %}
+
+{% block title %}Activity Storage list{% endblock %}
+{% block title_section %}
+    <h1>Activity Storage List</h1>
+    <h2>List all activity stored</h2>
+{% endblock %}   
+
+{% block content -%}
+    <table class="pure-table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Start</th>
+                <th>End</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('activitystorage_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{% if entity.start %}{{ entity.start|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if entity.end %}{{ entity.end|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('activitystorage_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('activitystorage_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a class="pure-button pure-button-primary" href="{{ path('activitystorage_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}
