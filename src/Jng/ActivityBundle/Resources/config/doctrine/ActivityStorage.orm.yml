@@ -12,6 +12,7 @@ Jng\ActivityBundle\Entity\ActivityStorage:
         end:
             type: datetime
             length: null
+            nullable: true
     manyToOne:
         activity:
             targetEntity: Activity

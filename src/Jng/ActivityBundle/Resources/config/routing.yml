@@ -4,7 +4,7 @@ JngActivityBundle_activity:
         
 JngActivityBundle_activitystorage:
         resource: "@JngActivityBundle/Resources/config/routing/activitystorage.yml"
-        prefix:   /activitystorage       
+        prefix:   /    
         
 JngActivityBundle_business:
         resource: "@JngActivityBundle/Resources/config/routing/business.yml"

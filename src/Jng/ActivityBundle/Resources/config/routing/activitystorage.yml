@@ -28,3 +28,8 @@ activitystorage_delete:
     pattern:  /{id}/delete
     defaults: { _controller: "JngActivityBundle:ActivityStorage:delete" }
     requirements: { _method: post|delete }
+    
+activitystorage_stop:
+    pattern:  /{id}/stop
+    defaults: { _controller: "JngActivityBundle:ActivityStorage:stop" }
+    requirements: { _method: post|put }    

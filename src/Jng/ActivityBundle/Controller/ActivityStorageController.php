@@ -21,6 +21,8 @@ class ActivityStorageController extends Controller
      */
     public function indexAction()
     {
+        $user = $this->container->get('security.context')->getToken()->getUser();
+        
         $em = $this->getDoctrine()->getManager();
 
         $entities = $em->getRepository('JngActivityBundle:ActivityStorage')->findAll();
@@ -30,9 +32,16 @@ class ActivityStorageController extends Controller
             $deleteForms[$entity->getId()] = $this->createDeleteForm($entity->getId())->createView();
         }
 
+        $editForms = array();
+        foreach ($entities as $entity) {
+            $editForms[$entity->getId()] = $this->createEditForm($entity)->createView();
+        }
+        
         return $this->render('JngActivityBundle:ActivityStorage:index.html.twig', array(
             'entities' => $entities,
             'deleteForms' => $deleteForms,
+            'stopForms' => $editForms,
+            'user'
         ));
     }
     /**
@@ -225,5 +234,27 @@ class ActivityStorageController extends Controller
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()
         ;
+    }
+    public function stopAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('JngActivityBundle:ActivityStorage')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find ActivityStorage entity.');
+        }
+
+        $editForm = $this->createEditForm($entity);
+        $editForm->handleRequest($request);
+        if ($editForm->isValid()) {
+            $entity->setEndValue();
+            $em->persist($entity);
+            
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('activitystorage', array('id' => $id)));
+        }
+
     }
 }

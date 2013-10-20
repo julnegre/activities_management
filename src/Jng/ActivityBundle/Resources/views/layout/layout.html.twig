@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -16,17 +15,29 @@
         {% block javascripts %}{% endblock %}   
     </head>
     <body>
-        <div class="header">
+{# L'utilisateur est-il connecté ? #}
+{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+
+            <div class="header">
             <div class="menu">
                 <div class="pure-menu pure-menu-open pure-menu-fixed pure-menu-horizontal">
                     <a class="pure-menu-heading" href="{{ path('activitystorage') }}">Activity manager</a>
-
                     <ul>
                         <li class="pure-menu-selected"><a class="pure-button pure-button-success" href="{{ path('activitystorage_new') }}">NEW</a></li>
                         <li><a href="{{ path('activity') }}">Activity</a></li>
                         <li><a href="{{ path('business') }}">Business</a></li>
                         <li><a href="{{ path('customer') }}">Customer</a></li>
                         <li><a href="{{ path('task') }}">Task</a></li>
+                        
+                        {# L'utilisateur est connecté ! #}
+                        <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
+
+                        {# L'utilisateur est-il admin ? #}
+                        {% if is_granted('ROLE_ADMIN') %}
+                            {# L'utilisateur est admin ! #}
+                            <li><a href="{{ path('admin') }}">Administration</a></li>
+                        {% endif %}
+                        
                     </ul>
                 </div>    
             </div>
@@ -51,7 +62,11 @@
                     <div class="search">
                     {% block search %}{% endblock %}
                     </div>   
-                               
+{% else %}
+            
+    <META http-equiv="refresh" content="0;URL={{ path('fos_user_security_login') }}">
+
+{% endif %}                               
                 </body>
             </html>
 

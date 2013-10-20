@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% block head %}
+        <script src="http://use.typekit.net/gis6vng.js"></script>
+        <script>try {Typekit.load();}catch(e){}</script>
+        <link rel="icon" sizes="16x16" href="{{ asset('favicon.ico') }}" />
+        <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.3.0/pure-min.css">
+        <link rel="stylesheet"  href="{{ asset('bundles/jngactivity/css/baby-blue.css') }}" />
+        <link rel="stylesheet"  href="{{ asset('bundles/jngactivity/css/activity.css') }}" />
+        <title>{% block title %}{% endblock %} - Activity Manager</title>
+        {% endblock %}
+        {% block stylesheets %}{% endblock %}
+        {% block javascripts %}{% endblock %}   
+    </head>
+    <body>
+
+    <div class="header">
+    <div class="title">    
+        {% block title_section %}{% endblock %}  
+        </div>        
+    </div>        
+    <div class="content">
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+            <div class="flash-message">
+                <em>Notice</em>: {{ flashMessage }}
+            </div>
+    {% endfor %}
+    {% block content %}{% endblock %}
+        </div>
+        <div class="footer">
+    {% block footer %}
+                &copy; Copyright 2013 by <a href="http://www.julnegre.fr/">Julnegre</a>.
+    {% endblock %}
+            </div>
+
+        </body>
+    </html>
+

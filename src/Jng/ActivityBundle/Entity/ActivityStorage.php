@@ -141,6 +141,11 @@ class ActivityStorage
      */
     public function setStartValue()
     {
-        // Add your code here
+        $this->start = new \DateTime();
+    }
+    
+    public function setEndValue()
+    {
+        $this->end = new \DateTime();
     }
 }

@@ -29,13 +29,25 @@
                 <td>
                 <ul>
                     <li>
-                        <a class="pure-button pure-button-secondary"  href="{{ path('activitystorage_edit', { 'id': entity.id }) }}">edit</a>
+                        <a class="pure-button pure-button-secondary"  href="{{ path('activitystorage_edit', { 'id': entity.id })}}">edit</a>
+                    </li>    
+                    <li>
+                        {% if entity.end is null %}
+                         
+                        <form action="{{ path('activitystorage_stop', { 'id': entity.id }) }}" method="post">
+                            <input type="hidden" name="_method" value="PUT" />
+                            {{ form_widget(stopForms[entity.id]._token) }}
+                            <button type="submit" class="pure-button pure-button-error"  onclick="return confirm('Are you sure to stop ?')">
+                                <i class="icon-trash"></i>stop
+                            </button>
+                        </form>
+                        {% endif %}
                     </li>
                     <li>
                         <form action="{{ path('activitystorage_delete', { 'id': entity.id }) }}" method="post">
                             <input type="hidden" name="_method" value="DELETE" />
                             {{ form_widget(deleteForms[entity.id]._token) }}
-                            <button type="submit" class="pure-button pure-button-error"  onclick="return confirm('Are you sure ?')">
+                            <button type="submit" class="pure-button pure-button-error"  onclick="return confirm('Are you sure to delete ?')">
                                 <i class="icon-trash"></i>delete
                             </button>
                         </form>
