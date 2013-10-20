@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Jng\ActivityBundle\Entity\Business;
 use Jng\ActivityBundle\Form\BusinessType;
+use Jng\ActivityBundle\Form\SearchType;
 
 /**
  * Business controller.
@@ -24,9 +25,19 @@ class BusinessController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entities = $em->getRepository('JngActivityBundle:Business')->findAll();
+        
+        $deleteForms = array();
+        foreach ($entities as $entity) {
+            $deleteForms[$entity->getId()] = $this->createDeleteForm($entity->getId())->createView();
+        }
+              // search Form
+        $searchForm = $this->createForm(new SearchType('Jng\ActivityBundle\Entity\Business'), null);
 
+        
         return $this->render('JngActivityBundle:Business:index.html.twig', array(
             'entities' => $entities,
+            'deleteForms' => $deleteForms,
+            'searchForm' => $searchForm->createView()
         ));
     }
     /**
@@ -44,7 +55,7 @@ class BusinessController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('business_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('business', array('id' => $entity->getId())));
         }
 
         return $this->render('JngActivityBundle:Business:new.html.twig', array(

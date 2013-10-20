@@ -20,6 +20,22 @@ class Activity
     private $name;
 
     /**
+     * @var \DateTime
+     */
+    private $created_at;
+
+    /**
+     * @var \DateTime
+     */
+    private $updated_at;
+
+    /**
+     * @var \Jng\ActivityBundle\Entity\Customer
+     */
+    private $customer;
+
+
+    /**
      * Get id
      *
      * @return integer 
@@ -51,27 +67,6 @@ class Activity
     {
         return $this->name;
     }
-    
-    public function __toString()
-    {
-        return strval($this->id);
-    }
-    
-    /**
-     * @var \DateTime
-     */
-    private $created_at;
-
-    /**
-     * @var \DateTime
-     */
-    private $updated_at;
-
-    /**
-     * @var \Jng\ActivityBundle\Entity\Customer
-     */
-    private $customer;
-
 
     /**
      * Set created_at

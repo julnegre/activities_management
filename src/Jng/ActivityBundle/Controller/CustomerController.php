@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Jng\ActivityBundle\Entity\Customer;
 use Jng\ActivityBundle\Form\CustomerType;
-
+use Jng\ActivityBundle\Form\SearchType;
 /**
  * Customer controller.
  *
@@ -24,9 +24,19 @@ class CustomerController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entities = $em->getRepository('JngActivityBundle:Customer')->findAll();
+        
+        $deleteForms = array();
+        foreach ($entities as $entity) {
+            $deleteForms[$entity->getId()] = $this->createDeleteForm($entity->getId())->createView();
+        }
+                
+        // search Form
+        $searchForm = $this->createForm(new SearchType('Jng\ActivityBundle\Entity\Customer'), null);
 
         return $this->render('JngActivityBundle:Customer:index.html.twig', array(
             'entities' => $entities,
+            'deleteForms' => $deleteForms,
+            'searchForm' => $searchForm->createView()
         ));
     }
     /**
@@ -44,7 +54,7 @@ class CustomerController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('customer_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('customer', array('id' => $entity->getId())));
         }
 
         return $this->render('JngActivityBundle:Customer:new.html.twig', array(

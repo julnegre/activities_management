@@ -14,5 +14,8 @@ Jng\ActivityBundle\Entity\Customer:
             targetEntity: Business
             joinColumn:
                 name: business_id
-                referencedColumnName: id            
+                referencedColumnName: id  
+            orderBy:
+                name: ASC   
+            cascade: ["persist"]    
     lifecycleCallbacks: {  }

@@ -15,10 +15,8 @@ class ActivityStorageType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('start')
-            ->add('end')
-            ->add('activity')
-            ->add('task')
+            ->add('activity','entity', array('class'=>'Jng\ActivityBundle\Entity\Activity', 'property'=>'name' ))
+            ->add('task','entity', array('class'=>'Jng\ActivityBundle\Entity\Task', 'property'=>'name' ))
         ;
     }
     

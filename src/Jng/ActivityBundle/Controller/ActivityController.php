@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Jng\ActivityBundle\Entity\Activity;
 use Jng\ActivityBundle\Form\ActivityType;
-
+use Jng\ActivityBundle\Form\SearchType;
 /**
  * Activity controller.
  *
@@ -25,8 +25,20 @@ class ActivityController extends Controller
 
         $entities = $em->getRepository('JngActivityBundle:Activity')->findAll();
 
+        // delete Forms
+        $deleteForms = array();
+        foreach ($entities as $entity) {
+            $deleteForms[$entity->getId()] = $this->createDeleteForm($entity->getId())->createView();
+        }
+
+        // search Form
+        $searchForm = $this->createForm(new SearchType('Jng\ActivityBundle\Entity\Activity'), null);
+
+        // return
         return $this->render('JngActivityBundle:Activity:index.html.twig', array(
             'entities' => $entities,
+            'deleteForms' => $deleteForms,
+            'searchForm' => $searchForm->createView()
         ));
     }
     /**
@@ -44,7 +56,7 @@ class ActivityController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('activity_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('activity', array('id' => $entity->getId())));
         }
 
         return $this->render('JngActivityBundle:Activity:new.html.twig', array(

@@ -20,6 +20,12 @@ class Customer
     private $name;
 
     /**
+     * @var \Jng\ActivityBundle\Entity\Business
+     */
+    private $business;
+
+
+    /**
      * Get id
      *
      * @return integer 
@@ -51,18 +57,6 @@ class Customer
     {
         return $this->name;
     }
-
-    
-    public function __toString()
-    {
-        return strval($this->id);
-    }
-    
-    /**
-     * @var \Jng\ActivityBundle\Entity\Business
-     */
-    private $business;
-
 
     /**
      * Set business

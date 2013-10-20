@@ -52,10 +52,4 @@ class Business
     {
         return $this->name;
     }
-    
-    public function __toString()
-    {
-        return strval($this->id);
-    }
-    
 }

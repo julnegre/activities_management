@@ -74,4 +74,5 @@ fos_user:
     user_class:    Jng\UserBundle\Entity\User # La classe de l'entité User que nous utilisons
     
 genemu_form:
-    date: ~    
+    date: ~ 
+    autocomplete: ~

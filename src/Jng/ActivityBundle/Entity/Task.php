@@ -24,6 +24,11 @@ class Task
      */
     private $order_nb;
 
+    /**
+     * @var \Jng\ActivityBundle\Entity\Activity
+     */
+    private $activity;
+
 
     /**
      * Get id
@@ -58,23 +63,21 @@ class Task
         return $this->name;
     }
 
-  
-
     /**
-     * Set order
+     * Set order_nb
      *
-     * @param integer $order
+     * @param integer $orderNb
      * @return Task
      */
-    public function setOrderNb($order)
+    public function setOrderNb($orderNb)
     {
-        $this->order_nb = $order;
+        $this->order_nb = $orderNb;
     
         return $this;
     }
 
     /**
-     * Get order
+     * Get order_nb
      *
      * @return integer 
      */
@@ -82,18 +85,6 @@ class Task
     {
         return $this->order_nb;
     }
-    
-    public function __toString()
-    {
-        return strval($this->id);
-    }
-    
-    
-    /**
-     * @var \Jng\ActivityBundle\Entity\Activity
-     */
-    private $activity;
-
 
     /**
      * Set activity

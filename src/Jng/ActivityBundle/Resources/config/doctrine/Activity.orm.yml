@@ -14,12 +14,15 @@ Jng\ActivityBundle\Entity\Activity:
         updated_at:
             type: datetime
             nullable: true
-    oneToOne:
+    manyToOne:
         customer:
             targetEntity: Customer
             joinColumn:
                 name: customer_id
-                referencedColumnName: id             
+                referencedColumnName: id  
+            orderBy:
+                name: ASC 
+            cascade: ["persist"]    
     lifecycleCallbacks:
         prePersist: [ setCreatedAtValue ]
         preUpdate: [ setUpdatedAtValue ]

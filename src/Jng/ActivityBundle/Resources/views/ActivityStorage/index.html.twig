@@ -11,6 +11,8 @@
         <thead>
             <tr>
                 <th>Id</th>
+                <th>Activity</th>
+                <th>Task</th>
                 <th>Start</th>
                 <th>End</th>
                 <th>Actions</th>
@@ -20,16 +22,25 @@
         {% for entity in entities %}
             <tr>
                 <td><a href="{{ path('activitystorage_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.activity.name }}</td>
+                <td>{{ entity.task.name }}</td>
                 <td>{% if entity.start %}{{ entity.start|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{% if entity.end %}{{ entity.end|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>
                 <ul>
                     <li>
-                        <a href="{{ path('activitystorage_show', { 'id': entity.id }) }}">show</a>
+                        <a class="pure-button pure-button-secondary"  href="{{ path('activitystorage_edit', { 'id': entity.id }) }}">edit</a>
                     </li>
                     <li>
-                        <a href="{{ path('activitystorage_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
+                        <form action="{{ path('activitystorage_delete', { 'id': entity.id }) }}" method="post">
+                            <input type="hidden" name="_method" value="DELETE" />
+                            {{ form_widget(deleteForms[entity.id]._token) }}
+                            <button type="submit" class="pure-button pure-button-error"  onclick="return confirm('Are you sure ?')">
+                                <i class="icon-trash"></i>delete
+                            </button>
+                        </form>
+                    </li>                    
+                    
                 </ul>
                 </td>
             </tr>

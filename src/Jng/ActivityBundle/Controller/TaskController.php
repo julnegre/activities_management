@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Jng\ActivityBundle\Entity\Task;
 use Jng\ActivityBundle\Form\TaskType;
+use Jng\ActivityBundle\Form\SearchType;
 
 /**
  * Task controller.
@@ -24,9 +25,20 @@ class TaskController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entities = $em->getRepository('JngActivityBundle:Task')->findAll();
+        
+        $deleteForms = array();
+        foreach ($entities as $entity) {
+            $deleteForms[$entity->getId()] = $this->createDeleteForm($entity->getId())->createView();
+        }
+        
+        // search Form
+        $searchForm = $this->createForm(new SearchType('Jng\ActivityBundle\Entity\Task'), null);
 
+        
         return $this->render('JngActivityBundle:Task:index.html.twig', array(
             'entities' => $entities,
+            'deleteForms' => $deleteForms,
+            'searchForm' => $searchForm->createView()
         ));
     }
     /**
@@ -44,7 +56,7 @@ class TaskController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('task_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('task', array('id' => $entity->getId())));
         }
 
         return $this->render('JngActivityBundle:Task:new.html.twig', array(

@@ -2,44 +2,60 @@
 
 {% block title %}Activity list{% endblock %}
 {% block title_section %}
-    <h1>Activity List</h1>
-    <h2>List all activity</h2>
+<h1>Activity List</h1>
+<h2>List all activity</h2>
 {% endblock %}   
-    
+
+    {% block stylesheets %}
+<link href="{{ asset('css/jquery-ui.min.css') }}" rel="stylesheet" />
+    {{ form_stylesheet(searchForm) }}
+   {% endblock %}
+
+{% block javascripts %}
+<script src="{{ asset('js/jquery-1.10.2.min.js') }}"></script>
+<script src="{{ asset('js/jquery-ui.min.js') }}"></script>
+    {{ form_javascript(searchForm) }}
+{% endblock %}    
+
+
 {% block content -%}
-    <table class="pure-table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Created_at</th>
-                <th>Updated_at</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
+<table class="pure-table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Customer</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
         {% for entity in entities %}
             <tr>
                 <td><a href="{{ path('activity_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                 <td>{{ entity.name }}</td>
-                <td>{% if entity.createdat %}{{ entity.createdat|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{% if entity.updatedat %}{{ entity.updatedat|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.customer.name }}</td>
                 <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('activity_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('activity_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
+                    <ul>
+                        <li>
+                            <a class="pure-button pure-button-secondary"  href="{{ path('activity_edit', { 'id': entity.id }) }}" >edit</a>
+                        </li>
+                        <li>
+                            <form action="{{ path('activity_delete', { 'id': entity.id }) }}" method="post">
+                                <input type="hidden" name="_method" value="DELETE" />
+                            {{ form_widget(deleteForms[entity.id]._token) }}
+                                <button type="submit" class="pure-button pure-button-error"  onclick="return confirm('Are you sure ?')">
+                                    <i class="icon-trash"></i>delete
+                                </button>
+                            </form>
+                        </li>
+                    </ul>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-        <ul>
+    <ul>
         <li>
             <a class="pure-button pure-button-primary" href="{{ path('activity_new') }}">
                 Create a new entry
@@ -47,3 +63,12 @@
         </li>
     </ul>
     {% endblock %}
+
+    {% block search %}    
+    <form class="pure-form pure-g form-wrapper cf">
+          {{ form_widget(searchForm.name,{'attr': {'class': 'ui-autocomplete-input pure-input-rounded','placeholder':'Search here...'}}) }}
+        <button type="submit" class="pure-button">Search</button>
+    </form>
+      {% endblock %}  
+
+

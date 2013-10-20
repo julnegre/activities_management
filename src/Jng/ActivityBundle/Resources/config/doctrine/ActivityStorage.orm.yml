@@ -18,11 +18,16 @@ Jng\ActivityBundle\Entity\ActivityStorage:
             joinColumn:
                 name: activity_id
                 referencedColumnName: id
+            orderBy:
+                name: ASC    
+            cascade: ["persist"]     
         task:
             targetEntity: Task
             joinColumn:
                 name: task_id
-                referencedColumnName: id            
-            
+                referencedColumnName: id    
+            orderBy:
+                name: ASC  
+            cascade: ["persist"]    
     lifecycleCallbacks: 
       prePersist: [ setStartValue ]

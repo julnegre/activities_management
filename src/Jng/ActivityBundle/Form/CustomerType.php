@@ -16,7 +16,7 @@ class CustomerType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('business')
+            ->add('business','entity', array('class'=>'Jng\ActivityBundle\Entity\Business', 'property'=>'name' ))
         ;
     }
     

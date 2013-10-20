@@ -24,9 +24,15 @@ class ActivityStorageController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entities = $em->getRepository('JngActivityBundle:ActivityStorage')->findAll();
+        
+        $deleteForms = array();
+        foreach ($entities as $entity) {
+            $deleteForms[$entity->getId()] = $this->createDeleteForm($entity->getId())->createView();
+        }
 
         return $this->render('JngActivityBundle:ActivityStorage:index.html.twig', array(
             'entities' => $entities,
+            'deleteForms' => $deleteForms,
         ));
     }
     /**
@@ -44,7 +50,7 @@ class ActivityStorageController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('activitystorage_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('activitystorage', array('id' => $entity->getId())));
         }
 
         return $this->render('JngActivityBundle:ActivityStorage:new.html.twig', array(

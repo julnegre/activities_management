@@ -17,5 +17,8 @@ Jng\ActivityBundle\Entity\Task:
             targetEntity: Activity
             joinColumn:
                 name: activity_id
-                referencedColumnName: id            
+                referencedColumnName: id   
+            orderBy:
+                name: ASC                  
+            cascade: [remove]    
     lifecycleCallbacks: {  }

@@ -17,7 +17,7 @@ class TaskType extends AbstractType
         $builder
             ->add('name')
             ->add('order_nb')
-            ->add('activity')
+            ->add('activity','entity', array('class'=>'Jng\ActivityBundle\Entity\Activity', 'property'=>'name' ))
         ;
     }
     

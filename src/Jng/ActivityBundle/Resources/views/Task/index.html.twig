@@ -5,13 +5,24 @@
     <h1>Tasks</h1>
     <h2>List all tasks</h2>
 {% endblock %}  
-    
+     {% block stylesheets %}
+<link href="{{ asset('css/jquery-ui.min.css') }}" rel="stylesheet" />
+    {{ form_stylesheet(searchForm) }}
+   {% endblock %}
+
+{% block javascripts %}
+<script src="{{ asset('js/jquery-1.10.2.min.js') }}"></script>
+<script src="{{ asset('js/jquery-ui.min.js') }}"></script>
+    {{ form_javascript(searchForm) }}
+{% endblock %}    
+   
 {% block content -%}
     <table class="pure-table">
         <thead>
             <tr>
                 <th>Id</th>
                 <th>Name</th>
+                <th>Activity</th>
                 <th>Order</th>
                 <th>Actions</th>
             </tr>
@@ -21,15 +32,22 @@
             <tr>
                 <td><a href="{{ path('task_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                 <td>{{ entity.name }}</td>
+                <td>{{ entity.activity.name }}</td>
                 <td>{{ entity.ordernb }}</td>
                 <td>
                 <ul>
                     <li>
-                        <a href="{{ path('task_show', { 'id': entity.id }) }}">show</a>
+                        <a class="pure-button pure-button-secondary" href="{{ path('task_edit', { 'id': entity.id }) }}">edit</a>
                     </li>
                     <li>
-                        <a href="{{ path('task_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
+                        <form action="{{ path('task_delete', { 'id': entity.id }) }}" method="post">
+                            <input type="hidden" name="_method" value="DELETE" />
+                            {{ form_widget(deleteForms[entity.id]._token) }}
+                            <button type="submit" class="pure-button pure-button-error"  onclick="return confirm('Are you sure ?')">
+                                <i class="icon-trash"></i>delete
+                            </button>
+                        </form>
+                    </li>                      
                 </ul>
                 </td>
             </tr>
@@ -45,3 +63,9 @@
         </li>
     </ul>
     {% endblock %}
+    {% block search %}    
+    <form class="pure-form pure-g form-wrapper cf">
+          {{ form_widget(searchForm.name,{'attr': {'class': 'ui-autocomplete-input pure-input-rounded','placeholder':'Search here...'}}) }}
+        <button type="submit" class="pure-button">Search</button>
+    </form>
+      {% endblock %}  

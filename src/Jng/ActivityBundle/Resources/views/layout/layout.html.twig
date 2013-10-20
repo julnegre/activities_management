@@ -2,17 +2,18 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         {% block head %}
-            <script src="http://use.typekit.net/gis6vng.js"></script>
-            <script>
-                try { Typekit.load(); } catch (e) {}
-            </script>
-            <link rel="icon" sizes="16x16" href="{{ asset('favicon.ico') }}" />
-            <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.3.0/pure-min.css">
-            <link rel="stylesheet"  href="{{ asset('bundles/jngactivity/css/baby-blue.css') }}" />
-            <link rel="stylesheet"  href="{{ asset('bundles/jngactivity/css/activity.css') }}" />
-            <title>{% block title %}{% endblock %} - Activity Manager</title>
+        <script src="http://use.typekit.net/gis6vng.js"></script>
+        <script>try {Typekit.load();}catch(e){}</script>
+        <link rel="icon" sizes="16x16" href="{{ asset('favicon.ico') }}" />
+        <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.3.0/pure-min.css">
+        <link rel="stylesheet"  href="{{ asset('bundles/jngactivity/css/baby-blue.css') }}" />
+        <link rel="stylesheet"  href="{{ asset('bundles/jngactivity/css/activity.css') }}" />
+        <title>{% block title %}{% endblock %} - Activity Manager</title>
         {% endblock %}
+        {% block stylesheets %}{% endblock %}
+        {% block javascripts %}{% endblock %}   
     </head>
     <body>
         <div class="header">
@@ -21,35 +22,36 @@
                     <a class="pure-menu-heading" href="{{ path('activitystorage') }}">Activity manager</a>
 
                     <ul>
-                        <li class="pure-menu-selected"><a class="pure-button primary-button" href="{{ path('activitystorage') }}">GO</a></li>
+                        <li class="pure-menu-selected"><a class="pure-button pure-button-success" href="{{ path('activitystorage_new') }}">NEW</a></li>
                         <li><a href="{{ path('activity') }}">Activity</a></li>
                         <li><a href="{{ path('business') }}">Business</a></li>
                         <li><a href="{{ path('customer') }}">Customer</a></li>
                         <li><a href="{{ path('task') }}">Task</a></li>
-                        <li><form class="pure-form pure-g">
-    <input type="text" class="pure-input-rounded">
-    <button type="submit" class="pure-button">Search</button>
-</form></li>
                     </ul>
                 </div>    
             </div>
             <div class="title">    
                 {% block title_section %}{% endblock %}  
+                </div>        
             </div>        
-        </div>        
-        <div class="content">
+            <div class="content">
             {% for flashMessage in app.session.flashbag.get('notice') %}
-                <div class="flash-message">
-                    <em>Notice</em>: {{ flashMessage }}
-                </div>
+                    <div class="flash-message">
+                        <em>Notice</em>: {{ flashMessage }}
+                    </div>
             {% endfor %}
             {% block content %}{% endblock %}
-        </div>
-        <div class="footer">
+                </div>
+                <div class="footer">
             {% block footer %}
-                &copy; Copyright 2013 by <a href="http://www.julnegre.fr/">Julnegre</a>.
+                        &copy; Copyright 2013 by <a href="http://www.julnegre.fr/">Julnegre</a>.
             {% endblock %}
-        </div>
-    </body>
-</html>
+                    </div>
+
+                    <div class="search">
+                    {% block search %}{% endblock %}
+                    </div>   
+                               
+                </body>
+            </html>
 
