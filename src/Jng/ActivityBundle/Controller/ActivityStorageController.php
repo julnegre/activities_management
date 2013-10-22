@@ -240,19 +240,26 @@ class ActivityStorageController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('JngActivityBundle:ActivityStorage')->find($id);
-
+        
+        
+        $activity=$entity->getActivity();
+        $task=$entity->getTask();
+        
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find ActivityStorage entity.');
         }
 
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);
+        
         if ($editForm->isValid()) {
+            $entity->setActivity($activity);
+            $entity->setTask($task);
             $entity->setEndValue();
             $em->persist($entity);
-            
             $em->flush();
-
+            
+            
             return $this->redirect($this->generateUrl('activitystorage', array('id' => $id)));
         }
 
