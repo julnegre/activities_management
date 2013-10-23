@@ -27,7 +27,7 @@
                 <td>{{ entity.task.name }}</td>
                 <td>{% if entity.start %}{{ entity.start|date('d/m/Y H:i:s') }}{% endif %}</td>
                 <td>{% if entity.end %}{{ entity.end|date('d/m/Y H:i:s') }}{% endif %}</td>
-                <td>{{ entity.start|diffToDate(entity.end,'s') }}</td>
+                <td>{{ entity.start|diffToDate(entity.end) }}</td>
                 <td>
                 <ul>
                     <li>
