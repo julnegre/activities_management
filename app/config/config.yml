@@ -76,3 +76,9 @@ fos_user:
 genemu_form:
     date: ~ 
     autocomplete: ~
+    
+services:
+    jng.twig.jng_extension:
+        class: Jng\ActivityBundle\Twig\JngExtension
+        tags:
+            - { name: twig.extension }    
