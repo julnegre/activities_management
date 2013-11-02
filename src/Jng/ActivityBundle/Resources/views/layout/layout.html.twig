@@ -21,16 +21,15 @@
             <div class="header">
             <div class="menu">
                 <div class="pure-menu pure-menu-open pure-menu-fixed pure-menu-horizontal">
-                    <a class="pure-menu-heading" href="{{ path('activitystorage') }}">Activity manager</a>
+                    <a class="pure-menu-heading {% if get_controller_name() =="" %}pure-menu-selected{% endif %}" href="{{ path('activitystorage') }}">Activity manager</a>
                     <ul>
-                        <li class="pure-menu-selected"><a class="pure-button pure-button-success" href="{{ path('activitystorage_new') }}">NEW</a></li>
-                        <li><a href="{{ path('activity') }}">Activity</a></li>
-                        <li><a href="{{ path('business') }}">Business</a></li>
-                        <li><a href="{{ path('customer') }}">Customer</a></li>
-                        <li><a href="{{ path('task') }}">Task</a></li>
+                        <li class="{% if get_controller_name() =="activity" %}pure-button pure-button-success pure-menu-selected{% endif %}"><a href="{{ path('activity') }}">Activity</a></li>
+                        <li class="{% if get_controller_name() =="business" %}pure-button pure-button-success pure-menu-selected{% endif %}"><a href="{{ path('business') }}">Business</a></li>
+                        <li class="{% if get_controller_name() =="customer" %}pure-button pure-button-success pure-menu-selected{% endif %}"><a href="{{ path('customer') }}">Customer</a></li>
+                        <li class="{% if get_controller_name() =="task" %}pure-button pure-button-success pure-menu-selected{% endif %}"><a href="{{ path('task') }}">Task</a></li>
                         
                         {# L'utilisateur est connecté ! #}
-                        <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
+                        <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion (<i>{{ app.security.getToken().getUser().getUsername() }}</i>)</a></li>
 
                         {# L'utilisateur est-il admin ? #}
                         {% if is_granted('ROLE_ADMIN') %}

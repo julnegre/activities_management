@@ -22,8 +22,9 @@ class CustomerController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
-        $entities = $em->getRepository('JngActivityBundle:Customer')->findAll();
+        
+        $user = $this->get('security.context')->getToken()->getUser();
+        $entities = $em->getRepository('JngActivityBundle:Customer')->findBy(array("user"=>$user));
         
         $deleteForms = array();
         foreach ($entities as $entity) {
@@ -72,7 +73,10 @@ class CustomerController extends Controller
     */
     private function createCreateForm(Customer $entity)
     {
-        $form = $this->createForm(new CustomerType(), $entity, array(
+        
+        $entity->setUser($this->getUser());
+        
+        $form = $this->createForm(new CustomerType($this->getUser()), $entity, array(
             'action' => $this->generateUrl('customer_create'),
             'method' => 'POST',
         ));
@@ -151,7 +155,7 @@ class CustomerController extends Controller
     */
     private function createEditForm(Customer $entity)
     {
-        $form = $this->createForm(new CustomerType(), $entity, array(
+        $form = $this->createForm(new CustomerType($this->getUser()), $entity, array(
             'action' => $this->generateUrl('customer_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));

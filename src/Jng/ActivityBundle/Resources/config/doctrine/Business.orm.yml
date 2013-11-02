@@ -1,6 +1,7 @@
 Jng\ActivityBundle\Entity\Business:
     type: entity
     table: business
+    repositoryClass: Jng\ActivityBundle\Entity\Repository\BusinessRepository
     fields:
         id:
             type: integer
@@ -9,4 +10,13 @@ Jng\ActivityBundle\Entity\Business:
         name:
             type: string
             length: '255'
+    manyToOne:
+        user:
+            targetEntity: Jng\UserBundle\Entity\User
+            joinColumn:
+                name: user_id
+                referencedColumnName: id  
+            orderBy:
+                name: ASC 
+            cascade: ["persist"]                   
     lifecycleCallbacks: {  }

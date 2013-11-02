@@ -1,6 +1,7 @@
 Jng\ActivityBundle\Entity\Customer:
     type: entity
     table: customer
+    repositoryClass: Jng\ActivityBundle\Entity\Repository\CustomerRepository
     fields:
         id:
             type: integer
@@ -17,5 +18,13 @@ Jng\ActivityBundle\Entity\Customer:
                 referencedColumnName: id  
             orderBy:
                 name: ASC   
-            cascade: ["persist"]    
+            cascade: ["persist"]   
+        user:
+            targetEntity: Jng\UserBundle\Entity\User
+            joinColumn:
+                name: user_id
+                referencedColumnName: id  
+            orderBy:
+                name: ASC 
+            cascade: ["persist"]              
     lifecycleCallbacks: {  }

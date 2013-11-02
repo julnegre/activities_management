@@ -24,7 +24,8 @@ class TaskController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('JngActivityBundle:Task')->findAll();
+        $user = $this->get('security.context')->getToken()->getUser();
+        $entities = $em->getRepository('JngActivityBundle:Task')->findBy(array("user"=>$user));
         
         $deleteForms = array();
         foreach ($entities as $entity) {
@@ -74,7 +75,10 @@ class TaskController extends Controller
     */
     private function createCreateForm(Task $entity)
     {
-        $form = $this->createForm(new TaskType(), $entity, array(
+        
+        $entity->setUser($this->getUser());
+        
+        $form = $this->createForm(new TaskType($this->getUser()), $entity, array(
             'action' => $this->generateUrl('task_create'),
             'method' => 'POST',
         ));
@@ -153,7 +157,7 @@ class TaskController extends Controller
     */
     private function createEditForm(Task $entity)
     {
-        $form = $this->createForm(new TaskType(), $entity, array(
+        $form = $this->createForm(new TaskType($this->getUser()), $entity, array(
             'action' => $this->generateUrl('task_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));

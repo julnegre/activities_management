@@ -78,7 +78,10 @@ genemu_form:
     autocomplete: ~
     
 services:
+    request:
+        class:        Symfony\Component\HttpFoundation\Request
     jng.twig.jng_extension:
         class: Jng\ActivityBundle\Twig\JngExtension
+        arguments:  [@request]
         tags:
             - { name: twig.extension }    

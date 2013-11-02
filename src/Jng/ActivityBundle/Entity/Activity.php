@@ -6,6 +6,8 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Activity
+* @ORM\Table(name="activity")
+* @ORM\Entity(repositoryClass="Jng\ActivityBundle\Entity\Repository\ActivityRepository") 
  */
 class Activity
 {
@@ -150,5 +152,33 @@ class Activity
     public function setUpdatedAtValue()
     {
         $this->updated_at = new \DateTime();
+    }
+    /**
+     * @var \Jng\UserBundle\Entity\User
+     */
+    private $user;
+
+
+    /**
+     * Set user
+     *
+     * @param \Jng\UserBundle\Entity\User $user
+     * @return Activity
+     */
+    public function setUser(\Jng\UserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+    
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Jng\UserBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

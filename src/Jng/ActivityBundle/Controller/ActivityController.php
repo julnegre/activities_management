@@ -23,7 +23,8 @@ class ActivityController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('JngActivityBundle:Activity')->findAll();
+        $user = $this->get('security.context')->getToken()->getUser();
+        $entities = $em->getRepository('JngActivityBundle:Activity')->findBy(array("user"=>$user));
 
         // delete Forms
         $deleteForms = array();
@@ -74,7 +75,9 @@ class ActivityController extends Controller
     */
     private function createCreateForm(Activity $entity)
     {
-        $form = $this->createForm(new ActivityType(), $entity, array(
+        $entity->setUser($this->getUser());
+        
+        $form = $this->createForm(new ActivityType($this->getUser()), $entity, array(
             'action' => $this->generateUrl('activity_create'),
             'method' => 'POST',
         ));
@@ -153,7 +156,7 @@ class ActivityController extends Controller
     */
     private function createEditForm(Activity $entity)
     {
-        $form = $this->createForm(new ActivityType(), $entity, array(
+        $form = $this->createForm(new ActivityType($this->getUser()), $entity, array(
             'action' => $this->generateUrl('activity_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));

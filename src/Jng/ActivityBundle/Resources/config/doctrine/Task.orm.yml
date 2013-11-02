@@ -1,6 +1,7 @@
 Jng\ActivityBundle\Entity\Task:
     type: entity
     table: task
+    repositoryClass: Jng\ActivityBundle\Entity\Repository\TaskRepository
     fields:
         id:
             type: integer
@@ -21,4 +22,12 @@ Jng\ActivityBundle\Entity\Task:
             orderBy:
                 name: ASC                  
             cascade: [remove]    
+        user:
+            targetEntity: Jng\UserBundle\Entity\User
+            joinColumn:
+                name: user_id
+                referencedColumnName: id  
+            orderBy:
+                name: ASC 
+            cascade: ["persist"]              
     lifecycleCallbacks: {  }

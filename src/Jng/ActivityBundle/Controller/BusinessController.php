@@ -23,14 +23,17 @@ class BusinessController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
-        $entities = $em->getRepository('JngActivityBundle:Business')->findAll();
+        
+        $user = $this->get('security.context')->getToken()->getUser();
+        
+        $entities = $em->getRepository('JngActivityBundle:Business')->findBy(array("user"=>$user));
         
         $deleteForms = array();
         foreach ($entities as $entity) {
             $deleteForms[$entity->getId()] = $this->createDeleteForm($entity->getId())->createView();
         }
-              // search Form
+        
+        // search Form
         $searchForm = $this->createForm(new SearchType('Jng\ActivityBundle\Entity\Business'), null);
 
         
@@ -73,11 +76,12 @@ class BusinessController extends Controller
     */
     private function createCreateForm(Business $entity)
     {
+        $entity->setUser($this->getUser());
+        
         $form = $this->createForm(new BusinessType(), $entity, array(
             'action' => $this->generateUrl('business_create'),
             'method' => 'POST',
         ));
-
         $form->add('submit', 'submit', array('label' => 'Create'));
 
         return $form;

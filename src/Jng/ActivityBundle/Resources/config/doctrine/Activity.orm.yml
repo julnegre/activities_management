@@ -1,6 +1,7 @@
 Jng\ActivityBundle\Entity\Activity:
     type: entity
     table: activity
+    repositoryClass: Jng\ActivityBundle\Entity\Repository\ActivityRepository
     fields:
         id:
             type: integer
@@ -8,7 +9,7 @@ Jng\ActivityBundle\Entity\Activity:
             generator: { strategy: AUTO }
         name:
             type: string
-            length: '255'
+            length: '255'   
         created_at:
             type: datetime
         updated_at:
@@ -23,6 +24,14 @@ Jng\ActivityBundle\Entity\Activity:
             orderBy:
                 name: ASC 
             cascade: ["persist"]    
+        user:
+            targetEntity: Jng\UserBundle\Entity\User
+            joinColumn:
+                name: user_id
+                referencedColumnName: id  
+            orderBy:
+                name: ASC 
+            cascade: ["persist"]              
     lifecycleCallbacks:
         prePersist: [ setCreatedAtValue ]
         preUpdate: [ setUpdatedAtValue ]

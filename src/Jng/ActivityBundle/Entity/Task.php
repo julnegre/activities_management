@@ -108,4 +108,32 @@ class Task
     {
         return $this->activity;
     }
+    /**
+     * @var \Jng\UserBundle\Entity\User
+     */
+    private $user;
+
+
+    /**
+     * Set user
+     *
+     * @param \Jng\UserBundle\Entity\User $user
+     * @return Task
+     */
+    public function setUser(\Jng\UserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+    
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Jng\UserBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
 }

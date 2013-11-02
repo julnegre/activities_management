@@ -25,7 +25,7 @@ class ActivityStorageController extends Controller
         
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('JngActivityBundle:ActivityStorage')->findAll();
+        $entities = $em->getRepository('JngActivityBundle:ActivityStorage')->findBy(array("user"=>$user));
         
         $deleteForms = array();
         foreach ($entities as $entity) {
@@ -50,6 +50,7 @@ class ActivityStorageController extends Controller
      */
     public function createAction(Request $request)
     {
+
         $entity = new ActivityStorage();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
@@ -77,7 +78,9 @@ class ActivityStorageController extends Controller
     */
     private function createCreateForm(ActivityStorage $entity)
     {
-        $form = $this->createForm(new ActivityStorageType(), $entity, array(
+        $entity->setUser($this->getUser());
+        
+        $form = $this->createForm(new ActivityStorageType($this->getUser()), $entity, array(
             'action' => $this->generateUrl('activitystorage_create'),
             'method' => 'POST',
         ));
@@ -156,7 +159,7 @@ class ActivityStorageController extends Controller
     */
     private function createEditForm(ActivityStorage $entity)
     {
-        $form = $this->createForm(new ActivityStorageType(), $entity, array(
+        $form = $this->createForm(new ActivityStorageType($this->getUser()), $entity, array(
             'action' => $this->generateUrl('activitystorage_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));

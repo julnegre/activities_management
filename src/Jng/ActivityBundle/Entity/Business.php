@@ -19,6 +19,11 @@ class Business
      */
     private $name;
 
+    /**
+     * @var \Jng\UserBundle\Entity\User
+     */
+    private $user;
+
 
     /**
      * Get id
@@ -51,5 +56,28 @@ class Business
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \Jng\UserBundle\Entity\User $user
+     * @return Business
+     */
+    public function setUser(\Jng\UserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+    
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Jng\UserBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

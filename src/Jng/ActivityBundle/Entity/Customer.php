@@ -80,4 +80,32 @@ class Customer
     {
         return $this->business;
     }
+    /**
+     * @var \Jng\UserBundle\Entity\User
+     */
+    private $user;
+
+
+    /**
+     * Set user
+     *
+     * @param \Jng\UserBundle\Entity\User $user
+     * @return Customer
+     */
+    public function setUser(\Jng\UserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+    
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Jng\UserBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
 }

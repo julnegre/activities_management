@@ -30,5 +30,13 @@ Jng\ActivityBundle\Entity\ActivityStorage:
             orderBy:
                 name: ASC  
             cascade: ["persist"]    
+        user:
+            targetEntity: Jng\UserBundle\Entity\User
+            joinColumn:
+                name: user_id
+                referencedColumnName: id  
+            orderBy:
+                name: ASC 
+            cascade: ["persist"]              
     lifecycleCallbacks: 
       prePersist: [ setStartValue ]
