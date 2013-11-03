@@ -25,7 +25,8 @@ class ActivityStorageController extends Controller
         
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('JngActivityBundle:ActivityStorage')->findBy(array("user"=>$user));
+        $entities = $em->getRepository('JngActivityBundle:ActivityStorage')
+                ->findBy(array("user"=>$user), array("start"=>"DESC"));
         
         $deleteForms = array();
         foreach ($entities as $entity) {

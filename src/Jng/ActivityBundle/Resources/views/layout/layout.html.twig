@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0" name="viewport">
         {% block head %}
         <script src="http://use.typekit.net/gis6vng.js"></script>
         <script>try {Typekit.load();}catch(e){}</script>
@@ -9,15 +9,26 @@
         <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.3.0/pure-min.css">
         <link rel="stylesheet"  href="{{ asset('bundles/jngactivity/css/baby-blue.css') }}" />
         <link rel="stylesheet"  href="{{ asset('bundles/jngactivity/css/activity.css') }}" />
+        <script type="text/javascript" src="{{ asset('js/jquery-1.10.2.min.js') }}"></script>
         <title>{% block title %}{% endblock %} - Activity Manager</title>
         {% endblock %}
         {% block stylesheets %}{% endblock %}
-        {% block javascripts %}{% endblock %}   
+        {% block javascripts %}{% endblock %}           
+        <script type="text/javascript">
+         /* <![CDATA[ */
+        $(document).ready(function() {
+        $("form").submit(function(){
+            $("#loading-full,.loading-ball").fadeIn();
+        });
+            });
+        /* ]]> */
+        </script>
     </head>
     <body>
+         <div id="loading-full"></div><div class="loading-ball"></div>
 {# L'utilisateur est-il connecté ? #}
 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-
+        
             <div class="header">
             <div class="menu">
                 <div class="pure-menu pure-menu-open pure-menu-fixed pure-menu-horizontal">
