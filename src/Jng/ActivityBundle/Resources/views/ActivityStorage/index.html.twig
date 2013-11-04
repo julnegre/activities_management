@@ -7,6 +7,13 @@
 {% endblock %}   
 
 {% block content -%}
+    <ul>
+        <li>
+            <a class="pure-button pure-button-primary" href="{{ path('activitystorage_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
     <table class="pure-table">
         <thead>
             <tr>
@@ -62,11 +69,4 @@
         </tbody>
     </table>
 
-        <ul>
-        <li>
-            <a class="pure-button pure-button-primary" href="{{ path('activitystorage_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
     {% endblock %}
