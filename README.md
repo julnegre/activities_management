@@ -1,5 +1,6 @@
 Manage your business activities
 - html5, responsive, multi-user support
+- based on symfony 2.3 with FOSUser Bundle
 - CRUD  activities, tasks, customers, business and activity storage
 
 
