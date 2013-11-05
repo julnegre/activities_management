@@ -13,11 +13,16 @@
                 Create a new entry
             </a>
         </li>
+        <li>
+            <a class="pure-button pure-button-secondary" href="{{ path('activitystorage_newmanually') }}">
+                Create a new entry manually
+            </a>
+        </li>
     </ul>
     <table class="pure-table">
         <thead>
             <tr>
-                <th>Id</th>
+                <th>Customer</th>
                 <th>Activity</th>
                 <th>Task</th>
                 <th>Start</th>
@@ -29,11 +34,11 @@
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('activitystorage_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.activity.customer.name }}</td>
                 <td>{{ entity.activity.name }}</td>
                 <td>{% if entity.task is not null %}{{ entity.task.name }}{% endif %}</td>
-                <td>{% if entity.start %}{{ entity.start|date('d/m/Y H:i:s') }}{% endif %}</td>
-                <td>{% if entity.end %}{{ entity.end|date('d/m/Y H:i:s') }}{% endif %}</td>
+                <td>{% if entity.start %}{{ entity.start|date('d/m/Y H:i') }}{% endif %}</td>
+                <td>{% if entity.end %}{{ entity.end|date('d/m/Y H:i') }}{% endif %}</td>
                 <td>{{ entity.start|diffToDate(entity.end) }}</td>
                 <td>
                 <ul>

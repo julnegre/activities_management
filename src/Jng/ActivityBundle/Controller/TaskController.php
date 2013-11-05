@@ -187,7 +187,7 @@ class TaskController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('task_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('task', array('id' => $id)));
         }
 
         return $this->render('JngActivityBundle:Task:edit.html.twig', array(

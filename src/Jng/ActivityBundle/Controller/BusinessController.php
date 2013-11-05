@@ -186,7 +186,7 @@ class BusinessController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('business_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('business', array('id' => $id)));
         }
 
         return $this->render('JngActivityBundle:Business:edit.html.twig', array(

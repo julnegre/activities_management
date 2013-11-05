@@ -19,3 +19,17 @@
     </li>
 </ul>
 {% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet"  href="{{ asset('bundles/jngactivity/css/jquery.simple-dtpicker.css') }}" />
+{% endblock %}
+{% block javascripts %}
+<script type="text/javascript" src="{{ asset('bundles/jngactivity/js/jquery.simple-dtpicker.js') }}"></script>
+<script type="text/javascript" >
+    $(function() {
+        $('#jng_activitybundle_activitystorage_start').appendDtpicker({"locale": "fr",'dateFormat' : "DD/MM/YYYY hh:mm","minuteInterval": 15,"firstDayOfWeek": 1,"closeOnSelected": true});
+        $('#jng_activitybundle_activitystorage_end').appendDtpicker({"locale": "fr",'dateFormat' : "DD/MM/YYYY hh:mm","minuteInterval": 15,"firstDayOfWeek": 1,"closeOnSelected": true});
+    });
+</script>    
+{% endblock %} 
+    

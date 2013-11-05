@@ -10,6 +10,10 @@ activitystorage_new:
     pattern:  /new
     defaults: { _controller: "JngActivityBundle:ActivityStorage:new" }
 
+activitystorage_newmanually:
+    pattern:  /newmanually
+    defaults: { _controller: "JngActivityBundle:ActivityStorage:newmanually" }
+
 activitystorage_create:
     pattern:  /create
     defaults: { _controller: "JngActivityBundle:ActivityStorage:create" }

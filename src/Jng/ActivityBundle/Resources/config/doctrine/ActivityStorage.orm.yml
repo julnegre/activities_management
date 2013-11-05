@@ -38,5 +38,3 @@ Jng\ActivityBundle\Entity\ActivityStorage:
             orderBy:
                 name: ASC 
             cascade: ["persist"]              
-    lifecycleCallbacks: 
-      prePersist: [ setStartValue ]

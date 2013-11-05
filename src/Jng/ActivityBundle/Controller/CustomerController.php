@@ -185,7 +185,7 @@ class CustomerController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('customer_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('customer', array('id' => $id)));
         }
 
         return $this->render('JngActivityBundle:Customer:edit.html.twig', array(

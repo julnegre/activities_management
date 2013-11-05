@@ -55,9 +55,14 @@ class ActivityStorageController extends Controller
         $entity = new ActivityStorage();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
-
+        //$request->request->get('jng_activitybundle_activitystorage');
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            if( $form->get('start')->isEmpty()  ){
+                //$entity->setStartValue();
+                $entity->setStart(new \DateTime());
+            }
+
             $em->persist($entity);
             $em->flush();
 
@@ -99,13 +104,28 @@ class ActivityStorageController extends Controller
     {
         $entity = new ActivityStorage();
         $form   = $this->createCreateForm($entity);
+        $form->remove("start");
+        $form->remove("end");
+        return $this->render('JngActivityBundle:ActivityStorage:new.html.twig', array(
+            'entity' => $entity,
+            'form'   => $form->createView(),
+        ));
+    }
+    
+    /**
+     * Displays a form to create a new ActivityStorage entity.
+     *
+     */
+    public function newmanuallyAction()
+    {
+        $entity = new ActivityStorage();
+        $form   = $this->createCreateForm($entity);
 
         return $this->render('JngActivityBundle:ActivityStorage:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
     }
-
     /**
      * Finds and displays a ActivityStorage entity.
      *
@@ -190,7 +210,7 @@ class ActivityStorageController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('activitystorage_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('activitystorage', array('id' => $id)));
         }
 
         return $this->render('JngActivityBundle:ActivityStorage:edit.html.twig', array(
@@ -245,9 +265,9 @@ class ActivityStorageController extends Controller
 
         $entity = $em->getRepository('JngActivityBundle:ActivityStorage')->find($id);
         
-        
         $activity=$entity->getActivity();
         $task=$entity->getTask();
+        $start=$entity->getStart();
         
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find ActivityStorage entity.');
@@ -259,6 +279,7 @@ class ActivityStorageController extends Controller
         if ($editForm->isValid()) {
             $entity->setActivity($activity);
             $entity->setTask($task);
+            $entity->setStart($start);
             $entity->setEndValue();
             $em->persist($entity);
             $em->flush();

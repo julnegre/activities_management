@@ -38,7 +38,9 @@ class ActivityStorageType extends AbstractType
                     'query_builder' => function(TaskRepository $er) use ($user) 
 			{
 				return $er->getTasksForUser($user);
-                        }));
+                        }))
+            ->add('start','datetime',array('widget' => 'single_text','attr' => array('class'=>'hasDatepicker'),'format' => 'dd/MM/yyyy HH:mm'))
+            ->add('end','datetime',array('widget' => 'single_text','attr' => array('class'=>'hasDatepicker'),'format' => 'dd/MM/yyyy HH:mm'));
     }
     
     /**
