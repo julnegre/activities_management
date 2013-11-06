@@ -17,3 +17,8 @@ JngActivityBundle_customer:
 JngActivityBundle_task:
         resource: "@JngActivityBundle/Resources/config/routing/task.yml"
         prefix:   /task
+
+JngActivityBundle_webcal:
+        resource: "@JngActivityBundle/Resources/config/routing/webcal.yml"
+        prefix:   /webcal
+   

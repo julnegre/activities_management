@@ -58,7 +58,14 @@ doctrine:
     #    charset: UTF8
     orm:
         auto_generate_proxy_classes: %kernel.debug%
-        auto_mapping: true
+        entity_managers:
+          default:
+            auto_mapping: true
+            dql:
+              datetime_functions:
+                MD5: DoctrineExtensions\Query\Mysql\Md5
+                YEAR: DoctrineExtensions\Query\Mysql\Year
+        
 
 # Swiftmailer Configuration
 swiftmailer:

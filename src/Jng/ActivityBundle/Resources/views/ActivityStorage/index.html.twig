@@ -7,9 +7,10 @@
 {% endblock %}   
 
 {% block content -%}
+    <div><a href="{{ path('webcal',{'id':ical}) }}" ><img src="{{ asset('bundles/jngactivity/images/ical.gif') }}" /></a></div>
     <ul>
         <li>
-            <a class="pure-button pure-button-primary" href="{{ path('activitystorage_new') }}">
+            <a class="pure-button pure-button-primary" href="{{ path('activitystorage_new') }}" rel="facebox">
                 Create a new entry
             </a>
         </li>
@@ -75,3 +76,39 @@
     </table>
 
     {% endblock %}
+ {% block stylesheets %}
+    <link rel="stylesheet"  href="{{ asset('bundles/jngactivity/css/box.css') }}" />
+{% endblock %}   
+    
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('bundles/jngactivity/js/jquery.box.js') }}"></script>
+    <script type="text/javascript">
+/* <![CDATA[ */
+
+ jQuery(document).ready(function() {
+     
+     if(jQuery('a[rel*=facebox]').length>0)jQuery('a[rel*=facebox]').facebox();
+        // notification
+        var notifClass = 'humane-jackedup-error';
+        if( jQuery(".notice[rel!='no']").length>0 )
+                notifClass = 'humane-jackedup-success';
+        var jacked = humane.create({baseCls: 'humane-jackedup', addnCls: notifClass});
+        //jacked.waitForMove = true;
+        jacked.timeout = 5000;
+        if( jQuery(".notice[rel!='no'],.error[rel!='no']").length > 0 ){
+            jQuery(".notice[rel!='no'],.error[rel!='no']").hide();
+            jacked.log(jQuery(".notice[rel!='no'],.error[rel!='no']").html());  
+        }
+        
+        //jQuery(".notice[rel!='no'],.error[rel!='no']").fadeOut(5000);
+        if(jQuery('.tip').length>0)jQuery('.tip').tipsy({gravity: 'sw'})
+        jQuery("#loading-ajax").ajaxStart(function(){
+            //jQuery(this).show()
+            jacked = humane.create({baseCls: 'humane-jackedup', addnCls: ".loading-ball"})
+            jacked.log("Patientez svp...");
+        });
+
+    });   
+        /* ]]> */
+    </script> 
+{% endblock %} 

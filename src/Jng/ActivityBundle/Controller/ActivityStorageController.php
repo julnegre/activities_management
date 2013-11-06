@@ -38,11 +38,16 @@ class ActivityStorageController extends Controller
             $editForms[$entity->getId()] = $this->createEditForm($entity)->createView();
         }
         
+        $ical="";
+        if( $user != "anon." )
+        // ical token
+            $ical = md5($user->getEmailCanonical());
+        
         return $this->render('JngActivityBundle:ActivityStorage:index.html.twig', array(
             'entities' => $entities,
             'deleteForms' => $deleteForms,
             'stopForms' => $editForms,
-            'user'
+            'ical' => $ical
         ));
     }
     /**

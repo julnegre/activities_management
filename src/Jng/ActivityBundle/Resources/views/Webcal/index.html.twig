@@ -1,0 +1,15 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Jng//activitystorage.Calendar.Export 1.0//EN
+{% for entity in entities %}
+BEGIN:VEVENT
+UID:{{ entity.id }}
+DTSTAMP:{{ "now"|date('Ymd') }}T{{ "now"|date('His') }}Z
+DTSTART:{% if entity.start %}{{ entity.start|date('Ymd') }}T{{ entity.start|date('His') }}Z{% endif %}
+
+DTEND:{% if entity.end %}{{ entity.end|date('Ymd') }}T{{ entity.end|date('His') }}Z{% endif %}
+
+SUMMARY:{{ entity.activity.customer.name }} - {{ entity.activity.name }} - {% if entity.task is not null %}{{ entity.task.name }}{% endif %} - {{ entity.start|diffToDate(entity.end) }}
+END:VEVENT
+{% endfor %}
+END:VCALENDAR

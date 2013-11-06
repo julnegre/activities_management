@@ -30,6 +30,14 @@
     $(function() {
         $('#jng_activitybundle_activitystorage_start').appendDtpicker({"locale": "fr",'dateFormat' : "DD/MM/YYYY hh:mm","minuteInterval": 15,"firstDayOfWeek": 1,"closeOnSelected": true});
         $('#jng_activitybundle_activitystorage_end').appendDtpicker({"locale": "fr",'dateFormat' : "DD/MM/YYYY hh:mm","minuteInterval": 15,"firstDayOfWeek": 1,"closeOnSelected": true});
+        $("#facebox .content").css("width",($(window).width()-50)+"px")
+            .css("height",($(window).height()-100)+"px").css("overflow","auto");
+        $("#facebox").css("top","10px").css("left","10px");    
+        $(window).resize(function() {
+          $("#facebox .content").css("width",($(window).width()-50)+"px")
+            .css("height",($(window).height()-100)+"px");
+          $("#facebox").css("top","10px").css("left","10px");   
+        }); 
     });
 </script>    
 {% endblock %} 

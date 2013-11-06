@@ -1,0 +1,3 @@
+webcal:
+    pattern:  /{id}
+    defaults: { _controller: "JngActivityBundle:Webcal:index" }

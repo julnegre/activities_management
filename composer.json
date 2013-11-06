@@ -20,7 +20,9 @@
         "sensio/generator-bundle": "2.3.*",
         "incenteev/composer-parameter-handler": "~2.0",
         "friendsofsymfony/user-bundle": "dev-master",
-        "genemu/form-bundle": "2.2.*"
+        "genemu/form-bundle": "2.2.*",
+        "beberlei/DoctrineExtensions": "dev-master",
+        "stof/doctrine-extensions-bundle": "~1.1@dev"
     },
     "require-dev": {
         "elao/web-profiler-extra-bundle" : "dev-master"
