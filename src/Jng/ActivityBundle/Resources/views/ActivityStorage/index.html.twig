@@ -7,7 +7,7 @@
 {% endblock %}   
 
 {% block content -%}
-    <div><a href="{{ path('webcal',{'id':ical}) }}" ><img src="{{ asset('bundles/jngactivity/images/ical.gif') }}" /></a></div>
+    <div><a href="{{ path('webcal',{'id':ical}) }}?noCache" ><img src="{{ asset('bundles/jngactivity/images/ical.gif') }}" /></a></div>
     <ul>
         <li>
             <a class="pure-button pure-button-primary" href="{{ path('activitystorage_new') }}" rel="facebox">

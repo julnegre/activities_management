@@ -103,7 +103,7 @@ class JngExtension extends \Twig_Extension {
         else if ($unit == "min")
             return round($t / 60) . " min";
         else if ($unit == "h")
-            return round($t / 3600) . " h";
+            return round($t / 3600, 1) . " h";
     }
 
     /**
