@@ -6,7 +6,7 @@
 {% if error %}
     <div>{{ error|trans }}</div>
 {% endif %}
-
+    <div class="container">
 <form action="{{ path("fos_user_security_check") }}" method="post" class="pure-form pure-form-aligned">
     <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 <fieldset>
@@ -26,5 +26,7 @@
 <input type="checkbox" id="remember_me" name="_remember_me" value="on" />{{ 'security.login.remember_me'|trans }}</label>
 
     <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}"  class="pure-button pure-button-primary"/>
+</div>
 </form>
+</div>
 {% endblock content %}

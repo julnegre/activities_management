@@ -4,7 +4,6 @@ namespace Jng\ActivityBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 use Jng\ActivityBundle\Entity\ActivityStorage;
 use Jng\ActivityBundle\Form\ActivityStorageType;
 
@@ -12,22 +11,20 @@ use Jng\ActivityBundle\Form\ActivityStorageType;
  * ActivityStorage controller.
  *
  */
-class ActivityStorageController extends Controller
-{
+class ActivityStorageController extends Controller {
 
     /**
      * Lists all ActivityStorage entities.
      *
      */
-    public function indexAction()
-    {
+    public function indexAction() {
         $user = $this->container->get('security.context')->getToken()->getUser();
-        
+
         $em = $this->getDoctrine()->getManager();
 
         $entities = $em->getRepository('JngActivityBundle:ActivityStorage')
-                ->findBy(array("user"=>$user), array("start"=>"DESC"));
-        
+                ->findBy(array("user" => $user), array("start" => "DESC"));
+
         $deleteForms = array();
         foreach ($entities as $entity) {
             $deleteForms[$entity->getId()] = $this->createDeleteForm($entity->getId())->createView();
@@ -37,25 +34,60 @@ class ActivityStorageController extends Controller
         foreach ($entities as $entity) {
             $editForms[$entity->getId()] = $this->createEditForm($entity)->createView();
         }
+
         
-        $ical="";
-        if( $user != "anon." )
+
+
+        
+        $ical = "";
+        if ($user != "anon.")
         // ical token
-            $ical = md5($user->getEmailCanonical());
-        
+            $ical = md5($user->getSalt() . $user->getEmailCanonical());
+
         return $this->render('JngActivityBundle:ActivityStorage:index.html.twig', array(
-            'entities' => $entities,
-            'deleteForms' => $deleteForms,
-            'stopForms' => $editForms,
-            'ical' => $ical
+                    'entities' => $entities,
+                    'deleteForms' => $deleteForms,
+                    'stopForms' => $editForms,
+                    'ical' => $ical
         ));
     }
+
+    /**
+     * 
+     */
+    public function updatechartAction(Request $request) {
+
+        $user = $this->container->get('security.context')->getToken()->getUser();
+
+        if( $request->request->get("type") == "m" )
+            $subquery = "(a.start between DATE_FORMAT(NOW() ,'%Y-%m-01') AND NOW())";
+        else if( $request->request->get("type") == "y" )
+            $subquery = "(a.start between DATE_FORMAT(NOW() ,'%Y-01-01') AND NOW())";
+        else if( $request->request->get("type") == "d" )
+            $subquery = "(a.start between DATE_FORMAT(NOW() ,'%Y-%m-%d 00:00:00') AND NOW())";
+                
+        
+        $em = $this->getDoctrine()->getManager();
+        $query = $em->createQuery(
+        'SELECT SUM(TIMESTAMPDIFF(SECOND,a.\'start\',a.\'end\')) as diff, a '
+                . 'FROM JngActivityBundle:ActivityStorage a '
+                . 'JOIN a.activity ac '
+                . 'JOIN ac.customer c '
+        . 'WHERE a.user = :user and '.$subquery.' group by c.id'
+                )->setParameter('user', $user);
+        $ee = $query->getResult();
+        
+        return $this->render('JngActivityBundle:ActivityStorage:chart.html.twig', array(
+                    'ee' => $ee
+        ));
+        
+    }
+
     /**
      * Creates a new ActivityStorage entity.
      *
      */
-    public function createAction(Request $request)
-    {
+    public function createAction(Request $request) {
 
         $entity = new ActivityStorage();
         $form = $this->createCreateForm($entity);
@@ -63,7 +95,7 @@ class ActivityStorageController extends Controller
         //$request->request->get('jng_activitybundle_activitystorage');
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            if( $form->get('start')->isEmpty()  ){
+            if ($form->get('start')->isEmpty()) {
                 //$entity->setStartValue();
                 $entity->setStart(new \DateTime());
             }
@@ -75,22 +107,21 @@ class ActivityStorageController extends Controller
         }
 
         return $this->render('JngActivityBundle:ActivityStorage:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
+                    'entity' => $entity,
+                    'form' => $form->createView(),
         ));
     }
 
     /**
-    * Creates a form to create a ActivityStorage entity.
-    *
-    * @param ActivityStorage $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
-    private function createCreateForm(ActivityStorage $entity)
-    {
+     * Creates a form to create a ActivityStorage entity.
+     *
+     * @param ActivityStorage $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createCreateForm(ActivityStorage $entity) {
         $entity->setUser($this->getUser());
-        
+
         $form = $this->createForm(new ActivityStorageType($this->getUser()), $entity, array(
             'action' => $this->generateUrl('activitystorage_create'),
             'method' => 'POST',
@@ -105,38 +136,36 @@ class ActivityStorageController extends Controller
      * Displays a form to create a new ActivityStorage entity.
      *
      */
-    public function newAction()
-    {
+    public function newAction() {
         $entity = new ActivityStorage();
-        $form   = $this->createCreateForm($entity);
+        $form = $this->createCreateForm($entity);
         $form->remove("start");
         $form->remove("end");
         return $this->render('JngActivityBundle:ActivityStorage:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
+                    'entity' => $entity,
+                    'form' => $form->createView(),
         ));
     }
-    
+
     /**
      * Displays a form to create a new ActivityStorage entity.
      *
      */
-    public function newmanuallyAction()
-    {
+    public function newmanuallyAction() {
         $entity = new ActivityStorage();
-        $form   = $this->createCreateForm($entity);
+        $form = $this->createCreateForm($entity);
 
         return $this->render('JngActivityBundle:ActivityStorage:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
+                    'entity' => $entity,
+                    'form' => $form->createView(),
         ));
     }
+
     /**
      * Finds and displays a ActivityStorage entity.
      *
      */
-    public function showAction($id)
-    {
+    public function showAction($id) {
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('JngActivityBundle:ActivityStorage')->find($id);
@@ -148,16 +177,15 @@ class ActivityStorageController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('JngActivityBundle:ActivityStorage:show.html.twig', array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),        ));
+                    'entity' => $entity,
+                    'delete_form' => $deleteForm->createView(),));
     }
 
     /**
      * Displays a form to edit an existing ActivityStorage entity.
      *
      */
-    public function editAction($id)
-    {
+    public function editAction($id) {
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('JngActivityBundle:ActivityStorage')->find($id);
@@ -170,21 +198,20 @@ class ActivityStorageController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('JngActivityBundle:ActivityStorage:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+                    'entity' => $entity,
+                    'edit_form' => $editForm->createView(),
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
     /**
-    * Creates a form to edit a ActivityStorage entity.
-    *
-    * @param ActivityStorage $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
-    private function createEditForm(ActivityStorage $entity)
-    {
+     * Creates a form to edit a ActivityStorage entity.
+     *
+     * @param ActivityStorage $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createEditForm(ActivityStorage $entity) {
         $form = $this->createForm(new ActivityStorageType($this->getUser()), $entity, array(
             'action' => $this->generateUrl('activitystorage_update', array('id' => $entity->getId())),
             'method' => 'PUT',
@@ -194,12 +221,12 @@ class ActivityStorageController extends Controller
 
         return $form;
     }
+
     /**
      * Edits an existing ActivityStorage entity.
      *
      */
-    public function updateAction(Request $request, $id)
-    {
+    public function updateAction(Request $request, $id) {
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('JngActivityBundle:ActivityStorage')->find($id);
@@ -219,17 +246,17 @@ class ActivityStorageController extends Controller
         }
 
         return $this->render('JngActivityBundle:ActivityStorage:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+                    'entity' => $entity,
+                    'edit_form' => $editForm->createView(),
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
+
     /**
      * Deletes a ActivityStorage entity.
      *
      */
-    public function deleteAction(Request $request, $id)
-    {
+    public function deleteAction(Request $request, $id) {
         $form = $this->createDeleteForm($id);
         $form->handleRequest($request);
 
@@ -255,32 +282,31 @@ class ActivityStorageController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm($id)
-    {
+    private function createDeleteForm($id) {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('activitystorage_delete', array('id' => $id)))
-            ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
-            ->getForm()
+                        ->setAction($this->generateUrl('activitystorage_delete', array('id' => $id)))
+                        ->setMethod('DELETE')
+                        ->add('submit', 'submit', array('label' => 'Delete'))
+                        ->getForm()
         ;
     }
-    public function stopAction(Request $request, $id)
-    {
+
+    public function stopAction(Request $request, $id) {
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('JngActivityBundle:ActivityStorage')->find($id);
-        
-        $activity=$entity->getActivity();
-        $task=$entity->getTask();
-        $start=$entity->getStart();
-        
+
+        $activity = $entity->getActivity();
+        $task = $entity->getTask();
+        $start = $entity->getStart();
+
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find ActivityStorage entity.');
         }
 
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);
-        
+
         if ($editForm->isValid()) {
             $entity->setActivity($activity);
             $entity->setTask($task);
@@ -288,10 +314,10 @@ class ActivityStorageController extends Controller
             $entity->setEndValue();
             $em->persist($entity);
             $em->flush();
-            
-            
+
+
             return $this->redirect($this->generateUrl('activitystorage', array('id' => $id)));
         }
-
     }
+
 }

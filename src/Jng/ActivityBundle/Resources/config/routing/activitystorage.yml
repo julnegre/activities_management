@@ -37,3 +37,8 @@ activitystorage_stop:
     pattern:  /{id}/stop
     defaults: { _controller: "JngActivityBundle:ActivityStorage:stop" }
     requirements: { _method: post|put }    
+    
+activitystorage_updatechart:
+    pattern:  /updatechart
+    defaults: { _controller: "JngActivityBundle:ActivityStorage:updatechart" }
+    requirements: { _method: post }  

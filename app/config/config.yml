@@ -65,7 +65,9 @@ doctrine:
               datetime_functions:
                 MD5: DoctrineExtensions\Query\Mysql\Md5
                 YEAR: DoctrineExtensions\Query\Mysql\Year
-        
+                TIMESTAMPDIFF: DoctrineExtensions\Query\Mysql\TimestampDiff
+                DATE_FORMAT: DoctrineExtensions\Query\Mysql\DateFormat
+                NOW: Jng\ActivityBundle\lib\DoctrineExtensions\Query\Mysql\Now
 
 # Swiftmailer Configuration
 swiftmailer:

@@ -26,9 +26,13 @@ class WebcalController extends Controller
       $em = $this->getDoctrine()->getManager();
       
       $query = $em->createQuery(
-        'SELECT j as token FROM JngUserBundle:User j WHERE MD5(j.emailCanonical) = :token'
+        'SELECT j as token FROM JngUserBundle:User j WHERE MD5(CONCAT(j.salt,j.emailCanonical)) = :token'
       )->setParameter('token', $id);
       $entities = $query->getResult();
+      
+      if( count($entities) == 0 )
+          return new Response('Hello you !');
+      
       $user = $entities[0];
 
       $entities = $em->getRepository('JngActivityBundle:ActivityStorage')

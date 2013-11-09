@@ -1,44 +1,72 @@
 <!DOCTYPE html>
-<html>
-    <head>
+<!--[if IE 8]> <html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
         <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0" name="viewport">
         {% block head %}
-        <script src="http://use.typekit.net/gis6vng.js"></script>
-        <script>try {Typekit.load();}catch(e){}</script>
         <link rel="icon" sizes="16x16" href="{{ asset('favicon.ico') }}" />
         <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.3.0/pure-min.css">
         <link rel="stylesheet"  href="{{ asset('bundles/jngactivity/css/baby-blue.css') }}" />
         <link rel="stylesheet"  href="{{ asset('bundles/jngactivity/css/activity.css') }}" />
-        <script type="text/javascript" src="{{ asset('js/jquery-1.10.2.min.js') }}"></script>
-        <title>{% block title %}{% endblock %} - Activity Manager</title>
-        {% endblock %}
+        <link rel="stylesheet"  href="{{ asset('bundles/jngactivity/css/jackedup.css') }}" />
         {% block stylesheets %}{% endblock %}
-        {% block javascripts %}{% endblock %}           
+        <script src="http://use.typekit.net/gis6vng.js"></script>
+        <script>try {Typekit.load();}catch(e){}</script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="http://yui.yahooapis.com/3.12.0/build/yui/yui-min.js"></script>
+        <script src="{{ asset('bundles/jngactivity/js/vendor/custom.modernizr.js') }}"></script>
+        <script src="{{ asset('bundles/jngactivity/js/jquery.box.js') }}"></script>
+        <script src="{{ asset('bundles/jngactivity/js/humane.js') }}"></script>
+        {% block javascripts %}{% endblock %} 
+        <title>{% block title %}{% endblock %} - Activity Manager</title>
+        {% endblock %}       
         <script type="text/javascript">
          /* <![CDATA[ */
         $(document).ready(function() {
-        $("form").submit(function(){
-            $("#loading-full,.loading-ball").fadeIn();
-        });
+            $("form").submit(function(){
+                $("#loading-full,.loading-ball").fadeIn();
             });
+            if(jQuery('a[rel*=facebox]').length>0)jQuery('a[rel*=facebox]').facebox();
+            // notification  *****************************
+            var notifClass = 'humane-jackedup-error';
+            if( jQuery(".notice[rel!='no']").length>0 )
+                    notifClass = 'humane-jackedup-success';
+            var jacked = humane.create({baseCls: 'humane-jackedup', addnCls: notifClass});
+            jacked.timeout = 5000;
+            if( jQuery(".notice[rel!='no'],.error[rel!='no']").length > 0 ){
+                jQuery(".notice[rel!='no'],.error[rel!='no']").hide();
+                jacked.log(jQuery(".notice[rel!='no'],.error[rel!='no']").html());  
+            } 
+            if(jQuery('.tip').length>0)jQuery('.tip').tipsy({gravity: 'sw'})
+            jQuery("#loading-ajax").ajaxStart(function(){
+                //jQuery(this).show()
+                jacked = humane.create({baseCls: 'humane-jackedup', addnCls: ".loading-ball"})
+                jacked.log("Patientez svp...");
+            });
+        });
         /* ]]> */
         </script>
     </head>
     <body>
-         <div id="loading-full"></div><div class="loading-ball"></div>
+        <div class="pure-g-r">
+            <div id="loading-full"></div><div class="loading-ball"></div>
 {# L'utilisateur est-il connecté ? #}
 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-        
-            <div class="header">
-            <div class="menu">
-                <div class="pure-menu pure-menu-open pure-menu-fixed pure-menu-horizontal">
+            <a href="#menu" id="menuLink" class="pure-menu-link">
+                <span></span>
+            </a>
+            <div class="pure-u" id="menu">
+                <div class="pure-menu pure-menu-open">
                     <a class="pure-menu-heading {% if get_controller_name() =="" %}pure-menu-selected{% endif %}" href="{{ path('activitystorage') }}">Activity manager</a>
                     <ul>
-                        <li class="{% if get_controller_name() =="activity" %}pure-button pure-button-success pure-menu-selected{% endif %}"><a href="{{ path('activity') }}">Activity</a></li>
-                        <li class="{% if get_controller_name() =="business" %}pure-button pure-button-success pure-menu-selected{% endif %}"><a href="{{ path('business') }}">Business</a></li>
-                        <li class="{% if get_controller_name() =="customer" %}pure-button pure-button-success pure-menu-selected{% endif %}"><a href="{{ path('customer') }}">Customer</a></li>
-                        <li class="{% if get_controller_name() =="task" %}pure-button pure-button-success pure-menu-selected{% endif %}"><a href="{{ path('task') }}">Task</a></li>
-                        
+                        <li class="{% if get_controller_name() =="activity" %}pure-menu-selected{% endif %}"><a href="{{ path('activity') }}">Activity</a></li>
+                        <li class="{% if get_controller_name() =="business" %}pure-menu-selected{% endif %}"><a href="{{ path('business') }}">Business</a></li>
+                        <li class="{% if get_controller_name() =="customer" %}pure-menu-selected{% endif %}"><a href="{{ path('customer') }}">Customer</a></li>
+                        <li class="{% if get_controller_name() =="task" %}pure-menu-selected{% endif %}"><a href="{{ path('task') }}">Task</a></li>
+
+
                         {# L'utilisateur est connecté ! #}
                         <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion (<i>{{ app.security.getToken().getUser().getUsername() }}</i>)</a></li>
 
@@ -51,32 +79,45 @@
                     </ul>
                 </div>    
             </div>
-            <div class="title">    
-                {% block title_section %}{% endblock %}  
-                </div>        
-            </div>        
-            <div class="content">
-            {% for flashMessage in app.session.flashbag.get('notice') %}
-                    <div class="flash-message">
-                        <em>Notice</em>: {{ flashMessage }}
-                    </div>
-            {% endfor %}
-            {% block content %}{% endblock %}
+            <div class="pure-u-1" id="main">    
+                <div class="header">{% block title_section %}{% endblock %}</div>        
+            
+                <div class="content">
+                {% for flashMessage in app.session.flashbag.get('notice') %}
+                        <div class="flash-message">
+                            <em>Notice</em>: {{ flashMessage }}
+                        </div>
+                {% endfor %}
+                {% block content %}{% endblock %}
                 </div>
-                <div class="footer">
-            {% block footer %}
-                        &copy; Copyright 2013 by <a href="http://www.julnegre.fr/">Julnegre</a>.
-            {% endblock %}
-                    </div>
+                
+                <div class="legal pure-g-r">{% block footer %}&copy; Copyright 2013 by <a href="http://www.julnegre.fr/">Julnegre</a>.{% endblock %}</div>
 
-                    <div class="search">
-                    {% block search %}{% endblock %}
-                    </div>   
+                <div class="search">{% block search %}{% endblock %}</div>   
+                <script>
+                YUI({
+                    classNamePrefix: 'pure'
+                }).use('gallery-sm-menu', function (Y) {
+                    var horizontalMenu = new Y.Menu({
+                        container         : '#menu',
+                        sourceNode        : '#menu-items',
+                        orientation       : 'horizontal',
+                        hideOnOutsideClick: false,
+                        hideOnClick       : false
+                    });
+                    horizontalMenu.render();
+                    horizontalMenu.show();
+                });
+                </script>
+            </div>
 {% else %}
             
     <META http-equiv="refresh" content="0;URL={{ path('fos_user_security_login') }}">
 
-{% endif %}                               
+{% endif %}           
+    
+
+        </div>
                 </body>
             </html>
 

@@ -8,6 +8,7 @@
 
 {% block content -%}
     <div><a href="{{ path('webcal',{'id':ical}) }}?noCache" ><img src="{{ asset('bundles/jngactivity/images/ical.gif') }}" /></a></div>
+    
     <ul>
         <li>
             <a class="pure-button pure-button-primary" href="{{ path('activitystorage_new') }}" rel="facebox">
@@ -20,6 +21,25 @@
             </a>
         </li>
     </ul>
+
+    <div class="float-right chart-container pure-g-r">
+        <!-- CHART -->
+        <div class="pure-u-1">Ratio per customer</div>
+        <div class="pure-u-1-2" id="chart1" ></div>
+        <div class="pure-u-1-2">
+            <form class="pure-form pure-form-stacked" style="text-align:right">
+                <select id="filter_chart1">
+                    <option value="y">by year</option>
+                    <option value="m" >by month</option>
+                    <option value="d" selected>today</option>
+                </select>
+            </form>
+            <ul data-pie-id="chart1" id="chart1-data" style="text-align:right"></ul>
+        </div>
+        <!-- CHART -->
+    </div>
+    
+    
     <table class="pure-table">
         <thead>
             <tr>
@@ -78,37 +98,36 @@
     {% endblock %}
  {% block stylesheets %}
     <link rel="stylesheet"  href="{{ asset('bundles/jngactivity/css/box.css') }}" />
+    <link rel="stylesheet"  href="{{ asset('bundles/jngactivity/css/pizza.css') }}" />
 {% endblock %}   
     
 {% block javascripts %}
-    <script type="text/javascript" src="{{ asset('bundles/jngactivity/js/jquery.box.js') }}"></script>
+    <script src="{{ asset('bundles/jngactivity/js/vendor/snap.svg.js') }}"></script>
+    <script src="{{ asset('bundles/jngactivity/js/jquery.pizza.js') }}"></script>
+    
+    
     <script type="text/javascript">
 /* <![CDATA[ */
 
  jQuery(document).ready(function() {
-     
-     if(jQuery('a[rel*=facebox]').length>0)jQuery('a[rel*=facebox]').facebox();
-        // notification
-        var notifClass = 'humane-jackedup-error';
-        if( jQuery(".notice[rel!='no']").length>0 )
-                notifClass = 'humane-jackedup-success';
-        var jacked = humane.create({baseCls: 'humane-jackedup', addnCls: notifClass});
-        //jacked.waitForMove = true;
-        jacked.timeout = 5000;
-        if( jQuery(".notice[rel!='no'],.error[rel!='no']").length > 0 ){
-            jQuery(".notice[rel!='no'],.error[rel!='no']").hide();
-            jacked.log(jQuery(".notice[rel!='no'],.error[rel!='no']").html());  
-        }
-        
-        //jQuery(".notice[rel!='no'],.error[rel!='no']").fadeOut(5000);
-        if(jQuery('.tip').length>0)jQuery('.tip').tipsy({gravity: 'sw'})
-        jQuery("#loading-ajax").ajaxStart(function(){
-            //jQuery(this).show()
-            jacked = humane.create({baseCls: 'humane-jackedup', addnCls: ".loading-ball"})
-            jacked.log("Patientez svp...");
-        });
 
-    });   
-        /* ]]> */
+    // Pizza chart ****************************************
+    function updateChart(val){
+        $("#chart1").fadeOut("slow");
+        //$("#chart1").html("");
+        $.post("{{ path('activitystorage_updatechart') }}", { type:val })
+         .done( function( data ) {
+            $("#chart1").html("");
+            $( "#chart1-data" ).html(data);
+            Pizza.init();
+            $("#chart1").fadeIn("slow");
+        });
+    }
+    $("#filter_chart1").change(function(){updateChart($(this).val())});
+    updateChart($("#filter_chart1").val());
+
+});   
+
+/* ]]> */
     </script> 
 {% endblock %} 
