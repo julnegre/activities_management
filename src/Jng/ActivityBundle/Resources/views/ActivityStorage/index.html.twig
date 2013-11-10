@@ -7,22 +7,32 @@
 {% endblock %}   
 
 {% block content -%}
-    <div><a href="{{ path('webcal',{'id':ical}) }}?noCache" ><img src="{{ asset('bundles/jngactivity/images/ical.gif') }}" /></a></div>
-    
-    <ul>
-        <li>
-            <a class="pure-button pure-button-primary" href="{{ path('activitystorage_new') }}" rel="facebox">
+
+    <a href="#" class="content-link" id="link_stat">
+        <img src="{{ asset('bundles/jngactivity/images/bulb.png') }}" />
+    </a>
+        
+    <div class="pure-g" style="margin:10px">
+        <div class="pure-u-1-3">
+            <a class="pure-button pure-button-primary" href="{{ path('activitystorage_new') }}">
                 Create a new entry
             </a>
-        </li>
-        <li>
+        </div>
+        <div class="pure-u-1-3">
             <a class="pure-button pure-button-secondary" href="{{ path('activitystorage_newmanually') }}">
                 Create a new entry manually
             </a>
-        </li>
-    </ul>
+        </div>
+        <div class="pure-u-1-3" style="text-align:right">
+            <a href="{{ path('webcal',{'id':ical}) }}?noCache">
+                <img src="{{ asset('bundles/jngactivity/images/ical.gif') }}" />
+            </a>
+        </div>
+    </div>
+    
 
-    <div class="float-right chart-container pure-g-r">
+    
+    <div class="float-right chart-container pure-g-r" style="display:none" id="chart1-container">
         <!-- CHART -->
         <div class="pure-u-1">Ratio per customer</div>
         <div class="pure-u-1-2" id="chart1" ></div>
@@ -125,6 +135,20 @@
     }
     $("#filter_chart1").change(function(){updateChart($(this).val())});
     updateChart($("#filter_chart1").val());
+
+    $("#link_stat").click(function(){
+        if($("#chart1-container").is(":visible") ){
+            $("#chart1-container").fadeOut();
+            $(this).fadeTo("slow" , 1);
+        } else {
+            $("#chart1-container").fadeIn();
+            $(this).fadeTo("slow" , 0.4);
+        }
+    })
+    $("#link_stat_close").click(function(){
+        $("#chart1-container").fadeOut();
+    })
+    
 
 });   
 

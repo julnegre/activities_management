@@ -5,14 +5,12 @@
     <h1>Customer List</h1>
     <h2>List all customers</h2>
 {% endblock %}  
-     {% block stylesheets %}
-<link href="{{ asset('css/jquery-ui.min.css') }}" rel="stylesheet" />
+    
+{% block stylesheets %}
     {{ form_stylesheet(searchForm) }}
-   {% endblock %}
+{% endblock %}
 
 {% block javascripts %}
-<script src="{{ asset('js/jquery-1.10.2.min.js') }}"></script>
-<script src="{{ asset('js/jquery-ui.min.js') }}"></script>
     {{ form_javascript(searchForm) }}
 {% endblock %}    
    

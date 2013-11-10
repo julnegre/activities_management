@@ -215,3 +215,8 @@ li {list-style-type: none}
     box-shadow:0 0 10px #222;
     padding:5px;   
 }
+.content-link{position:fixed}
+
+#facebox #layout {
+    padding-left:0px
+}
