@@ -2,8 +2,8 @@
 
 {% block title %}Activity Storage list{% endblock %}
 {% block title_section %}
-    <h1>Activity Storage List</h1>
-    <h2>List all activity stored</h2>
+    <h1>Activities Storage List</h1>
+    <h2>All activities stored from {{ d1|date('d/m/Y') }} to {{ d2|date('d/m/Y') }}</h2>
 {% endblock %}   
 
 {% block content -%}
@@ -48,14 +48,13 @@
         </div>
         <!-- CHART -->
     </div>
-    
-    
+
     <table class="pure-table">
         <thead>
             <tr>
                 <th>Customer</th>
                 <th>Activity</th>
-                <th>Task</th>
+                <!--<th>Task</th>-->
                 <th>Start</th>
                 <th>End</th>
                 <th>Diff</th>
@@ -67,7 +66,7 @@
             <tr>
                 <td>{{ entity.activity.customer.name }}</td>
                 <td>{{ entity.activity.name }}</td>
-                <td>{% if entity.task is not null %}{{ entity.task.name }}{% endif %}</td>
+                <!--<td>{% if entity.task is not null %}{{ entity.task.name }}{% endif %}</td>-->
                 <td>{% if entity.start %}{{ entity.start|date('d/m/Y H:i') }}{% endif %}</td>
                 <td>{% if entity.end %}{{ entity.end|date('d/m/Y H:i') }}{% endif %}</td>
                 <td>{{ entity.start|diffToDate(entity.end) }}</td>

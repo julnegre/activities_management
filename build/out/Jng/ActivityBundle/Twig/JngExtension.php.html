@@ -1,0 +1,550 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>
+            Mayflower Code Browser - Source Code
+        </title>
+        <link rel="stylesheet" type="text/css" href="../../js/jquery.sidebar/css/codebrowser/sidebar.css" />
+        <link rel="stylesheet" type="text/css" href="../../css/global.css" />
+        <link rel="stylesheet" type="text/css" href="../../css/cruisecontrol.css" />
+        <link rel="stylesheet" type="text/css" href="../../css/review.css" />
+
+        <script type="text/javascript" src="../../js/jquery-1.4.2.min.js"></script>
+        <script type="text/javascript" src="../../js/jquery.sidebar/jquery-ui-1.7.2.custom.min.js"></script>
+        <script type="text/javascript" src="../../js/jquery.sidebar/jquery.sidebar.js"></script>
+        <script type="text/javascript" src="../../js/jquery.cluetip/lib/jquery.hoverIntent.js"></script>
+        <script type="text/javascript" src="../../js/jquery.cluetip/lib/jquery.bgiframe.min.js"></script>
+        <script type="text/javascript" src="../../js/jquery.cluetip/jquery.cluetip.min.js"></script>
+
+        <script type="text/javascript" src="../../js/review.js"></script>
+    </head>
+    <body class="codebrowser">
+        <div class="header">
+            <a href="./../../index.html">Go back to index</a> |
+            <a href="http://github.com/mayflowergmbh/PHP_CodeBrowser">PHP CodeBrowser</a>
+        </div>
+        <hr/>
+        <div id="review">
+            <div class="filepath">
+                Jng/ActivityBundle/Twig/JngExtension.php            </div>
+
+            <ol class="code"><li id="line_1" class="odd"><span class="lineNumber">&nbsp;&nbsp;1&nbsp;</span><span>
+</span><span class="default">&lt;?php</span><a name="line_1"></a></li><li id="line_2" class="even"><span class="lineNumber">&nbsp;&nbsp;2&nbsp;</span><a name="line_2"></a></li><li id="line_3" class="odd"><span class="lineNumber">&nbsp;&nbsp;3&nbsp;</span><span class="keyword">namespace&nbsp;</span><span class="default">Jng</span><span class="keyword">\</span><span class="default">ActivityBundle</span><span class="keyword">\</span><span class="default">Twig</span><span class="keyword">;</span><a name="line_3"></a></li><li id="line_4" class="even"><span class="lineNumber">&nbsp;&nbsp;4&nbsp;</span><a name="line_4"></a></li><li id="line_5" class="odd"><span class="lineNumber">&nbsp;&nbsp;5&nbsp;</span><span class="keyword">use&nbsp;</span><span class="default">Symfony</span><span class="keyword">\</span><span class="default">Component</span><span class="keyword">\</span><span class="default">HttpFoundation</span><span class="keyword">\</span><span class="default">Request</span><span class="keyword">;</span><a name="line_5"></a></li><li id="line_6" class="even"><span class="lineNumber">&nbsp;&nbsp;6&nbsp;</span><a name="line_6"></a></li><li id="line_7" title='|
+                        &lt;div class="tooltip"&gt;
+                            &lt;div class="title Checkstyle"&gt;Checkstyle&lt;/div&gt;
+                            &lt;div class="text"&gt;Opening brace of a class must be on the line after the definition&lt;/div&gt;
+                        &lt;/div&gt;
+                        ' class="odd hasIssues Checkstyle"><span class="lineNumber">&nbsp;&nbsp;7&nbsp;</span><span class="keyword">class&nbsp;</span><span class="default">JngExtension&nbsp;</span><span class="keyword">extends&nbsp;\</span><span class="default">Twig_Extension&nbsp;</span><span class="keyword">{</span><a name="line_7"></a></li><li id="line_8" class="even"><span class="lineNumber">&nbsp;&nbsp;8&nbsp;</span><a name="line_8"></a></li><li id="line_9" class="odd"><span class="lineNumber">&nbsp;&nbsp;9&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="comment">/**</span><a name="line_9"></a></li><li id="line_10" class="even"><span class="lineNumber">&nbsp;10&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span><a name="line_10"></a></li><li id="line_11" class="odd"><span class="lineNumber">&nbsp;11&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@var&nbsp;type&nbsp;</span><a name="line_11"></a></li><li id="line_12" class="even"><span class="lineNumber">&nbsp;12&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span><a name="line_12"></a></li><li id="line_13" class="odd"><span class="lineNumber">&nbsp;13&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">protected&nbsp;</span><span class="default">$request</span><span class="keyword">;</span><a name="line_13"></a></li><li id="line_14" class="even"><span class="lineNumber">&nbsp;14&nbsp;</span><a name="line_14"></a></li><li id="line_15" class="odd"><span class="lineNumber">&nbsp;15&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="comment">/**</span><a name="line_15"></a></li><li id="line_16" class="even"><span class="lineNumber">&nbsp;16&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span><a name="line_16"></a></li><li id="line_17" class="odd"><span class="lineNumber">&nbsp;17&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@var&nbsp;\Twig_Environment</span><a name="line_17"></a></li><li id="line_18" class="even"><span class="lineNumber">&nbsp;18&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span><a name="line_18"></a></li><li id="line_19" class="odd"><span class="lineNumber">&nbsp;19&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">protected&nbsp;</span><span class="default">$environment</span><span class="keyword">;</span><a name="line_19"></a></li><li id="line_20" class="even"><span class="lineNumber">&nbsp;20&nbsp;</span><a name="line_20"></a></li><li id="line_21" class="odd"><span class="lineNumber">&nbsp;21&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="comment">/**</span><a name="line_21"></a></li><li id="line_22" class="even"><span class="lineNumber">&nbsp;22&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><a name="line_22"></a></li><li id="line_23" class="odd"><span class="lineNumber">&nbsp;23&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@param&nbsp;\Symfony\Component\HttpFoundation\Request&nbsp;$request</span><a name="line_23"></a></li><li id="line_24" class="even"><span class="lineNumber">&nbsp;24&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span><a name="line_24"></a></li><li id="line_25" title='|
+                        &lt;div class="tooltip"&gt;
+                            &lt;div class="title Checkstyle"&gt;Checkstyle&lt;/div&gt;
+                            &lt;div class="text"&gt;Opening brace should be on a new line&lt;/div&gt;
+                        &lt;/div&gt;
+                        ' class="odd hasIssues Checkstyle"><span class="lineNumber">&nbsp;25&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">public&nbsp;function&nbsp;</span><span class="default">__construct</span><span class="keyword">(</span><span class="default">Request&nbsp;$request</span><span class="keyword">)&nbsp;{</span><a name="line_25"></a></li><li id="line_26" class="even"><span class="lineNumber">&nbsp;26&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">request&nbsp;</span><span class="keyword">=&nbsp;</span><span class="default">$request</span><span class="keyword">;</span><a name="line_26"></a></li><li id="line_27" class="odd"><span class="lineNumber">&nbsp;27&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;}</span><a name="line_27"></a></li><li id="line_28" class="even"><span class="lineNumber">&nbsp;28&nbsp;</span><a name="line_28"></a></li><li id="line_29" class="odd"><span class="lineNumber">&nbsp;29&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="comment">/**</span><a name="line_29"></a></li><li id="line_30" class="even"><span class="lineNumber">&nbsp;30&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><a name="line_30"></a></li><li id="line_31" class="odd"><span class="lineNumber">&nbsp;31&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@param&nbsp;\Twig_Environment&nbsp;$environment</span><a name="line_31"></a></li><li id="line_32" class="even"><span class="lineNumber">&nbsp;32&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span><a name="line_32"></a></li><li id="line_33" title='|
+                        &lt;div class="tooltip"&gt;
+                            &lt;div class="title Checkstyle"&gt;Checkstyle&lt;/div&gt;
+                            &lt;div class="text"&gt;Opening brace should be on a new line&lt;/div&gt;
+                        &lt;/div&gt;
+                        ' class="odd hasIssues Checkstyle"><span class="lineNumber">&nbsp;33&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">public&nbsp;function&nbsp;</span><span class="default">initRuntime</span><span class="keyword">(\</span><span class="default">Twig_Environment&nbsp;$environment</span><span class="keyword">)&nbsp;{</span><a name="line_33"></a></li><li id="line_34" class="even"><span class="lineNumber">&nbsp;34&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">environment&nbsp;</span><span class="keyword">=&nbsp;</span><span class="default">$environment</span><span class="keyword">;</span><a name="line_34"></a></li><li id="line_35" class="odd"><span class="lineNumber">&nbsp;35&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;}</span><a name="line_35"></a></li><li id="line_36" class="even"><span class="lineNumber">&nbsp;36&nbsp;</span><a name="line_36"></a></li><li id="line_37" class="odd"><span class="lineNumber">&nbsp;37&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="comment">/**</span><a name="line_37"></a></li><li id="line_38" class="even"><span class="lineNumber">&nbsp;38&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><a name="line_38"></a></li><li id="line_39" class="odd"><span class="lineNumber">&nbsp;39&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@return&nbsp;type</span><a name="line_39"></a></li><li id="line_40" class="even"><span class="lineNumber">&nbsp;40&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span><a name="line_40"></a></li><li id="line_41" title='|
+                        &lt;div class="tooltip"&gt;
+                            &lt;div class="title Checkstyle"&gt;Checkstyle&lt;/div&gt;
+                            &lt;div class="text"&gt;Opening brace should be on a new line&lt;/div&gt;
+                        &lt;/div&gt;
+                        ' class="odd hasIssues Checkstyle"><span class="lineNumber">&nbsp;41&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">public&nbsp;function&nbsp;</span><span class="default">getFunctions</span><span class="keyword">()&nbsp;{</span><a name="line_41"></a></li><li id="line_42" class="even"><span class="lineNumber">&nbsp;42&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;array(</span><a name="line_42"></a></li><li id="line_43" class="odd"><span class="lineNumber">&nbsp;43&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="string">'get_controller_name'&nbsp;</span><span class="keyword">=&gt;&nbsp;new&nbsp;\</span><span class="default">Twig_Function_Method</span><span class="keyword">(</span><span class="default">$this</span><span class="keyword">,&nbsp;</span><span class="string">'getControllerName'</span><span class="keyword">),</span><a name="line_43"></a></li><li id="line_44" class="even"><span class="lineNumber">&nbsp;44&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="string">'get_action_name'&nbsp;</span><span class="keyword">=&gt;&nbsp;new&nbsp;\</span><span class="default">Twig_Function_Method</span><span class="keyword">(</span><span class="default">$this</span><span class="keyword">,&nbsp;</span><span class="string">'getActionName'</span><span class="keyword">),</span><a name="line_44"></a></li><li id="line_45" class="odd"><span class="lineNumber">&nbsp;45&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;);</span><a name="line_45"></a></li><li id="line_46" class="even"><span class="lineNumber">&nbsp;46&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;}</span><a name="line_46"></a></li><li id="line_47" class="odd"><span class="lineNumber">&nbsp;47&nbsp;</span><a name="line_47"></a></li><li id="line_48" class="even"><span class="lineNumber">&nbsp;48&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="comment">/**</span><a name="line_48"></a></li><li id="line_49" class="odd"><span class="lineNumber">&nbsp;49&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Get&nbsp;current&nbsp;controller&nbsp;name</span><a name="line_49"></a></li><li id="line_50" class="even"><span class="lineNumber">&nbsp;50&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span><a name="line_50"></a></li><li id="line_51" title='|
+                        &lt;div class="tooltip"&gt;
+                            &lt;div class="title Checkstyle"&gt;Checkstyle&lt;/div&gt;
+                            &lt;div class="text"&gt;Opening brace should be on a new line&lt;/div&gt;
+                        &lt;/div&gt;
+                        ' class="odd hasIssues Checkstyle"><span class="lineNumber">&nbsp;51&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">public&nbsp;function&nbsp;</span><span class="default">getControllerName</span><span class="keyword">()&nbsp;{</span><a name="line_51"></a></li><li id="line_52" class="even"><span class="lineNumber">&nbsp;52&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$pattern&nbsp;</span><span class="keyword">=&nbsp;</span><span class="string">"#Controller\\\([a-zA-Z]*)Controller#"</span><span class="keyword">;</span><a name="line_52"></a></li><li id="line_53" class="odd"><span class="lineNumber">&nbsp;53&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$matches&nbsp;</span><span class="keyword">=&nbsp;array();</span><a name="line_53"></a></li><li id="line_54" class="even"><span class="lineNumber">&nbsp;54&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">preg_match</span><span class="keyword">(</span><span class="default">$pattern</span><span class="keyword">,&nbsp;</span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">request</span><span class="keyword">-&gt;</span><span class="default">get</span><span class="keyword">(</span><span class="string">'_controller'</span><span class="keyword">),&nbsp;</span><span class="default">$matches</span><span class="keyword">);</span><a name="line_54"></a></li><li id="line_55" class="odd"><span class="lineNumber">&nbsp;55&nbsp;</span><a name="line_55"></a></li><li id="line_56" class="even"><span class="lineNumber">&nbsp;56&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span class="default">strtolower</span><span class="keyword">(</span><span class="default">$matches</span><span class="keyword">[</span><span class="default">1</span><span class="keyword">]);</span><a name="line_56"></a></li><li id="line_57" class="odd"><span class="lineNumber">&nbsp;57&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;}</span><a name="line_57"></a></li><li id="line_58" class="even"><span class="lineNumber">&nbsp;58&nbsp;</span><a name="line_58"></a></li><li id="line_59" class="odd"><span class="lineNumber">&nbsp;59&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="comment">/**</span><a name="line_59"></a></li><li id="line_60" class="even"><span class="lineNumber">&nbsp;60&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Get&nbsp;current&nbsp;action&nbsp;name&nbsp;</span><a name="line_60"></a></li><li id="line_61" class="odd"><span class="lineNumber">&nbsp;61&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span><a name="line_61"></a></li><li id="line_62" title='|
+                        &lt;div class="tooltip"&gt;
+                            &lt;div class="title Checkstyle"&gt;Checkstyle&lt;/div&gt;
+                            &lt;div class="text"&gt;Opening brace should be on a new line&lt;/div&gt;
+                        &lt;/div&gt;
+                        ' class="even hasIssues Checkstyle"><span class="lineNumber">&nbsp;62&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">public&nbsp;function&nbsp;</span><span class="default">getActionName</span><span class="keyword">()&nbsp;{</span><a name="line_62"></a></li><li id="line_63" class="odd"><span class="lineNumber">&nbsp;63&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$pattern&nbsp;</span><span class="keyword">=&nbsp;</span><span class="string">"#::([a-zA-Z]*)Action#"</span><span class="keyword">;</span><a name="line_63"></a></li><li id="line_64" class="even"><span class="lineNumber">&nbsp;64&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$matches&nbsp;</span><span class="keyword">=&nbsp;array();</span><a name="line_64"></a></li><li id="line_65" class="odd"><span class="lineNumber">&nbsp;65&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">preg_match</span><span class="keyword">(</span><span class="default">$pattern</span><span class="keyword">,&nbsp;</span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">request</span><span class="keyword">-&gt;</span><span class="default">get</span><span class="keyword">(</span><span class="string">'_controller'</span><span class="keyword">),&nbsp;</span><span class="default">$matches</span><span class="keyword">);</span><a name="line_65"></a></li><li id="line_66" class="even"><span class="lineNumber">&nbsp;66&nbsp;</span><a name="line_66"></a></li><li id="line_67" class="odd"><span class="lineNumber">&nbsp;67&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span class="default">$matches</span><span class="keyword">[</span><span class="default">1</span><span class="keyword">];</span><a name="line_67"></a></li><li id="line_68" class="even"><span class="lineNumber">&nbsp;68&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;}</span><a name="line_68"></a></li><li id="line_69" class="odd"><span class="lineNumber">&nbsp;69&nbsp;</span><a name="line_69"></a></li><li id="line_70" class="even"><span class="lineNumber">&nbsp;70&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="comment">/**</span><a name="line_70"></a></li><li id="line_71" class="odd"><span class="lineNumber">&nbsp;71&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><a name="line_71"></a></li><li id="line_72" class="even"><span class="lineNumber">&nbsp;72&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@return&nbsp;type</span><a name="line_72"></a></li><li id="line_73" class="odd"><span class="lineNumber">&nbsp;73&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span><a name="line_73"></a></li><li id="line_74" title='|
+                        &lt;div class="tooltip"&gt;
+                            &lt;div class="title Checkstyle"&gt;Checkstyle&lt;/div&gt;
+                            &lt;div class="text"&gt;Opening brace should be on a new line&lt;/div&gt;
+                        &lt;/div&gt;
+                        ' class="even hasIssues Checkstyle"><span class="lineNumber">&nbsp;74&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">public&nbsp;function&nbsp;</span><span class="default">getFilters</span><span class="keyword">()&nbsp;{</span><a name="line_74"></a></li><li id="line_75" class="odd"><span class="lineNumber">&nbsp;75&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;array(</span><a name="line_75"></a></li><li id="line_76" class="even"><span class="lineNumber">&nbsp;76&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="string">'diffToDate'&nbsp;</span><span class="keyword">=&gt;&nbsp;new&nbsp;\</span><span class="default">Twig_Filter_Method</span><span class="keyword">(</span><span class="default">$this</span><span class="keyword">,&nbsp;</span><span class="string">'diffToDateFilter'</span><span class="keyword">),</span><a name="line_76"></a></li><li id="line_77" class="odd"><span class="lineNumber">&nbsp;77&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;);</span><a name="line_77"></a></li><li id="line_78" class="even"><span class="lineNumber">&nbsp;78&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;}</span><a name="line_78"></a></li><li id="line_79" class="odd"><span class="lineNumber">&nbsp;79&nbsp;</span><a name="line_79"></a></li><li id="line_80" class="even"><span class="lineNumber">&nbsp;80&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="comment">/**</span><a name="line_80"></a></li><li id="line_81" class="odd"><span class="lineNumber">&nbsp;81&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><a name="line_81"></a></li><li id="line_82" class="even"><span class="lineNumber">&nbsp;82&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@param&nbsp;type&nbsp;$date1</span><a name="line_82"></a></li><li id="line_83" class="odd"><span class="lineNumber">&nbsp;83&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@param&nbsp;type&nbsp;$date2</span><a name="line_83"></a></li><li id="line_84" class="even"><span class="lineNumber">&nbsp;84&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@param&nbsp;type&nbsp;$unit</span><a name="line_84"></a></li><li id="line_85" class="odd"><span class="lineNumber">&nbsp;85&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@return&nbsp;type</span><a name="line_85"></a></li><li id="line_86" class="even"><span class="lineNumber">&nbsp;86&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span><a name="line_86"></a></li><li id="line_87" title='|
+                        &lt;div class="tooltip"&gt;
+                            &lt;div class="title Checkstyle"&gt;Checkstyle&lt;/div&gt;
+                            &lt;div class="text"&gt;Opening brace should be on a new line&lt;/div&gt;
+                        &lt;/div&gt;
+                        ' class="odd hasIssues Checkstyle"><span class="lineNumber">&nbsp;87&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">public&nbsp;function&nbsp;</span><span class="default">diffToDateFilter</span><span class="keyword">(</span><span class="default">$date1</span><span class="keyword">,&nbsp;</span><span class="default">$date2</span><span class="keyword">,&nbsp;</span><span class="default">$unit&nbsp;</span><span class="keyword">=&nbsp;</span><span class="default">null</span><span class="keyword">)&nbsp;{</span><a name="line_87"></a></li><li id="line_88" title='|
+                        &lt;div class="tooltip"&gt;
+                            &lt;div class="title Checkstyle"&gt;Checkstyle&lt;/div&gt;
+                            &lt;div class="text"&gt;Inline control structures are not allowed&lt;/div&gt;
+                        &lt;/div&gt;
+                        ' class="even hasIssues Checkstyle"><span class="lineNumber">&nbsp;88&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span class="default">is_null</span><span class="keyword">(</span><span class="default">$date2</span><span class="keyword">))</span><a name="line_88"></a></li><li id="line_89" class="odd"><span class="lineNumber">&nbsp;89&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return;</span><a name="line_89"></a></li><li id="line_90" class="even"><span class="lineNumber">&nbsp;90&nbsp;</span><a name="line_90"></a></li><li id="line_91" title='|
+                        &lt;div class="tooltip"&gt;
+                            &lt;div class="title PMD"&gt;PMD&lt;/div&gt;
+                            &lt;div class="text"&gt;
+      Avoid variables with short names like $t. Configured minimum length is 3.
+    &lt;/div&gt;
+                        &lt;/div&gt;
+                        ' class="odd hasIssues PMD"><span class="lineNumber">&nbsp;91&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$t&nbsp;</span><span class="keyword">=&nbsp;</span><span class="default">$date2</span><span class="keyword">-&gt;</span><span class="default">getTimestamp</span><span class="keyword">()&nbsp;-&nbsp;</span><span class="default">$date1</span><span class="keyword">-&gt;</span><span class="default">getTimestamp</span><span class="keyword">();</span><a name="line_91"></a></li><li id="line_92" class="even"><span class="lineNumber">&nbsp;92&nbsp;</span><a name="line_92"></a></li><li id="line_93" class="odd"><span class="lineNumber">&nbsp;93&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span class="default">is_null</span><span class="keyword">(</span><span class="default">$unit</span><span class="keyword">))&nbsp;{</span><a name="line_93"></a></li><li id="line_94" class="even"><span class="lineNumber">&nbsp;94&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$unit&nbsp;</span><span class="keyword">=&nbsp;</span><span class="string">"s"</span><span class="keyword">;</span><a name="line_94"></a></li><li id="line_95" title='|
+                        &lt;div class="tooltip"&gt;
+                            &lt;div class="title Checkstyle"&gt;Checkstyle&lt;/div&gt;
+                            &lt;div class="text"&gt;Inline control structures are not allowed&lt;/div&gt;
+                        &lt;/div&gt;
+                        ' class="odd hasIssues Checkstyle"><span class="lineNumber">&nbsp;95&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span class="default">$t&nbsp;</span><span class="keyword">&gt;=&nbsp;</span><span class="default">3600</span><span class="keyword">)</span><a name="line_95"></a></li><li id="line_96" class="even"><span class="lineNumber">&nbsp;96&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$unit&nbsp;</span><span class="keyword">=&nbsp;</span><span class="string">"h"</span><span class="keyword">;</span><a name="line_96"></a></li><li id="line_97" title='|
+                        &lt;div class="tooltip"&gt;
+                            &lt;div class="title Checkstyle"&gt;Checkstyle&lt;/div&gt;
+                            &lt;div class="text"&gt;Usage of ELSE IF is discouraged; use ELSEIF instead&lt;/div&gt;
+                        &lt;/div&gt;
+                        
+                        &lt;div class="tooltip"&gt;
+                            &lt;div class="title Checkstyle"&gt;Checkstyle&lt;/div&gt;
+                            &lt;div class="text"&gt;Inline control structures are not allowed&lt;/div&gt;
+                        &lt;/div&gt;
+                        ' class="odd hasIssues moreErrors"><span class="lineNumber">&nbsp;97&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;if&nbsp;(</span><span class="default">$t&nbsp;</span><span class="keyword">&gt;=&nbsp;</span><span class="default">60</span><span class="keyword">)</span><a name="line_97"></a></li><li id="line_98" class="even"><span class="lineNumber">&nbsp;98&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$unit&nbsp;</span><span class="keyword">=&nbsp;</span><span class="string">"min"</span><span class="keyword">;</span><a name="line_98"></a></li><li id="line_99" class="odd"><span class="lineNumber">&nbsp;99&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span><a name="line_99"></a></li><li id="line_100" class="even"><span class="lineNumber">100&nbsp;</span><a name="line_100"></a></li><li id="line_101" title='|
+                        &lt;div class="tooltip"&gt;
+                            &lt;div class="title Checkstyle"&gt;Checkstyle&lt;/div&gt;
+                            &lt;div class="text"&gt;Inline control structures are not allowed&lt;/div&gt;
+                        &lt;/div&gt;
+                        ' class="odd hasIssues Checkstyle"><span class="lineNumber">101&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span class="default">$unit&nbsp;</span><span class="keyword">==&nbsp;</span><span class="string">"s"</span><span class="keyword">)</span><a name="line_101"></a></li><li id="line_102" class="even"><span class="lineNumber">102&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span class="default">$t&nbsp;</span><span class="keyword">.&nbsp;</span><span class="string">"&nbsp;s"</span><span class="keyword">;</span><a name="line_102"></a></li><li id="line_103" title='|
+                        &lt;div class="tooltip"&gt;
+                            &lt;div class="title Checkstyle"&gt;Checkstyle&lt;/div&gt;
+                            &lt;div class="text"&gt;Usage of ELSE IF is discouraged; use ELSEIF instead&lt;/div&gt;
+                        &lt;/div&gt;
+                        
+                        &lt;div class="tooltip"&gt;
+                            &lt;div class="title Checkstyle"&gt;Checkstyle&lt;/div&gt;
+                            &lt;div class="text"&gt;Inline control structures are not allowed&lt;/div&gt;
+                        &lt;/div&gt;
+                        ' class="odd hasIssues moreErrors"><span class="lineNumber">103&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;if&nbsp;(</span><span class="default">$unit&nbsp;</span><span class="keyword">==&nbsp;</span><span class="string">"min"</span><span class="keyword">)</span><a name="line_103"></a></li><li id="line_104" class="even"><span class="lineNumber">104&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span class="default">round</span><span class="keyword">(</span><span class="default">$t&nbsp;</span><span class="keyword">/&nbsp;</span><span class="default">60</span><span class="keyword">)&nbsp;.&nbsp;</span><span class="string">"&nbsp;min"</span><span class="keyword">;</span><a name="line_104"></a></li><li id="line_105" title='|
+                        &lt;div class="tooltip"&gt;
+                            &lt;div class="title Checkstyle"&gt;Checkstyle&lt;/div&gt;
+                            &lt;div class="text"&gt;Usage of ELSE IF is discouraged; use ELSEIF instead&lt;/div&gt;
+                        &lt;/div&gt;
+                        
+                        &lt;div class="tooltip"&gt;
+                            &lt;div class="title Checkstyle"&gt;Checkstyle&lt;/div&gt;
+                            &lt;div class="text"&gt;Inline control structures are not allowed&lt;/div&gt;
+                        &lt;/div&gt;
+                        ' class="odd hasIssues moreErrors"><span class="lineNumber">105&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;if&nbsp;(</span><span class="default">$unit&nbsp;</span><span class="keyword">==&nbsp;</span><span class="string">"h"</span><span class="keyword">)</span><a name="line_105"></a></li><li id="line_106" class="even"><span class="lineNumber">106&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span class="default">round</span><span class="keyword">(</span><span class="default">$t&nbsp;</span><span class="keyword">/&nbsp;</span><span class="default">3600</span><span class="keyword">,&nbsp;</span><span class="default">1</span><span class="keyword">)&nbsp;.&nbsp;</span><span class="string">"&nbsp;h"</span><span class="keyword">;</span><a name="line_106"></a></li><li id="line_107" class="odd"><span class="lineNumber">107&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;}</span><a name="line_107"></a></li><li id="line_108" class="even"><span class="lineNumber">108&nbsp;</span><a name="line_108"></a></li><li id="line_109" class="odd"><span class="lineNumber">109&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="comment">/**</span><a name="line_109"></a></li><li id="line_110" class="even"><span class="lineNumber">110&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><a name="line_110"></a></li><li id="line_111" class="odd"><span class="lineNumber">111&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@return&nbsp;string</span><a name="line_111"></a></li><li id="line_112" class="even"><span class="lineNumber">112&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span><a name="line_112"></a></li><li id="line_113" title='|
+                        &lt;div class="tooltip"&gt;
+                            &lt;div class="title Checkstyle"&gt;Checkstyle&lt;/div&gt;
+                            &lt;div class="text"&gt;Opening brace should be on a new line&lt;/div&gt;
+                        &lt;/div&gt;
+                        ' class="odd hasIssues Checkstyle"><span class="lineNumber">113&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">public&nbsp;function&nbsp;</span><span class="default">getName</span><span class="keyword">()&nbsp;{</span><a name="line_113"></a></li><li id="line_114" class="even"><span class="lineNumber">114&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span class="string">'jng_extension'</span><span class="keyword">;</span><a name="line_114"></a></li><li id="line_115" class="odd"><span class="lineNumber">115&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;}</span><a name="line_115"></a></li><li id="line_116" class="even"><span class="lineNumber">116&nbsp;</span><a name="line_116"></a></li><li id="line_117" title='|
+                        &lt;div class="tooltip"&gt;
+                            &lt;div class="title Checkstyle"&gt;Checkstyle&lt;/div&gt;
+                            &lt;div class="text"&gt;The closing brace for the class must go on the next line after the body&lt;/div&gt;
+                        &lt;/div&gt;
+                        ' class="odd hasIssues Checkstyle"><span class="lineNumber">117&nbsp;</span><span class="keyword">}</span><span>
+</span><a name="line_117"></a></li></ol>
+            
+            <div id="sidebar">
+                <table cellpadding="3">
+                    <thead>
+                        <tr>
+                            <th width="40px" align="center">
+                                <strong>start</strong>
+                            </th>
+                            <th width="40px" align="center">
+                                <strong>end</strong>
+                            </th>
+                            <th>
+                                <strong>comment</strong>
+                            </th>
+                            <th width="120px">
+                                <strong>type of error</strong>
+                            </th>
+                            <th width="60px">
+                                <strong>severity</strong>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        <tr class="Checkstyle">
+                            <td align="center">
+                                <a href="#line_7" onclick="switchLine('line_7')">
+                                7</a>
+                            </td>
+                            <td align="center">
+                                <a href="#line_7" onclick="switchLine('line_7'); new Effect.Highlight('line_7-7', {duration: 1.5}); return false">
+                                7</a>
+                            </td>
+                            <td>
+                                <a href="#line_7" onclick="switchLine('line_7'); new Effect.Highlight('line_7-7', {duration: 1.5}); return false">
+                                Opening brace of a class must be on the line after the definition</a>
+                            </td>
+                            <td>
+                                Checkstyle                            </td>
+                            <td>
+                                error                            </td>
+                        </tr>
+                        
+                        <tr class="Checkstyle">
+                            <td align="center">
+                                <a href="#line_25" onclick="switchLine('line_25')">
+                                25</a>
+                            </td>
+                            <td align="center">
+                                <a href="#line_25" onclick="switchLine('line_25'); new Effect.Highlight('line_25-25', {duration: 1.5}); return false">
+                                25</a>
+                            </td>
+                            <td>
+                                <a href="#line_25" onclick="switchLine('line_25'); new Effect.Highlight('line_25-25', {duration: 1.5}); return false">
+                                Opening brace should be on a new line</a>
+                            </td>
+                            <td>
+                                Checkstyle                            </td>
+                            <td>
+                                error                            </td>
+                        </tr>
+                        
+                        <tr class="Checkstyle">
+                            <td align="center">
+                                <a href="#line_33" onclick="switchLine('line_33')">
+                                33</a>
+                            </td>
+                            <td align="center">
+                                <a href="#line_33" onclick="switchLine('line_33'); new Effect.Highlight('line_33-33', {duration: 1.5}); return false">
+                                33</a>
+                            </td>
+                            <td>
+                                <a href="#line_33" onclick="switchLine('line_33'); new Effect.Highlight('line_33-33', {duration: 1.5}); return false">
+                                Opening brace should be on a new line</a>
+                            </td>
+                            <td>
+                                Checkstyle                            </td>
+                            <td>
+                                error                            </td>
+                        </tr>
+                        
+                        <tr class="Checkstyle">
+                            <td align="center">
+                                <a href="#line_41" onclick="switchLine('line_41')">
+                                41</a>
+                            </td>
+                            <td align="center">
+                                <a href="#line_41" onclick="switchLine('line_41'); new Effect.Highlight('line_41-41', {duration: 1.5}); return false">
+                                41</a>
+                            </td>
+                            <td>
+                                <a href="#line_41" onclick="switchLine('line_41'); new Effect.Highlight('line_41-41', {duration: 1.5}); return false">
+                                Opening brace should be on a new line</a>
+                            </td>
+                            <td>
+                                Checkstyle                            </td>
+                            <td>
+                                error                            </td>
+                        </tr>
+                        
+                        <tr class="Checkstyle">
+                            <td align="center">
+                                <a href="#line_51" onclick="switchLine('line_51')">
+                                51</a>
+                            </td>
+                            <td align="center">
+                                <a href="#line_51" onclick="switchLine('line_51'); new Effect.Highlight('line_51-51', {duration: 1.5}); return false">
+                                51</a>
+                            </td>
+                            <td>
+                                <a href="#line_51" onclick="switchLine('line_51'); new Effect.Highlight('line_51-51', {duration: 1.5}); return false">
+                                Opening brace should be on a new line</a>
+                            </td>
+                            <td>
+                                Checkstyle                            </td>
+                            <td>
+                                error                            </td>
+                        </tr>
+                        
+                        <tr class="Checkstyle">
+                            <td align="center">
+                                <a href="#line_62" onclick="switchLine('line_62')">
+                                62</a>
+                            </td>
+                            <td align="center">
+                                <a href="#line_62" onclick="switchLine('line_62'); new Effect.Highlight('line_62-62', {duration: 1.5}); return false">
+                                62</a>
+                            </td>
+                            <td>
+                                <a href="#line_62" onclick="switchLine('line_62'); new Effect.Highlight('line_62-62', {duration: 1.5}); return false">
+                                Opening brace should be on a new line</a>
+                            </td>
+                            <td>
+                                Checkstyle                            </td>
+                            <td>
+                                error                            </td>
+                        </tr>
+                        
+                        <tr class="Checkstyle">
+                            <td align="center">
+                                <a href="#line_74" onclick="switchLine('line_74')">
+                                74</a>
+                            </td>
+                            <td align="center">
+                                <a href="#line_74" onclick="switchLine('line_74'); new Effect.Highlight('line_74-74', {duration: 1.5}); return false">
+                                74</a>
+                            </td>
+                            <td>
+                                <a href="#line_74" onclick="switchLine('line_74'); new Effect.Highlight('line_74-74', {duration: 1.5}); return false">
+                                Opening brace should be on a new line</a>
+                            </td>
+                            <td>
+                                Checkstyle                            </td>
+                            <td>
+                                error                            </td>
+                        </tr>
+                        
+                        <tr class="Checkstyle">
+                            <td align="center">
+                                <a href="#line_87" onclick="switchLine('line_87')">
+                                87</a>
+                            </td>
+                            <td align="center">
+                                <a href="#line_87" onclick="switchLine('line_87'); new Effect.Highlight('line_87-87', {duration: 1.5}); return false">
+                                87</a>
+                            </td>
+                            <td>
+                                <a href="#line_87" onclick="switchLine('line_87'); new Effect.Highlight('line_87-87', {duration: 1.5}); return false">
+                                Opening brace should be on a new line</a>
+                            </td>
+                            <td>
+                                Checkstyle                            </td>
+                            <td>
+                                error                            </td>
+                        </tr>
+                        
+                        <tr class="Checkstyle">
+                            <td align="center">
+                                <a href="#line_88" onclick="switchLine('line_88')">
+                                88</a>
+                            </td>
+                            <td align="center">
+                                <a href="#line_88" onclick="switchLine('line_88'); new Effect.Highlight('line_88-88', {duration: 1.5}); return false">
+                                88</a>
+                            </td>
+                            <td>
+                                <a href="#line_88" onclick="switchLine('line_88'); new Effect.Highlight('line_88-88', {duration: 1.5}); return false">
+                                Inline control structures are not allowed</a>
+                            </td>
+                            <td>
+                                Checkstyle                            </td>
+                            <td>
+                                error                            </td>
+                        </tr>
+                        
+                        <tr class="Checkstyle">
+                            <td align="center">
+                                <a href="#line_95" onclick="switchLine('line_95')">
+                                95</a>
+                            </td>
+                            <td align="center">
+                                <a href="#line_95" onclick="switchLine('line_95'); new Effect.Highlight('line_95-95', {duration: 1.5}); return false">
+                                95</a>
+                            </td>
+                            <td>
+                                <a href="#line_95" onclick="switchLine('line_95'); new Effect.Highlight('line_95-95', {duration: 1.5}); return false">
+                                Inline control structures are not allowed</a>
+                            </td>
+                            <td>
+                                Checkstyle                            </td>
+                            <td>
+                                error                            </td>
+                        </tr>
+                        
+                        <tr class="Checkstyle">
+                            <td align="center">
+                                <a href="#line_97" onclick="switchLine('line_97')">
+                                97</a>
+                            </td>
+                            <td align="center">
+                                <a href="#line_97" onclick="switchLine('line_97'); new Effect.Highlight('line_97-97', {duration: 1.5}); return false">
+                                97</a>
+                            </td>
+                            <td>
+                                <a href="#line_97" onclick="switchLine('line_97'); new Effect.Highlight('line_97-97', {duration: 1.5}); return false">
+                                Usage of ELSE IF is discouraged; use ELSEIF instead</a>
+                            </td>
+                            <td>
+                                Checkstyle                            </td>
+                            <td>
+                                warning                            </td>
+                        </tr>
+                        
+                        <tr class="Checkstyle">
+                            <td align="center">
+                                <a href="#line_97" onclick="switchLine('line_97')">
+                                97</a>
+                            </td>
+                            <td align="center">
+                                <a href="#line_97" onclick="switchLine('line_97'); new Effect.Highlight('line_97-97', {duration: 1.5}); return false">
+                                97</a>
+                            </td>
+                            <td>
+                                <a href="#line_97" onclick="switchLine('line_97'); new Effect.Highlight('line_97-97', {duration: 1.5}); return false">
+                                Inline control structures are not allowed</a>
+                            </td>
+                            <td>
+                                Checkstyle                            </td>
+                            <td>
+                                error                            </td>
+                        </tr>
+                        
+                        <tr class="Checkstyle">
+                            <td align="center">
+                                <a href="#line_101" onclick="switchLine('line_101')">
+                                101</a>
+                            </td>
+                            <td align="center">
+                                <a href="#line_101" onclick="switchLine('line_101'); new Effect.Highlight('line_101-101', {duration: 1.5}); return false">
+                                101</a>
+                            </td>
+                            <td>
+                                <a href="#line_101" onclick="switchLine('line_101'); new Effect.Highlight('line_101-101', {duration: 1.5}); return false">
+                                Inline control structures are not allowed</a>
+                            </td>
+                            <td>
+                                Checkstyle                            </td>
+                            <td>
+                                error                            </td>
+                        </tr>
+                        
+                        <tr class="Checkstyle">
+                            <td align="center">
+                                <a href="#line_103" onclick="switchLine('line_103')">
+                                103</a>
+                            </td>
+                            <td align="center">
+                                <a href="#line_103" onclick="switchLine('line_103'); new Effect.Highlight('line_103-103', {duration: 1.5}); return false">
+                                103</a>
+                            </td>
+                            <td>
+                                <a href="#line_103" onclick="switchLine('line_103'); new Effect.Highlight('line_103-103', {duration: 1.5}); return false">
+                                Usage of ELSE IF is discouraged; use ELSEIF instead</a>
+                            </td>
+                            <td>
+                                Checkstyle                            </td>
+                            <td>
+                                warning                            </td>
+                        </tr>
+                        
+                        <tr class="Checkstyle">
+                            <td align="center">
+                                <a href="#line_103" onclick="switchLine('line_103')">
+                                103</a>
+                            </td>
+                            <td align="center">
+                                <a href="#line_103" onclick="switchLine('line_103'); new Effect.Highlight('line_103-103', {duration: 1.5}); return false">
+                                103</a>
+                            </td>
+                            <td>
+                                <a href="#line_103" onclick="switchLine('line_103'); new Effect.Highlight('line_103-103', {duration: 1.5}); return false">
+                                Inline control structures are not allowed</a>
+                            </td>
+                            <td>
+                                Checkstyle                            </td>
+                            <td>
+                                error                            </td>
+                        </tr>
+                        
+                        <tr class="Checkstyle">
+                            <td align="center">
+                                <a href="#line_105" onclick="switchLine('line_105')">
+                                105</a>
+                            </td>
+                            <td align="center">
+                                <a href="#line_105" onclick="switchLine('line_105'); new Effect.Highlight('line_105-105', {duration: 1.5}); return false">
+                                105</a>
+                            </td>
+                            <td>
+                                <a href="#line_105" onclick="switchLine('line_105'); new Effect.Highlight('line_105-105', {duration: 1.5}); return false">
+                                Usage of ELSE IF is discouraged; use ELSEIF instead</a>
+                            </td>
+                            <td>
+                                Checkstyle                            </td>
+                            <td>
+                                warning                            </td>
+                        </tr>
+                        
+                        <tr class="Checkstyle">
+                            <td align="center">
+                                <a href="#line_105" onclick="switchLine('line_105')">
+                                105</a>
+                            </td>
+                            <td align="center">
+                                <a href="#line_105" onclick="switchLine('line_105'); new Effect.Highlight('line_105-105', {duration: 1.5}); return false">
+                                105</a>
+                            </td>
+                            <td>
+                                <a href="#line_105" onclick="switchLine('line_105'); new Effect.Highlight('line_105-105', {duration: 1.5}); return false">
+                                Inline control structures are not allowed</a>
+                            </td>
+                            <td>
+                                Checkstyle                            </td>
+                            <td>
+                                error                            </td>
+                        </tr>
+                        
+                        <tr class="Checkstyle">
+                            <td align="center">
+                                <a href="#line_113" onclick="switchLine('line_113')">
+                                113</a>
+                            </td>
+                            <td align="center">
+                                <a href="#line_113" onclick="switchLine('line_113'); new Effect.Highlight('line_113-113', {duration: 1.5}); return false">
+                                113</a>
+                            </td>
+                            <td>
+                                <a href="#line_113" onclick="switchLine('line_113'); new Effect.Highlight('line_113-113', {duration: 1.5}); return false">
+                                Opening brace should be on a new line</a>
+                            </td>
+                            <td>
+                                Checkstyle                            </td>
+                            <td>
+                                error                            </td>
+                        </tr>
+                        
+                        <tr class="Checkstyle">
+                            <td align="center">
+                                <a href="#line_117" onclick="switchLine('line_117')">
+                                117</a>
+                            </td>
+                            <td align="center">
+                                <a href="#line_117" onclick="switchLine('line_117'); new Effect.Highlight('line_117-117', {duration: 1.5}); return false">
+                                117</a>
+                            </td>
+                            <td>
+                                <a href="#line_117" onclick="switchLine('line_117'); new Effect.Highlight('line_117-117', {duration: 1.5}); return false">
+                                The closing brace for the class must go on the next line after the body</a>
+                            </td>
+                            <td>
+                                Checkstyle                            </td>
+                            <td>
+                                error                            </td>
+                        </tr>
+                        
+                        <tr class="PMD">
+                            <td align="center">
+                                <a href="#line_91" onclick="switchLine('line_91')">
+                                91</a>
+                            </td>
+                            <td align="center">
+                                <a href="#line_91" onclick="switchLine('line_91'); new Effect.Highlight('line_91-91', {duration: 1.5}); return false">
+                                91</a>
+                            </td>
+                            <td>
+                                <a href="#line_91" onclick="switchLine('line_91'); new Effect.Highlight('line_91-91', {duration: 1.5}); return false">
+                                
+      Avoid variables with short names like $t. Configured minimum length is 3.
+    </a>
+                            </td>
+                            <td>
+                                PMD                            </td>
+                            <td>
+                                error                            </td>
+                        </tr>
+                                            </tbody>
+                </table>
+            </div>
+            <script type="text/javascript" language="javascript">
+                $(initReview);
+            </script>
+                    </div>
+    </body>
+</html>

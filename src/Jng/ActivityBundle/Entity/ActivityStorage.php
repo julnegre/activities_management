@@ -6,6 +6,8 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * ActivityStorage
+* @ORM\Table(name="activity_storage")
+* @ORM\Entity(repositoryClass="Jng\ActivityBundle\Entity\Repository\ActivityStorageRepository") 
  */
 class ActivityStorage
 {

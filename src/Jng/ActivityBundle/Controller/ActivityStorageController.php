@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Jng\ActivityBundle\Entity\ActivityStorage;
 use Jng\ActivityBundle\Form\ActivityStorageType;
+use Jng\ActivityBundle\Entity\Repository\ActivityStorageRepository;
 
 /**
  * ActivityStorage controller.
@@ -20,11 +21,13 @@ class ActivityStorageController extends Controller {
     public function indexAction() {
         $user = $this->container->get('security.context')->getToken()->getUser();
 
+        $d1 = date("Y-m")."-01 00:00:00";
+        $d2 = date("Y-m-t")." 23:59:59";
+        
         $em = $this->getDoctrine()->getManager();
-
         $entities = $em->getRepository('JngActivityBundle:ActivityStorage')
-                ->findBy(array("user" => $user), array("start" => "DESC"));
-
+                ->getActivitiesForUser($user, $d1, $d2);
+        
         $deleteForms = array();
         foreach ($entities as $entity) {
             $deleteForms[$entity->getId()] = $this->createDeleteForm($entity->getId())->createView();
@@ -35,10 +38,6 @@ class ActivityStorageController extends Controller {
             $editForms[$entity->getId()] = $this->createEditForm($entity)->createView();
         }
 
-        
-
-
-        
         $ical = "";
         if ($user != "anon.")
         // ical token
@@ -48,7 +47,9 @@ class ActivityStorageController extends Controller {
                     'entities' => $entities,
                     'deleteForms' => $deleteForms,
                     'stopForms' => $editForms,
-                    'ical' => $ical
+                    'ical' => $ical,
+                    'd1' => $d1,    
+                    'd2' => $d2
         ));
     }
 

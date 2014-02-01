@@ -21,9 +21,12 @@ class ActivityRepository extends EntityRepository
  
         $qb->where('a.user = :user')
                   ->setParameter('user', $user);
+        
+        $qb->orderBy("a.created_at","DESC");
 
         return $qb;
     }
+    
     
     
 }

@@ -1,0 +1,461 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>YATSPHP » \ChromePhp</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">YATSPHP</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Namespaces</a></li>
+<li><a href="../namespaces/Acme.html"><i class="icon-th"></i> Acme</a></li>
+<li><a href="../namespaces/Jng.html"><i class="icon-th"></i> Jng</a></li>
+<li><a href="../namespaces/global.html"><i class="icon-th"></i> global</a></li>
+<li><a>Packages</a></li>
+<li><a href="../packages/ChromePhp.html"><i class="icon-folder-open"></i> ChromePhp</a></li>
+<li><a href="../packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
+<li><a href="../packages/DoctrineExtensions.html"><i class="icon-folder-open"></i> DoctrineExtensions</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">207</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul></ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">0</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
+<i class="icon-custom icon-method"></i> Methods
+                    <ul>
+<li class="method public "><a href="#method_addSetting" title="addSetting() :: adds a setting"><span class="description">adds a setting</span><pre>addSetting()</pre></a></li>
+<li class="method public "><a href="#method_addSettings" title="addSettings() :: add ability to set multiple settings in one call"><span class="description">add ability to set multiple settings in one call</span><pre>addSettings()</pre></a></li>
+<li class="method public "><a href="#method_error" title="error() :: logs an error to the console"><span class="description">logs an error to the console</span><pre>error()</pre></a></li>
+<li class="method public "><a href="#method_getInstance" title="getInstance() :: gets instance of this class"><span class="description">gets instance of this class</span><pre>getInstance()</pre></a></li>
+<li class="method public "><a href="#method_getSetting" title="getSetting() :: gets a setting"><span class="description">gets a setting</span><pre>getSetting()</pre></a></li>
+<li class="method public "><a href="#method_group" title="group() :: sends a group log"><span class="description">sends a group log</span><pre>group()</pre></a></li>
+<li class="method public "><a href="#method_groupCollapsed" title="groupCollapsed() :: sends a collapsed group log"><span class="description">sends a collapsed group log</span><pre>groupCollapsed()</pre></a></li>
+<li class="method public "><a href="#method_groupEnd" title="groupEnd() :: ends a group log"><span class="description">ends a group log</span><pre>groupEnd()</pre></a></li>
+<li class="method public "><a href="#method_info" title="info() :: sends an info log"><span class="description">sends an info log</span><pre>info()</pre></a></li>
+<li class="method public "><a href="#method_log" title="log() :: logs a variable to the console"><span class="description">logs a variable to the console</span><pre>log()</pre></a></li>
+<li class="method public "><a href="#method_table" title="table() :: sends a table log"><span class="description">sends a table log</span><pre>table()</pre></a></li>
+<li class="method public "><a href="#method_warn" title="warn() :: logs a warning to the console"><span class="description">logs a warning to the console</span><pre>warn()</pre></a></li>
+</ul>
+</li>
+<li class="nav-header protected">» Protected
+                    <ul>
+<li class="method protected "><a href="#method__addRow" title="_addRow() :: adds a value to the data array"><span class="description">adds a value to the data array</span><pre>_addRow()</pre></a></li>
+<li class="method protected "><a href="#method__convert" title="_convert() :: converts an object to a better format for logging"><span class="description">converts an object to a better format for logging</span><pre>_convert()</pre></a></li>
+<li class="method protected "><a href="#method__encode" title="_encode() :: encodes the data to be sent along with the request"><span class="description">encodes the data to be sent along with the request</span><pre>_encode()</pre></a></li>
+<li class="method protected "><a href="#method__getPropertyKey" title="_getPropertyKey() :: takes a reflection property and returns a nicely formatted key of the property name"><span class="description">takes a reflection property and returns a nicely formatted key of the property name</span><pre>_getPropertyKey()</pre></a></li>
+<li class="method protected "><a href="#method__log" title="_log() :: internal logging call"><span class="description">internal logging call</span><pre>_log()</pre></a></li>
+<li class="method protected "><a href="#method__writeHeader" title="_writeHeader() :: "><span class="description">_writeHeader()
+        </span><pre>_writeHeader()</pre></a></li>
+</ul>
+</li>
+<li class="nav-header private">» Private
+                    <ul><li class="method private "><a href="#method___construct" title="__construct() :: constructor"><span class="description">constructor</span><pre>__construct()</pre></a></li></ul>
+</li>
+<li class="nav-header">
+<i class="icon-custom icon-property"></i> Properties
+                    <ul></ul>
+</li>
+<li class="nav-header protected">» Protected
+                    <ul>
+<li class="property protected "><a href="#property__backtraces" title="$_backtraces() :: "><span class="description"></span><pre>$_backtraces</pre></a></li>
+<li class="property protected "><a href="#property__error_triggered" title="$_error_triggered() :: "><span class="description"></span><pre>$_error_triggered</pre></a></li>
+<li class="property protected "><a href="#property__instance" title="$_instance() :: "><span class="description"></span><pre>$_instance</pre></a></li>
+<li class="property protected "><a href="#property__json" title="$_json() :: "><span class="description"></span><pre>$_json</pre></a></li>
+<li class="property protected "><a href="#property__php_version" title="$_php_version() :: "><span class="description"></span><pre>$_php_version</pre></a></li>
+<li class="property protected "><a href="#property__processed" title="$_processed() :: Prevent recursion when working with objects referring to each other"><span class="description"></span><pre>$_processed</pre></a></li>
+<li class="property protected "><a href="#property__settings" title="$_settings() :: "><span class="description"></span><pre>$_settings</pre></a></li>
+<li class="property protected "><a href="#property__timestamp" title="$_timestamp() :: "><span class="description"></span><pre>$_timestamp</pre></a></li>
+</ul>
+</li>
+<li class="nav-header">
+<i class="icon-custom icon-constant"></i> Constants
+                    <ul>
+<li class="constant  "><a href="#constant_BACKTRACE_LEVEL" title="BACKTRACE_LEVEL() :: "><span class="description">BACKTRACE_LEVEL</span><pre>BACKTRACE_LEVEL</pre></a></li>
+<li class="constant  "><a href="#constant_ERROR" title="ERROR() :: "><span class="description">ERROR</span><pre>ERROR</pre></a></li>
+<li class="constant  "><a href="#constant_GROUP" title="GROUP() :: "><span class="description">GROUP</span><pre>GROUP</pre></a></li>
+<li class="constant  "><a href="#constant_GROUP_COLLAPSED" title="GROUP_COLLAPSED() :: "><span class="description">GROUP_COLLAPSED</span><pre>GROUP_COLLAPSED</pre></a></li>
+<li class="constant  "><a href="#constant_GROUP_END" title="GROUP_END() :: "><span class="description">GROUP_END</span><pre>GROUP_END</pre></a></li>
+<li class="constant  "><a href="#constant_HEADER_NAME" title="HEADER_NAME() :: "><span class="description">HEADER_NAME</span><pre>HEADER_NAME</pre></a></li>
+<li class="constant  "><a href="#constant_INFO" title="INFO() :: "><span class="description">INFO</span><pre>INFO</pre></a></li>
+<li class="constant  "><a href="#constant_LOG" title="LOG() :: "><span class="description">LOG</span><pre>LOG</pre></a></li>
+<li class="constant  "><a href="#constant_TABLE" title="TABLE() :: "><span class="description">TABLE</span><pre>TABLE</pre></a></li>
+<li class="constant  "><a href="#constant_VERSION" title="VERSION() :: "><span class="description">VERSION</span><pre>VERSION</pre></a></li>
+<li class="constant  "><a href="#constant_WARN" title="WARN() :: "><span class="description">WARN</span><pre>WARN</pre></a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="span8">
+<a id="\ChromePhp"></a><ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
+</li>
+<li class="active">
+<span class="divider">\</span><a href="../classes/ChromePhp.html">ChromePhp</a>
+</li>
+</ul>
+<div class="element class">
+<p class="short_description">Server Side Chrome PHP debugger class</p>
+<div class="details">
+<div class="long_description"></div>
+<table class="table table-bordered">
+<tr>
+<th>package</th>
+<td><a href="../packages/ChromePhp.html">ChromePhp</a></td>
+</tr>
+<tr>
+<th>author</th>
+<td><a href="mailto:iamcraigcampbell@gmail.com">Craig Campbell</a></td>
+</tr>
+</table>
+<h3>
+<i class="icon-custom icon-method"></i> Methods</h3>
+<a id="method_addSetting"></a><div class="element clickable method public method_addSetting" data-toggle="collapse" data-target=".method_addSetting .collapse">
+<h2>adds a setting</h2>
+<pre>addSetting($key, $value) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$key</h4></div>
+<div class="subelement argument"><h4>$value</h4></div>
+</div></div>
+</div>
+<a id="method_addSettings"></a><div class="element clickable method public method_addSettings" data-toggle="collapse" data-target=".method_addSettings .collapse">
+<h2>add ability to set multiple settings in one call</h2>
+<pre>addSettings(array $settings) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$settings</h4>
+<code>array</code>
+</div>
+</div></div>
+</div>
+<a id="method_error"></a><div class="element clickable method public method_error" data-toggle="collapse" data-target=".method_error .collapse">
+<h2>logs an error to the console</h2>
+<pre>error() : void</pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="method_getInstance"></a><div class="element clickable method public method_getInstance" data-toggle="collapse" data-target=".method_getInstance .collapse">
+<h2>gets instance of this class</h2>
+<pre>getInstance() : <a href="../classes/ChromePhp.html">\ChromePhp</a></pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response"><code><a href="../classes/ChromePhp.html">\ChromePhp</a></code></div>
+</div></div>
+</div>
+<a id="method_getSetting"></a><div class="element clickable method public method_getSetting" data-toggle="collapse" data-target=".method_getSetting .collapse">
+<h2>gets a setting</h2>
+<pre>getSetting($key) : mixed</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$key</h4></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>mixed</code></div>
+</div></div>
+</div>
+<a id="method_group"></a><div class="element clickable method public method_group" data-toggle="collapse" data-target=".method_group .collapse">
+<h2>sends a group log</h2>
+<pre>group() </pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="method_groupCollapsed"></a><div class="element clickable method public method_groupCollapsed" data-toggle="collapse" data-target=".method_groupCollapsed .collapse">
+<h2>sends a collapsed group log</h2>
+<pre>groupCollapsed() </pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="method_groupEnd"></a><div class="element clickable method public method_groupEnd" data-toggle="collapse" data-target=".method_groupEnd .collapse">
+<h2>ends a group log</h2>
+<pre>groupEnd() </pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="method_info"></a><div class="element clickable method public method_info" data-toggle="collapse" data-target=".method_info .collapse">
+<h2>sends an info log</h2>
+<pre>info() : void</pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="method_log"></a><div class="element clickable method public method_log" data-toggle="collapse" data-target=".method_log .collapse">
+<h2>logs a variable to the console</h2>
+<pre>log() : void</pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="method_table"></a><div class="element clickable method public method_table" data-toggle="collapse" data-target=".method_table .collapse">
+<h2>sends a table log</h2>
+<pre>table() </pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="method_warn"></a><div class="element clickable method public method_warn" data-toggle="collapse" data-target=".method_warn .collapse">
+<h2>logs a warning to the console</h2>
+<pre>warn() : void</pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="method__addRow"></a><div class="element clickable method protected method__addRow" data-toggle="collapse" data-target=".method__addRow .collapse">
+<h2>adds a value to the data array</h2>
+<pre>_addRow(array $logs, $backtrace, $type) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>var</th>
+<td></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$logs</h4></div>
+<div class="subelement argument"><h4>$backtrace</h4></div>
+<div class="subelement argument"><h4>$type</h4></div>
+</div></div>
+</div>
+<a id="method__convert"></a><div class="element clickable method protected method__convert" data-toggle="collapse" data-target=".method__convert .collapse">
+<h2>converts an object to a better format for logging</h2>
+<pre>_convert($object) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$object</h4></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>array</code></div>
+</div></div>
+</div>
+<a id="method__encode"></a><div class="element clickable method protected method__encode" data-toggle="collapse" data-target=".method__encode .collapse">
+<h2>encodes the data to be sent along with the request</h2>
+<pre>_encode(array $data) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$data</h4>
+<code>array</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method__getPropertyKey"></a><div class="element clickable method protected method__getPropertyKey" data-toggle="collapse" data-target=".method__getPropertyKey .collapse">
+<h2>takes a reflection property and returns a nicely formatted key of the property name</h2>
+<pre>_getPropertyKey(\ReflectionProperty $property) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$property</h4></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method__log"></a><div class="element clickable method protected method__log" data-toggle="collapse" data-target=".method__log .collapse">
+<h2>internal logging call</h2>
+<pre>_log(string $type, array $args) : void</pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$type</h4>
+<code>string</code>
+</div>
+<div class="subelement argument"><h4>$args</h4></div>
+</div></div>
+</div>
+<a id="method__writeHeader"></a><div class="element clickable method protected method__writeHeader" data-toggle="collapse" data-target=".method__writeHeader .collapse">
+<h2>_writeHeader()
+        </h2>
+<pre>_writeHeader($data) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$data</h4></div>
+</div></div>
+</div>
+<a id="method___construct"></a><div class="element clickable method private method___construct" data-toggle="collapse" data-target=".method___construct .collapse">
+<h2>constructor</h2>
+<pre>__construct() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<h3>
+<i class="icon-custom icon-property"></i> Properties</h3>
+<a id="property__backtraces"> </a><div class="element clickable property protected property__backtraces" data-toggle="collapse" data-target=".property__backtraces .collapse">
+<h2>$_backtraces</h2>
+<pre>$_backtraces : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property__error_triggered"> </a><div class="element clickable property protected property__error_triggered" data-toggle="collapse" data-target=".property__error_triggered .collapse">
+<h2>$_error_triggered</h2>
+<pre>$_error_triggered : bool</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property__instance"> </a><div class="element clickable property protected property__instance" data-toggle="collapse" data-target=".property__instance .collapse">
+<h2>$_instance</h2>
+<pre>$_instance : <a href="../classes/ChromePhp.html">\ChromePhp</a></pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property__json"> </a><div class="element clickable property protected property__json" data-toggle="collapse" data-target=".property__json .collapse">
+<h2>$_json</h2>
+<pre>$_json : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property__php_version"> </a><div class="element clickable property protected property__php_version" data-toggle="collapse" data-target=".property__php_version .collapse">
+<h2>$_php_version</h2>
+<pre>$_php_version : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property__processed"> </a><div class="element clickable property protected property__processed" data-toggle="collapse" data-target=".property__processed .collapse">
+<h2>Prevent recursion when working with objects referring to each other</h2>
+<pre>$_processed : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property__settings"> </a><div class="element clickable property protected property__settings" data-toggle="collapse" data-target=".property__settings .collapse">
+<h2>$_settings</h2>
+<pre>$_settings : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property__timestamp"> </a><div class="element clickable property protected property__timestamp" data-toggle="collapse" data-target=".property__timestamp .collapse">
+<h2>$_timestamp</h2>
+<pre>$_timestamp : int</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<h3>
+<i class="icon-custom icon-constant"></i> Constants</h3>
+<a id="constant_BACKTRACE_LEVEL"> </a><div class="element clickable constant  constant_BACKTRACE_LEVEL" data-toggle="collapse" data-target=".constant_BACKTRACE_LEVEL .collapse">
+<h2>BACKTRACE_LEVEL</h2>
+<pre>BACKTRACE_LEVEL : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_ERROR"> </a><div class="element clickable constant  constant_ERROR" data-toggle="collapse" data-target=".constant_ERROR .collapse">
+<h2>ERROR</h2>
+<pre>ERROR : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_GROUP"> </a><div class="element clickable constant  constant_GROUP" data-toggle="collapse" data-target=".constant_GROUP .collapse">
+<h2>GROUP</h2>
+<pre>GROUP : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_GROUP_COLLAPSED"> </a><div class="element clickable constant  constant_GROUP_COLLAPSED" data-toggle="collapse" data-target=".constant_GROUP_COLLAPSED .collapse">
+<h2>GROUP_COLLAPSED</h2>
+<pre>GROUP_COLLAPSED : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_GROUP_END"> </a><div class="element clickable constant  constant_GROUP_END" data-toggle="collapse" data-target=".constant_GROUP_END .collapse">
+<h2>GROUP_END</h2>
+<pre>GROUP_END : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_HEADER_NAME"> </a><div class="element clickable constant  constant_HEADER_NAME" data-toggle="collapse" data-target=".constant_HEADER_NAME .collapse">
+<h2>HEADER_NAME</h2>
+<pre>HEADER_NAME : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_INFO"> </a><div class="element clickable constant  constant_INFO" data-toggle="collapse" data-target=".constant_INFO .collapse">
+<h2>INFO</h2>
+<pre>INFO : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_LOG"> </a><div class="element clickable constant  constant_LOG" data-toggle="collapse" data-target=".constant_LOG .collapse">
+<h2>LOG</h2>
+<pre>LOG : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_TABLE"> </a><div class="element clickable constant  constant_TABLE" data-toggle="collapse" data-target=".constant_TABLE .collapse">
+<h2>TABLE</h2>
+<pre>TABLE : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_VERSION"> </a><div class="element clickable constant  constant_VERSION" data-toggle="collapse" data-target=".constant_VERSION .collapse">
+<h2>VERSION</h2>
+<pre>VERSION : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_WARN"> </a><div class="element clickable constant  constant_WARN" data-toggle="collapse" data-target=".constant_WARN .collapse">
+<h2>WARN</h2>
+<pre>WARN : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.1.0
+</a> and<br>
+            generated on 2013-11-12T08:23:00+01:00.<br></footer></div>
+</div>
+</body>
+</html>

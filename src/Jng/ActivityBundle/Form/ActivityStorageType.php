@@ -28,7 +28,7 @@ class ActivityStorageType extends AbstractType
         $user = $this->user;
         $builder
             ->add('activity','entity', array('class'=>'Jng\ActivityBundle\Entity\Activity',
-                'property'=>'name' ,
+                'property'=>'namea' ,
                     'query_builder' => function(ActivityRepository $er) use ($user) 
 			{
 				return $er->getActivitiesForUser($user);

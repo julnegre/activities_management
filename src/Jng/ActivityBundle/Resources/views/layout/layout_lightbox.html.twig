@@ -61,11 +61,13 @@
                 <div class="header">{% block title_section %}{% endblock %}</div>        
 
                 <div class="content">
-                {% for flashMessage in app.session.flashbag.get('notice') %}
-                    <div class="flash-message">
-                        <em>Notice</em>: {{ flashMessage }}
-                    </div>
-                {% endfor %}
+                {% if app.session != null %}    
+                    {% for flashMessage in app.session.flashbag.get('notice') %}
+                        <div class="flash-message">
+                            <em>Notice</em>: {{ flashMessage }}
+                        </div>
+                    {% endfor %}
+                {% endif %} 
                 {% block content %}{% endblock %}
                 </div>
 

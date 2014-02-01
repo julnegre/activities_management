@@ -1,6 +1,7 @@
 Jng\ActivityBundle\Entity\ActivityStorage:
     type: entity
     table: activity_storage
+    repositoryClass: Jng\ActivityBundle\Entity\Repository\ActivityStorageRepository
     fields:
         id:
             type: integer

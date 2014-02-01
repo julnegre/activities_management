@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<project name="YATSPHP" default="qa" basedir=".">
+    <!-- Property -->
+    <property name="builddir" value="build" />
+
+    <!-- Main targets -->
+    <target name="qa" depends="qa-clean, qa-prepare, phpcs, phpcpd, phpmd, phploc, pdepend, phpdoc, phpcb" description="Do static analysis of the code"/>
+
+    <!-- QA : Clean the directory -->
+    <target name="qa-clean">
+        <delete dir="${builddir}" />
+    </target>
+    <!-- QA : Prepare the directory for the build -->
+    <target name="qa-prepare">
+        <mkdir dir="${builddir}" />
+        <mkdir dir="${builddir}/out" />
+        <mkdir dir="${builddir}/logs" />
+        <mkdir dir="${builddir}/docs" />
+    </target>
+    <!-- PHP CodeSniffer -->
+    <target name="phpcs">
+        <phpcodesniffer standard="PSR1" showSniffs="false" showWarnings="true">
+            <fileset dir="src">
+                <include name="**/*.php" />
+                <include name="*.php" />
+            </fileset>
+            <formatter type="default" usefile="false"/>
+            <formatter type="checkstyle" outfile="${builddir}/logs/checkstyle_PSR1.xml"/>
+        </phpcodesniffer>
+        <phpcodesniffer standard="PSR2" showSniffs="false" showWarnings="true">
+            <fileset dir="src">
+                <include name="**/*.php" />
+                <include name="*.php" />
+            </fileset>
+            <formatter type="default" usefile="false"/>
+            <formatter type="checkstyle" outfile="${builddir}/logs/checkstyle_PSR2.xml"/>
+        </phpcodesniffer>
+    </target>
+    <!-- PHP copy/paste analysis -->
+    <target name="phpcpd">
+        <phpcpd file="src">
+            <fileset dir="src">
+                <include name="**/*.php" />
+                <include name="*.php" />
+            </fileset>
+            <formatter type="pmd" outfile="${builddir}/logs/pmd.xml"/>
+        </phpcpd>
+    </target>
+    <!-- PHP Mess Detector -->
+    <target name="phpmd">
+        <phpmd rulesets="codesize,design,naming,unusedcode">
+            <fileset dir="src">
+                <include name="**/*.php" />
+                <include name="*.php" />
+            </fileset>
+            <formatter type="xml" outfile="${builddir}/logs/pmd.xml"/>
+        </phpmd>
+    </target>
+    <!-- PHPLOC -->
+    <target name="phploc">
+        <phploc countTests="false" reportType="xml" reportDirectory="${builddir}/logs/" reportName="phploc">
+            <fileset dir="src">
+                <include name="**/*.php" />
+                <include name="*.php" />
+            </fileset>
+        </phploc>
+    </target>
+    <!-- PDepend -->
+    <target name="pdepend">
+        <phpdepend>
+            <fileset dir="src">
+                <include name="**/*.php" />
+                <include name="*.php" />
+            </fileset>
+            <logger type="summary-xml" outfile="${builddir}/logs/pdepend-summary.xml"/>
+            <logger type="jdepend-xml" outfile="${builddir}/logs/pdepend-jdepend.xml"/>
+            <analyzer type="coderank-mode" value="method"/>
+        </phpdepend>
+    </target>
+    <!-- PHPDocumentor -->
+    <target name="phpdoc">
+        <phpdoc2 destdir="${builddir}/docs" template="responsive" title="YATSPHP">
+            <fileset dir="src">
+                <include name="**/*.php" />
+                <include name="*.php" />
+            </fileset>
+        </phpdoc2>
+    </target>
+    <!-- PHP Code Browser -->
+    <target name="phpcb">
+        <exec logoutput="true" command="phpcb --log ${builddir}/logs --source src/ --output ${builddir}/out" />
+    </target>
+</project>

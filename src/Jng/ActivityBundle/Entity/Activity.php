@@ -181,4 +181,11 @@ class Activity
     {
         return $this->user;
     }
+    
+    
+    public function getNamea(){
+        
+        return $this->getCustomer()->getName()." # ".$this->name;
+    }
+    
 }

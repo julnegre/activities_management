@@ -1,0 +1,340 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>YATSPHP » \Jng\ActivityBundle\Entity\Activity</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">YATSPHP</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Namespaces</a></li>
+<li><a href="../namespaces/Acme.html"><i class="icon-th"></i> Acme</a></li>
+<li><a href="../namespaces/Jng.html"><i class="icon-th"></i> Jng</a></li>
+<li><a href="../namespaces/global.html"><i class="icon-th"></i> global</a></li>
+<li><a>Packages</a></li>
+<li><a href="../packages/ChromePhp.html"><i class="icon-folder-open"></i> ChromePhp</a></li>
+<li><a href="../packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
+<li><a href="../packages/DoctrineExtensions.html"><i class="icon-folder-open"></i> DoctrineExtensions</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">207</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul></ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">0</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
+<i class="icon-custom icon-method"></i> Methods
+                    <ul>
+<li class="method public "><a href="#method_getCreatedAt" title="getCreatedAt() :: Get created_at"><span class="description">Get created_at</span><pre>getCreatedAt()</pre></a></li>
+<li class="method public "><a href="#method_getCustomer" title="getCustomer() :: Get customer"><span class="description">Get customer</span><pre>getCustomer()</pre></a></li>
+<li class="method public "><a href="#method_getId" title="getId() :: Get id"><span class="description">Get id</span><pre>getId()</pre></a></li>
+<li class="method public "><a href="#method_getName" title="getName() :: Get name"><span class="description">Get name</span><pre>getName()</pre></a></li>
+<li class="method public "><a href="#method_getUpdatedAt" title="getUpdatedAt() :: Get updated_at"><span class="description">Get updated_at</span><pre>getUpdatedAt()</pre></a></li>
+<li class="method public "><a href="#method_getUser" title="getUser() :: Get user"><span class="description">Get user</span><pre>getUser()</pre></a></li>
+<li class="method public "><a href="#method_setCreatedAt" title="setCreatedAt() :: Set created_at"><span class="description">Set created_at</span><pre>setCreatedAt()</pre></a></li>
+<li class="method public "><a href="#method_setCreatedAtValue" title="setCreatedAtValue() :: "><span class="description">setCreatedAtValue()
+        </span><pre>setCreatedAtValue()</pre></a></li>
+<li class="method public "><a href="#method_setCustomer" title="setCustomer() :: Set customer"><span class="description">Set customer</span><pre>setCustomer()</pre></a></li>
+<li class="method public "><a href="#method_setName" title="setName() :: Set name"><span class="description">Set name</span><pre>setName()</pre></a></li>
+<li class="method public "><a href="#method_setUpdatedAt" title="setUpdatedAt() :: Set updated_at"><span class="description">Set updated_at</span><pre>setUpdatedAt()</pre></a></li>
+<li class="method public "><a href="#method_setUpdatedAtValue" title="setUpdatedAtValue() :: "><span class="description">setUpdatedAtValue()
+        </span><pre>setUpdatedAtValue()</pre></a></li>
+<li class="method public "><a href="#method_setUser" title="setUser() :: Set user"><span class="description">Set user</span><pre>setUser()</pre></a></li>
+</ul>
+</li>
+<li class="nav-header">
+<i class="icon-custom icon-property"></i> Properties
+                    <ul></ul>
+</li>
+<li class="nav-header private">» Private
+                    <ul>
+<li class="property private "><a href="#property_created_at" title="$created_at() :: "><span class="description"></span><pre>$created_at</pre></a></li>
+<li class="property private "><a href="#property_customer" title="$customer() :: "><span class="description"></span><pre>$customer</pre></a></li>
+<li class="property private "><a href="#property_id" title="$id() :: "><span class="description"></span><pre>$id</pre></a></li>
+<li class="property private "><a href="#property_name" title="$name() :: "><span class="description"></span><pre>$name</pre></a></li>
+<li class="property private "><a href="#property_updated_at" title="$updated_at() :: "><span class="description"></span><pre>$updated_at</pre></a></li>
+<li class="property private "><a href="#property_user" title="$user() :: "><span class="description"></span><pre>$user</pre></a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="span8">
+<a id="\Jng\ActivityBundle\Entity\Activity"></a><ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/Jng.html">Jng</a></li>
+<li>
+<span class="divider">\</span><a href="../namespaces/Jng.ActivityBundle.html">ActivityBundle</a>
+</li>
+<li>
+<span class="divider">\</span><a href="../namespaces/Jng.ActivityBundle.Entity.html">Entity</a>
+</li>
+<li class="active">
+<span class="divider">\</span><a href="../classes/Jng.ActivityBundle.Entity.Activity.html">Activity</a>
+</li>
+</ul>
+<div class="element class">
+<p class="short_description">Activity</p>
+<div class="details">
+<div class="long_description"></div>
+<table class="table table-bordered">
+<tr>
+<th>ORM\Table</th>
+<td>(name="activity")</td>
+</tr>
+<tr>
+<th>ORM\Entity</th>
+<td>(repositoryClass="Jng\ActivityBundle\Entity\Repository\ActivityRepository")</td>
+</tr>
+</table>
+<h3>
+<i class="icon-custom icon-method"></i> Methods</h3>
+<a id="method_getCreatedAt"></a><div class="element clickable method public method_getCreatedAt" data-toggle="collapse" data-target=".method_getCreatedAt .collapse">
+<h2>Get created_at</h2>
+<pre>getCreatedAt() : <a href="DateTime.html">\DateTime</a></pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response"><code><a href="DateTime.html">\DateTime</a></code></div>
+</div></div>
+</div>
+<a id="method_getCustomer"></a><div class="element clickable method public method_getCustomer" data-toggle="collapse" data-target=".method_getCustomer .collapse">
+<h2>Get customer</h2>
+<pre>getCustomer() : <a href="../classes/Jng.ActivityBundle.Entity.Customer.html">\Jng\ActivityBundle\Entity\Customer</a></pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response"><code><a href="../classes/Jng.ActivityBundle.Entity.Customer.html">\Jng\ActivityBundle\Entity\Customer</a></code></div>
+</div></div>
+</div>
+<a id="method_getId"></a><div class="element clickable method public method_getId" data-toggle="collapse" data-target=".method_getId .collapse">
+<h2>Get id</h2>
+<pre>getId() : integer</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>integer</code></div>
+</div></div>
+</div>
+<a id="method_getName"></a><div class="element clickable method public method_getName" data-toggle="collapse" data-target=".method_getName .collapse">
+<h2>Get name</h2>
+<pre>getName() : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_getUpdatedAt"></a><div class="element clickable method public method_getUpdatedAt" data-toggle="collapse" data-target=".method_getUpdatedAt .collapse">
+<h2>Get updated_at</h2>
+<pre>getUpdatedAt() : <a href="DateTime.html">\DateTime</a></pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response"><code><a href="DateTime.html">\DateTime</a></code></div>
+</div></div>
+</div>
+<a id="method_getUser"></a><div class="element clickable method public method_getUser" data-toggle="collapse" data-target=".method_getUser .collapse">
+<h2>Get user</h2>
+<pre>getUser() : <a href="../classes/Jng.UserBundle.Entity.User.html">\Jng\UserBundle\Entity\User</a></pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response"><code><a href="../classes/Jng.UserBundle.Entity.User.html">\Jng\UserBundle\Entity\User</a></code></div>
+</div></div>
+</div>
+<a id="method_setCreatedAt"></a><div class="element clickable method public method_setCreatedAt" data-toggle="collapse" data-target=".method_setCreatedAt .collapse">
+<h2>Set created_at</h2>
+<pre>setCreatedAt(\DateTime $createdAt) : <a href="../classes/Jng.ActivityBundle.Entity.Activity.html">\Jng\ActivityBundle\Entity\Activity</a></pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$createdAt</h4>
+<code><a href="DateTime.html">\DateTime</a></code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code><a href="../classes/Jng.ActivityBundle.Entity.Activity.html">\Jng\ActivityBundle\Entity\Activity</a></code></div>
+</div></div>
+</div>
+<a id="method_setCreatedAtValue"></a><div class="element clickable method public method_setCreatedAtValue" data-toggle="collapse" data-target=".method_setCreatedAtValue .collapse">
+<h2>setCreatedAtValue()
+        </h2>
+<pre>setCreatedAtValue() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>ORM\PrePersist</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="method_setCustomer"></a><div class="element clickable method public method_setCustomer" data-toggle="collapse" data-target=".method_setCustomer .collapse">
+<h2>Set customer</h2>
+<pre>setCustomer(\Jng\ActivityBundle\Entity\Customer $customer) : <a href="../classes/Jng.ActivityBundle.Entity.Activity.html">\Jng\ActivityBundle\Entity\Activity</a></pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$customer</h4>
+<code><a href="../classes/Jng.ActivityBundle.Entity.Customer.html">\Jng\ActivityBundle\Entity\Customer</a></code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code><a href="../classes/Jng.ActivityBundle.Entity.Activity.html">\Jng\ActivityBundle\Entity\Activity</a></code></div>
+</div></div>
+</div>
+<a id="method_setName"></a><div class="element clickable method public method_setName" data-toggle="collapse" data-target=".method_setName .collapse">
+<h2>Set name</h2>
+<pre>setName(string $name) : <a href="../classes/Jng.ActivityBundle.Entity.Activity.html">\Jng\ActivityBundle\Entity\Activity</a></pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$name</h4>
+<code>string</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code><a href="../classes/Jng.ActivityBundle.Entity.Activity.html">\Jng\ActivityBundle\Entity\Activity</a></code></div>
+</div></div>
+</div>
+<a id="method_setUpdatedAt"></a><div class="element clickable method public method_setUpdatedAt" data-toggle="collapse" data-target=".method_setUpdatedAt .collapse">
+<h2>Set updated_at</h2>
+<pre>setUpdatedAt(\DateTime $updatedAt) : <a href="../classes/Jng.ActivityBundle.Entity.Activity.html">\Jng\ActivityBundle\Entity\Activity</a></pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$updatedAt</h4>
+<code><a href="DateTime.html">\DateTime</a></code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code><a href="../classes/Jng.ActivityBundle.Entity.Activity.html">\Jng\ActivityBundle\Entity\Activity</a></code></div>
+</div></div>
+</div>
+<a id="method_setUpdatedAtValue"></a><div class="element clickable method public method_setUpdatedAtValue" data-toggle="collapse" data-target=".method_setUpdatedAtValue .collapse">
+<h2>setUpdatedAtValue()
+        </h2>
+<pre>setUpdatedAtValue() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>ORM\PreUpdate</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="method_setUser"></a><div class="element clickable method public method_setUser" data-toggle="collapse" data-target=".method_setUser .collapse">
+<h2>Set user</h2>
+<pre>setUser(\Jng\UserBundle\Entity\User $user) : <a href="../classes/Jng.ActivityBundle.Entity.Activity.html">\Jng\ActivityBundle\Entity\Activity</a></pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$user</h4>
+<code><a href="../classes/Jng.UserBundle.Entity.User.html">\Jng\UserBundle\Entity\User</a></code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code><a href="../classes/Jng.ActivityBundle.Entity.Activity.html">\Jng\ActivityBundle\Entity\Activity</a></code></div>
+</div></div>
+</div>
+<h3>
+<i class="icon-custom icon-property"></i> Properties</h3>
+<a id="property_created_at"> </a><div class="element clickable property private property_created_at" data-toggle="collapse" data-target=".property_created_at .collapse">
+<h2>$created_at</h2>
+<pre>$created_at : <a href="DateTime.html">\DateTime</a></pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_customer"> </a><div class="element clickable property private property_customer" data-toggle="collapse" data-target=".property_customer .collapse">
+<h2>$customer</h2>
+<pre>$customer : <a href="../classes/Jng.ActivityBundle.Entity.Customer.html">\Jng\ActivityBundle\Entity\Customer</a></pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_id"> </a><div class="element clickable property private property_id" data-toggle="collapse" data-target=".property_id .collapse">
+<h2>$id</h2>
+<pre>$id : integer</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_name"> </a><div class="element clickable property private property_name" data-toggle="collapse" data-target=".property_name .collapse">
+<h2>$name</h2>
+<pre>$name : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_updated_at"> </a><div class="element clickable property private property_updated_at" data-toggle="collapse" data-target=".property_updated_at .collapse">
+<h2>$updated_at</h2>
+<pre>$updated_at : <a href="DateTime.html">\DateTime</a></pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_user"> </a><div class="element clickable property private property_user" data-toggle="collapse" data-target=".property_user .collapse">
+<h2>$user</h2>
+<pre>$user : <a href="../classes/Jng.UserBundle.Entity.User.html">\Jng\UserBundle\Entity\User</a></pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.1.0
+</a> and<br>
+            generated on 2013-11-12T08:23:00+01:00.<br></footer></div>
+</div>
+</body>
+</html>
