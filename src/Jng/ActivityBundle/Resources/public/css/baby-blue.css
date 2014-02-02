@@ -128,7 +128,7 @@ aside {
 .content {
     margin: 0 auto;
     padding: 0 2em;
-    max-width: 800px;
+    /*max-width: 800px;*/
     margin-bottom: 50px;
 }
     .content p {

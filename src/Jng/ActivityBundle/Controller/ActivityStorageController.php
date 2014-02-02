@@ -28,7 +28,7 @@ class ActivityStorageController extends Controller {
             //put in session
             $d1 = date_format(date_create_from_format('d/m/Y', $dd1), 'Y-m-d');
             $d2 = date_format(date_create_from_format('d/m/Y', $dd2), 'Y-m-d');
-
+            $d2 .= " 23:59:59";
         } else {
             $d1 = date("Y-m")."-01 00:00:00";
             $d2 = date("Y-m-t")." 23:59:59";
@@ -344,6 +344,13 @@ class ActivityStorageController extends Controller {
      */
     public function exportexcelAction(Request $request, $date1, $date2){
         
+        $user = $this->container->get('security.context')->getToken()->getUser();
+
+        if( $user == "anon." ){
+            echo "No access for anonymous !";
+            exit(0);
+        }
+        
         $xlsTmpPath = dirname(__FILE__)."/../Resources/public/tmp/template.xls";
         $xlsTmpPathOut = $this->get('kernel')->getRootDir()."/../web/tmp/".$date1."_out.xls";
         
@@ -363,7 +370,6 @@ class ActivityStorageController extends Controller {
         $activeSheet = $objPHPExcel->getActiveSheet();
 
         // select data 
-        $user = $this->container->get('security.context')->getToken()->getUser();
 
       $em = $this->getDoctrine()->getManager();
       
@@ -371,7 +377,7 @@ class ActivityStorageController extends Controller {
         'SELECT j as token FROM JngActivityBundle:ActivityStorage j '
               . 'WHERE j.user=:user and j.start BETWEEN :d1 AND :d2'
       )->setParameter('d1', $date1)
-            ->setParameter('d2', $date2)
+            ->setParameter('d2', $date2." 23:59:59")
             ->setParameter('user', $user);
       $entities = $query->getResult(Query::HYDRATE_OBJECT);
 
@@ -383,7 +389,7 @@ class ActivityStorageController extends Controller {
         }
         
         // @TODO add customer
-        $customer = "";
+        $customer = "AGCONSEIL";
         
         foreach($entities as $ent ){
             $act = $ent["token"];
@@ -403,7 +409,7 @@ class ActivityStorageController extends Controller {
             //$temps = $t/3600;
             $temps = "3.5";//@TODO à modifier -  
             
-            $data[$day-1] = array($activity,"",$temps);
+            $data[$day-1] = array($activity,"","",$temps);
             
         }
         

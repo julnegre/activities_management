@@ -11,8 +11,12 @@
         <link rel="stylesheet" href="{{ asset('bundles/jngactivity/css/baby-blue.css') }}" />
         <link rel="stylesheet" href="{{ asset('bundles/jngactivity/css/activity.css') }}" />
         <link rel="stylesheet" href="{{ asset('bundles/jngactivity/css/jackedup.css') }}" />
-        <link rel="stylesheet" href="{{ asset('bundles/jngactivity/css/box.css') }}"> 
+        <link rel="stylesheet" href="{{ asset('bundles/jngactivity/css/jquery.fancybox.css') }}"> 
         <link rel="stylesheet" href="{{ asset('bundles/jngactivity/css/jquery-ui.min.css') }}"  />
+        <style>
+            #main .content table td:last-child ul{padding:0}
+            
+        </style>
         {% block stylesheets %}{% endblock %}
         <script src="http://use.typekit.net/gis6vng.js"></script>
         <script>try {
@@ -23,7 +27,7 @@
         <script src="http://yui.yahooapis.com/3.12.0/build/yui/yui-min.js"></script>
         <script src="{{ asset('bundles/jngactivity/js/vendor/custom.modernizr.js') }}"></script>
         <script src="{{ asset('bundles/jngactivity/js/humane.js') }}"></script>
-        <script src="{{ asset('bundles/jngactivity/js/jquery.box.js') }}"></script>
+        <script src="{{ asset('bundles/jngactivity/js/jquery.fancybox.pack.js') }}"></script>
         <script src="{{ asset('bundles/jngactivity/js/jquery-ui.min.js') }}"></script>
         {% block javascripts %}{% endblock %} 
         <title>{% block title %}{% endblock %} - Activity Manager</title>
@@ -54,47 +58,19 @@
                 });
 
                 // popup
-                $("#main .pure-button").attr("rel", "facebox");
-                $.extend($.facebox, {
-                    settings: {
-                        opacity: 0.2,
-                        overlay: true,
-                        loadingImage: "{{ asset('bundles/jngactivity/images/box/loading.gif') }}",
-                        closeImage: "{{ asset('bundles/jngactivity/images/box/closelabel.gif') }}",
-                        imageTypes: ['png', 'jpg', 'jpeg', 'gif'],
-                        faceboxHtml: '\
-                    <div id="facebox" style="display:none;"> \
-                      <div class="popup"> \
-                        <div class="content"> \
-                        </div> \
-                        <a href="#" class="close"></a> \
-                      </div> \
-                    </div>'
-                    },
-                      reveal: function(data, klass) {
-                        $(document).trigger('beforeReveal.facebox')
-                        if (klass) $('#facebox .content').addClass(klass)
-                        $('#facebox .content').empty().append(data)
-                        $('#facebox .popup').children().fadeIn('normal')
-                        $('#facebox').css('left', $(window).width() / 2 - ($('#facebox .popup').outerWidth() / 2))
-                        $(document).trigger('reveal.facebox').trigger('afterReveal.facebox')
-                        // modification de la facebox
-                        $("#facebox .content").css("width","600px")
-                            .css("height","200px").css("overflow","auto");
-                        $("#facebox").css("top","10px").css("left","200px");    
-                        $(window).resize(function() {
-                          $("#facebox .content").css("width","600px")
-                            .css("height","200px");
-                          $("#facebox").css("top","10px").css("left","200px");   
-                        });     
-    
-                }
-                    
+                $("#main .content .pure-button").not(".pure-button-error").fancybox({
+                        type            :'ajax',
+                        maxWidth	: 800,
+                        maxHeight	: 600,
+                        fitToView	: false,
+                        width		: '60%',
+                        height		: '70%',
+                        autoSize	: false,
+                        closeClick	: false,
+                        openEffect	: 'none',
+                        closeEffect	: 'none'
+                });
 
-
-});
-                if (jQuery('a[rel*=facebox]').length > 0)
-                    jQuery('a[rel*=facebox]').facebox();
             });
             /* ]]> */
         </script>

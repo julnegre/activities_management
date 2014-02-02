@@ -139,7 +139,15 @@
             </tr>
         </thead>
         <tbody>
+        {% set day = '' %}    
         {% for entity in entities %}
+            
+            {% if day != entity.start|date('d') %} 
+                <tr style="background: #191818;color:white">
+                    <td colspan="4">{{entity.start|date('l d/m')}}</td>
+                </tr>
+                {% set day = entity.start|date('d') %} 
+            {% endif %}
             <tr>
                 <td>{{ entity.activity.customer.name }}</td>
                 <td>{{ entity.activity.name }}
@@ -151,7 +159,7 @@
                         <div class="pure-u-1-3" style="color:green">
                             {% if entity.start %}
                                 <strong>START :</strong> 
-                                <blockquote>{{ entity.start|date('d/m/Y H:i') }}</blockquote>
+                                <blockquote>{{ entity.start|date('H:i') }}</blockquote>
                             {% endif %}
                         </div>  
                         {% if entity.end is null %}
@@ -169,7 +177,7 @@
                         <div class="pure-u-1-3" style="color:red">
                             {% if entity.end is not null %}
                                 <strong>END :</strong>  
-                                <blockquote>{{ entity.end|date('d/m/Y H:i') }}</blockquote>
+                                <blockquote>{{ entity.end|date('H:i') }}</blockquote>
                             {% endif %}
                         </div>
                         {% if entity.end is not null %}
