@@ -42,3 +42,7 @@ activitystorage_updatechart:
     pattern:  /updatechart
     defaults: { _controller: "JngActivityBundle:ActivityStorage:updatechart" }
     requirements: { _method: post }  
+    
+activitystorage_exportxls:
+    pattern:  /{date1}/{date2}/exportexcel
+    defaults: { _controller: "JngActivityBundle:ActivityStorage:exportexcel" }    

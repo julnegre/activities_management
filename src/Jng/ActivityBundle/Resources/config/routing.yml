@@ -21,4 +21,3 @@ JngActivityBundle_task:
 JngActivityBundle_webcal:
         resource: "@JngActivityBundle/Resources/config/routing/webcal.yml"
         prefix:   /webcal
-   

@@ -23,10 +23,9 @@
             </a>
         </li>
     </ul>
-<table class="pure-table">
+<table class="pure-table pure-table-bordered" width="100%">
     <thead>
         <tr>
-            <th>Id</th>
             <th>Name</th>
             <th>Customer</th>
             <th>Actions</th>
@@ -35,7 +34,6 @@
     <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('activity_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                 <td>{{ entity.name }}</td>
                 <td>{{ entity.customer.name }}</td>
                 <td>

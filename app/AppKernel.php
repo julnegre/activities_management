@@ -26,6 +26,7 @@ class AppKernel extends Kernel
             new Jng\UserBundle\JngUserBundle(),
             new Jng\ActivityBundle\JngActivityBundle(),
             new Genemu\Bundle\FormBundle\GenemuFormBundle(),
+            new Liuggio\ExcelBundle\LiuggioExcelBundle(),
             //new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
            // new Symfony\Bundle\DoctrineFixturesBundle\DoctrineFixturesBundle(),
         );

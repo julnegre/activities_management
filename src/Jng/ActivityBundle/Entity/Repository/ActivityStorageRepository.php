@@ -25,7 +25,7 @@ class ActivityStorageRepository extends EntityRepository
             ->setParameter('d1', $d1)
             ->setParameter('d2', $d2);
         
-        $qb->orderBy("a.start", false);
+        $qb->orderBy("a.start", "DESC");
         //return $qb;
         
         $query = $qb->getQuery();
